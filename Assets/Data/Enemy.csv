@@ -1,0 +1,12 @@
+enemyDropId,enemyId,itemid,dropqty,probability,
+drop101,e101,item01,1,50,0.416
+drop102,e101,item02,1,40,0.333
+drop103,e101,item03,1,30,0.25
+drop201,e201,item01,1,30,0.25
+drop202,e201,item02,1,50,0.416
+drop203,e201,item03,1,40,0.333
+,,,,,
+,,,,,
+,,,,,
+dropqty how many the enemy will drop item,,,,,
+propability%sum,,,,,

@@ -1,0 +1,3 @@
+waveId,waveName,enemyId,enemyCount,totalHP,totalExp
+101,FirstWave,e101,8,120,400
+201,SecondWave,e201,10,200,600
