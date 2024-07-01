@@ -1,0 +1,18 @@
+{
+  "CharacterRef": [
+    {
+      "characterId": "chara1",
+      "characterName": "Cara",
+      "characterHealth": 75,
+      "characterAtk": 10,
+      "characterSpeed": 15
+    },
+    {
+      "characterId": "chara2",
+      "characterName": "Jush",
+      "characterHealth": 70,
+      "characterAtk": 18,
+      "characterSpeed": 10
+    }
+  ]
+  }

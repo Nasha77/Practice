@@ -1,0 +1,16 @@
+{
+"WeaponRef": [
+  {
+    "weaponID": "weapon1",
+    "weaponName": "Bat Muscle",
+    "weaponATK": 20,
+    "description": "A sturdy bat infused with the power of raw strength."
+  },
+  {
+    "weaponID": "weapon2",
+    "weaponName": "Guitar Love",
+    "weaponATK": 10,
+    "description": "Ideal for those who fight with rhythm and flair."
+  }
+]
+}

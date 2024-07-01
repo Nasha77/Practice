@@ -1,0 +1,20 @@
+{
+"EnemyRef": [
+  {
+    "enemyId": "e101",
+    "enemyName": "Fan Girls",
+    "enemyHealth": 15,
+    "enemyAtk": 10,
+    "enemySpeed": 1,
+    "enemyEXP": 50
+  },
+  {
+    "enemyId": "e201",
+    "enemyName": "Fan Boys",
+    "enemyHealth": 20,
+    "enemyAtk": 5,
+    "enemySpeed": 3,
+    "enemyEXP": 60
+  }
+]
+}

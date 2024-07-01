@@ -1,4 +1,0 @@
-itemid,itemName,itemDescription,itemType,itemValue
-item01,Burger,increase [itemType] by [itemValue],HP,20
-item02,Coin,increase [itemType] by [itemValue],COINS,10
-item03,Piece of Shit,increase [itemType] by [itemValue],POOP,1
