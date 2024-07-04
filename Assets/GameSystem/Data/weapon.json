@@ -2,15 +2,17 @@
 "WeaponRef": [
   {
     "weaponID": "weapon1",
-    "weaponName": "Bat Muscle",
-    "weaponATK": 20,
-    "description": "A sturdy bat infused with the power of raw strength."
-  },
-  {
-    "weaponID": "weapon2",
+    "characterId": "chara1",
     "weaponName": "Guitar Love",
     "weaponATK": 10,
     "description": "Ideal for those who fight with rhythm and flair."
+  },
+  {
+    "weaponID": "weapon2",
+    "characterId": "chara2",
+    "weaponName": "Bat Muscle",
+    "weaponATK": 10,
+    "description": "A sturdy bat infused with the power of raw strength."
   }
 ]
 }

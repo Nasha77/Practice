@@ -1,18 +1,20 @@
 {
-  "CharacterRef": [
-    {
-      "characterId": "chara1",
-      "characterName": "Cara",
-      "characterHealth": 75,
-      "characterAtk": 10,
-      "characterSpeed": 15
-    },
-    {
-      "characterId": "chara2",
-      "characterName": "Jush",
-      "characterHealth": 70,
-      "characterAtk": 18,
-      "characterSpeed": 10
-    }
-  ]
+"CharacterRef": [
+  {
+    "characterId": "chara1",
+    "characterName": "Cara",
+    "description": "Cara, a famous musician whom everyone loves.",
+    "characterHealth": 75,
+    "characterAtk": 10,
+    "characterSpeed": 10
+  },
+  {
+    "characterId": "chara2",
+    "characterName": "Jush",
+    "description": "Jush, a baseball player who carries his bat everywhere.",
+    "characterHealth": 70,
+    "characterAtk": 18,
+    "characterSpeed": 7
   }
+]
+}
