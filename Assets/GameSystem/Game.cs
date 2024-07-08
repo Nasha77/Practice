@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -8,31 +9,50 @@ public class Game
 {
     private static Player mainPlayer;
 
-    private static List<character> characterList; //access to charcter class list stored here gamestaticclaass
+    private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
 
-    /*public static Player GetPlayer() //get and set player
+    public static Player GetPlayer() //get and set player
     {
         return mainPlayer;
     }
 
-    public static void SetCharacter(Character character) //get and set player
+    public static void SetCharacter(Player player) //get and set player
     {
-        mainCharacter = character;
+        mainPlayer = player;
     }
 
-    public static List<character> GetCharacterList() //get and set avatarlist
+    public static List<Character> GetCharacterList() //get and set charcter list jush and cara
     {
     return characterList; 
 
     }
-    public static void SetCharacterList(List<Character> aList)
+    public static void SetCharacterList(List<Character> aList) //get and set charcter list jush and cara
     {
-        characterList = aList
+        characterList = aList;
     }
 
+    /*public static Character GetCharacterByRefId(string id) //getting one single avatar using its ref id
+    {
+        return characterList.Find(x => x.refId == id);
+    }*/
 
-    // Start is called before the first frame update
+    public static List<Weapon> GetWeaponList() //get and set list for weapon
+    {
+        return weaponList;
+    }
+
+    public static void SetWeaponList(List<Weapon> aList) //get and set list for weapon
+    {
+        weaponList = aList; 
+    }
+
+   /*public static Weapon GeWeaponByRefId(string id) //getting one single WEAPON using its ref id
+    {
+        return weaponList.Find(x => x.refId == id);
+    }*/
+
+
     void Start()
     {
         
@@ -42,5 +62,5 @@ public class Game
     void Update()
     {
         
-    }*/
+    }
 }

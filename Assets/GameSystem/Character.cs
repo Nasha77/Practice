@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class character : MonoBehaviour
+public class Character
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string characterId { get; }
+    public string characterName { get; }
+    public string description { get; }
+    public int characterHealth { get; }
+    public int characterAtk { get; }
+    public int characterSpeed { get; }
 
-    // Update is called once per frame
-    void Update()
+    public Character (string characterId, string characterName, string description, int characterHealth, int characterAtk, int characterSpeed)
     {
-        
+        this.characterId = characterId;
+        this.characterName = characterName;
+        this.description = description;
+        this.characterHealth = characterHealth;
+        this.characterAtk = characterAtk;
+        this.characterSpeed = characterSpeed;
     }
 }
