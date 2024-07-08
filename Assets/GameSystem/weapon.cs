@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    // weapon's atk
+    public float damage = 3;
 
-    Collider2D weaponCollider;
+    public Collider2D weaponCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        weaponCollider = GetComponent<Collider2D>();
+        
     }
 
     // Update is called once per frame
@@ -23,7 +25,12 @@ public class Weapon : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            //deal dmg
+            //deal dmg to enemy
+            Enemy enemy = other.GetComponent<Enemy>();
+
+            if(enemy != null ) {
+                enemy.Health -= damage;
+            }
         }
     }
 }
