@@ -6,14 +6,14 @@ using UnityEngine.TextCore.Text;
 
 public class Game
 {
-    private static Character mainCharacter;
+    private static Player mainPlayer;
 
     private static List<character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
 
-    public static Character GetCharacter() //get and set player
+    /*public static Player GetPlayer() //get and set player
     {
-        return mainCharacter;
+        return mainPlayer;
     }
 
     public static void SetCharacter(Character character) //get and set player
@@ -21,14 +21,14 @@ public class Game
         mainCharacter = character;
     }
 
-    public static List<character> GetCharacterList()
+    public static List<character> GetCharacterList() //get and set avatarlist
     {
     return characterList; 
 
     }
     public static void SetCharacterList(List<Character> aList)
     {
-       
+        characterList = aList
     }
 
 
@@ -42,5 +42,5 @@ public class Game
     void Update()
     {
         
-    }
+    }*/
 }

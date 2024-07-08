@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class circleScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
     Camera mainCamera;
-    private Color[] colors = { Color.red, Color.green, Color.blue };
-    private int currentColorIndex = 0;
+    
     private Transform bat;
 
     // Start is called before the first frame update
@@ -50,15 +49,5 @@ public class circleScript : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        Debug.Log("click " + name);
-        if (bat != null)
-        {
-            bat.GetComponent<SpriteRenderer>().color = colors[currentColorIndex];
-
-            // Move to the next color in the array
-            currentColorIndex = (currentColorIndex + 1) % colors.Length;
-        }
-    }
+ 
 }
