@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 
+public class Wave
+{
+    // name of the wave
+    public string waveName;
+}
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] Wave[] waves;
+
     // set up new list for enemies
-    public List<Enemies> enemies = new List<Enemies>();
-    public int currentWave;
-    public int waveValue;
+    //public List<Enemies> enemies = new List<Enemies>();
+    //public int currentWave;
+    //public int waveValue;
 
     // Start is called before the first frame update
     void Start()
@@ -21,24 +29,24 @@ public class WaveSpawner : MonoBehaviour
         
     }
 
-    public void GenerateWave()
-    {
-        waveValue = currentWave * 10;
-        GenerateEnemies();
-    }
+    //public void GenerateWave()
+    //{
+      //  waveValue = currentWave * 10;
+        //GenerateEnemies();
+    //}
 
-    public void GenerateEnemies()
-    {
+   // public void GenerateEnemies()
+    //{
 
-    }
+    //}
 }
 
 // to edit in the inspector
-[System.Serializable]
+//[System.Serializable]
 
-public class Enemies
-{
-    public GameObject enemyPrefab;
+//public class Enemies
+//{
+   // public GameObject enemyPrefab;
     // u dont hav cost, change it to something else later
-    public int cost;
-}
+    //public int cost;
+//}
