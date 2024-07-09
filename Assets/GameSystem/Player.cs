@@ -2,81 +2,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
-    Camera mainCamera;
-    
-    private Transform bat;
+    private string id;
+    private string currentCharacter; //current charcter states based on character has selected 
+    private string currentCharacterWeapon;   // might be WRONG just in case for future refs
 
-    //Player Health
-    public float Health
+    //charcter stats based on current character and weapon updates when needed 
+    private int playerHealth;
+    private float playerAtk;
+    private float playerSpd;
+
+    private bool statDirty; //when the vaules in id and current character chnage then the playermaxhp, player atk and player spd chnages
+
+
+    public Player(string id, string currentCharacter, string currentCharacterWeapon)
     {
-        set
-        {
-            health = value;
-            if (health <= 0)
-            {
-                PlayerDeath();
-            }
-        }
+        this.id = id;
+        this.currentCharacter = currentCharacter;
+        this.currentCharacterWeapon = currentCharacterWeapon;
 
-        get
-        {
-            return health;
-        }
-    }
-    public float health = 1;
-
-
-    // once health is less than or equal 0, player dies and game over
-    public void PlayerDeath()
-    {
-        // 1. destroy player gameobj
-        // 2. display game over scene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! remember to add here :)
-        Destroy(gameObject);
+        statDirty = true; //if these is true then recalculate 
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public string GetId()
     {
-        bat = transform.Find("Bat");
-        if (bat == null)
-        {
-            Debug.LogError("Bat not found!");
-        }
-
-        mainCamera = Camera.main;
-        if (mainCamera == null)
-        {
-            Debug.LogError("MainCamera not found!");
-        }
+        return id;
     }
 
-    // setting player to face dir of mouse
-    void Update()
+    public string GetCurrentCharacter() //get funtion
     {
-        if (bat != null && mainCamera != null)
-        {
-            // Get the mouse position in world coordinates
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = transform.position.z; // Maintain the original z-position
+        return currentCharacter;    
 
-            // Calculate the direction from the parent to the mouse position
-            Vector3 direction = (mousePosition - transform.position).normalized;
-
-            // Set the weapon position relative to the parent, keeping a constant distance
-            float distance = 1.0f; // Adjust this value to set the distance from the parent
-            bat.position = transform.position + direction * distance;
-
-            // Calculate the angle to face the mouse position
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            // Rotate the sword to face the mouse position
-            // Adjust by 0 degrees if the sword's tip points to the right in the default sprite orientation
-            bat.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        }
     }
 
- 
+    public void SetCurrentCharacter(string charcater) //set funtion
+    {
+        currentCharacter = charcater;
+
+        statDirty = true; //everytime payer have  new character recalculates
+    }
+
+    public string GetCurrentCharacterWeapon() //get funtion
+    {
+        return currentCharacterWeapon;
+
+    }
+
+    public void SetCurrentCharacterWeapon(string weapon) //set funtion
+    {
+        currentCharacterWeapon = weapon;
+
+        statDirty = true; //everytime payer have  new weapon recalculates
+    }
+
+   /* public bool UpdateStats()  TO BE CONTINUEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    {
+        if (!statDirty) return false; //if have not been chnaged then dont update stats
+
+        Debug.Log("CALCULATE STATS");
+
+        Character playerCharacter = Game.GetCharacterByRefId(currentCharacter);
+
+        playerHealth = playerCharacter.characterHealth;
+        playerAtk = playerCharacter.characterAtk;
+        playerSpd = playerCharacter.characterSpeed;
+
+        statDirty = false; //calculated no need to calculate again
+
+    }
+
+    public float GetcharacterHealth() //check if the health updates if it has not been chnaged no need to calculate if it have then calculate
+    {
+        UpdateStats();
+        return playerHealth;
+    }
+
+    public float GetcharacterAtk()
+    {
+        UpdateStats();
+        return playerAtk;
+    }
+
+    public float GetcharacterSpeed()
+    {
+        UpdateStats();
+        return playerSpd;
+    }
+   */
 }

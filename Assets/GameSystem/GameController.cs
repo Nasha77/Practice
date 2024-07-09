@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
         Debug.Log("Character" + Game.GetCharacterList().Count); //debugger
         Debug.Log("Weapon" + Game.GetWeaponList().Count); //debugger
 
+        //set player
+        
+
 
     }
 
