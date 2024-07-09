@@ -7,6 +7,7 @@ public class Wave
 {
     // name of the wave
     public string waveName;
+    public int enemyNumber;
 }
 public class WaveSpawner : MonoBehaviour
 {

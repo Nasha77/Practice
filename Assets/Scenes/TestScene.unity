@@ -8810,8 +8810,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave 1
+    enemyNumber: 3
   - waveName: Wave 2
+    enemyNumber: 3
   - waveName: Wave 3
+    enemyNumber: 3
 --- !u!1 &1942292354
 GameObject:
   m_ObjectHideFlags: 0
