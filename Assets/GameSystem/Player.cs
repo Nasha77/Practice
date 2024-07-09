@@ -8,6 +8,35 @@ public class Player : MonoBehaviour
     
     private Transform bat;
 
+    //Player Health
+    public float Health
+    {
+        set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                PlayerDeath();
+            }
+        }
+
+        get
+        {
+            return health;
+        }
+    }
+    public float health = 1;
+
+
+    // once health is less than or equal 0, player dies and game over
+    public void PlayerDeath()
+    {
+        // 1. destroy player gameobj
+        // 2. display game over scene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! remember to add here :)
+        Destroy(gameObject);
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +53,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // setting player to face dir of mouse
     void Update()
     {
         if (bat != null && mainCamera != null)
@@ -36,7 +65,7 @@ public class Player : MonoBehaviour
             // Calculate the direction from the parent to the mouse position
             Vector3 direction = (mousePosition - transform.position).normalized;
 
-            // Set the sword position relative to the parent, keeping a constant distance
+            // Set the weapon position relative to the parent, keeping a constant distance
             float distance = 1.0f; // Adjust this value to set the distance from the parent
             bat.position = transform.position + direction * distance;
 

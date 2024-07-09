@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
         dist = Vector2.Distance(transform.position, player.transform.position);
         Vector2 dir = player.transform.position - transform.position;
 
+        // enemy move towards the player
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
     }
 }
