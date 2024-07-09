@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
 
-    [SerializeField] public GameObject player;
+    private GameObject player;
     public float speed;
 
     private float dist;
@@ -16,9 +16,20 @@ public class EnemyAI : MonoBehaviour
         
     }
 
+    public void SetupEnemy(GameObject player)
+    {
+        this.player = player;
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        if (player == null)
+        {
+            return;
+        }
+       
         dist = Vector2.Distance(transform.position, player.transform.position);
         Vector2 dir = player.transform.position - transform.position;
 

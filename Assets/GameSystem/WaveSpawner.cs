@@ -13,6 +13,10 @@ public class Wave
 }
 public class WaveSpawner : MonoBehaviour
 {
+    public GameObject player;
+
+    // replace this array with the wave list in game class
+    //Game. get stuff
     public Wave[] waves;
 
     // randomly spawn
@@ -49,8 +53,13 @@ public class WaveSpawner : MonoBehaviour
             // specify the 1st enemy to spawn
             GameObject spawnFirst = currentWave.enemyType[0];
 
+            spawnFirst.GetComponent<EnemyAI>().SetupEnemy(player);
+
             // sppecif the 2nd enemy to spawn
             GameObject spawnSecond = currentWave.enemyType[1];
+            spawnSecond.GetComponent<EnemyAI>().SetupEnemy(player);
+
+            // can use for loop for the above spawn
 
             // random spawn point
             Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
