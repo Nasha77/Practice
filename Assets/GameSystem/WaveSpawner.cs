@@ -24,6 +24,9 @@ public class WaveSpawner : MonoBehaviour
     public Wave currentWave;
     public int currentWaveNumber;
 
+    // used to check if we allow spawn
+    private bool canSpawn = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,33 +36,45 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // waves[0] = 1st wave
+        
         currentWave = waves[currentWaveNumber];
+        SpawnWave();
     }
 
+    //spawn specific enemy at random point
     void SpawnWave()
     {
-        //GameObject spawnEnemy = currentWave.enemyType
+        if(canSpawn)
+        {
+            // specify the 1st enemy to spawn
+            GameObject spawnFirst = currentWave.enemyType[0];
+
+            // sppecif the 2nd enemy to spawn
+            GameObject spawnSecond = currentWave.enemyType[1];
+
+            // random spawn point
+            Transform randomPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+            // spawn one
+            Instantiate(spawnFirst, randomPoint.position, Quaternion.identity);
+
+            //spawn 2
+            Instantiate(spawnSecond, randomPoint.position, Quaternion.identity);
+
+            // everyloop will decrease by 1, when it reaches 0, bool will be set to false to stop spawning.
+            currentWave.enemyNumber--;
+            if(currentWave.enemyNumber == 0)
+            {
+                canSpawn = false;
+            }
+
+        }
+       
+
     }
 
-    //public void GenerateWave()
-    //{
-      //  waveValue = currentWave * 10;
-        //GenerateEnemies();
-    //}
+    
 
-   // public void GenerateEnemies()
-    //{
-
-    //}
 }
 
-// to edit in the inspector
-//[System.Serializable]
 
-//public class Enemies
-//{
-   // public GameObject enemyPrefab;
-    // u dont hav cost, change it to something else later
-    //public int cost;
-//}
