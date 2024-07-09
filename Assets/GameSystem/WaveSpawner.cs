@@ -18,10 +18,11 @@ public class WaveSpawner : MonoBehaviour
     // randomly spawn
     public Transform[] spawnPoints;
 
+
     // set up new list for enemies
     //public List<Enemies> enemies = new List<Enemies>();
-    //public int currentWave;
-    //public int waveValue;
+    public Wave currentWave;
+    public int currentWaveNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,13 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // waves[0] = 1st wave
+        currentWave = waves[currentWaveNumber];
+    }
+
+    void SpawnWave()
+    {
+        //GameObject spawnEnemy = currentWave.enemyType
     }
 
     //public void GenerateWave()
