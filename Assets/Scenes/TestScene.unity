@@ -8811,10 +8811,18 @@ MonoBehaviour:
   waves:
   - waveName: Wave 1
     enemyNumber: 3
+    enemyType:
+    - {fileID: 7880661179319901172, guid: 64b21a7527e1f594c8acf242b2681b9a, type: 3}
+    spawnInterval: 2
   - waveName: Wave 2
-    enemyNumber: 3
+    enemyNumber: 10
+    enemyType:
+    - {fileID: 7880661179319901172, guid: 64b21a7527e1f594c8acf242b2681b9a, type: 3}
+    spawnInterval: 1
   - waveName: Wave 3
     enemyNumber: 3
+    enemyType: []
+    spawnInterval: 0
 --- !u!1 &1942292354
 GameObject:
   m_ObjectHideFlags: 0

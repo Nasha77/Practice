@@ -8,10 +8,15 @@ public class Wave
     // name of the wave
     public string waveName;
     public int enemyNumber;
+    public GameObject[] enemyType;
+    public float spawnInterval;
 }
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField] Wave[] waves;
+    public Wave[] waves;
+
+    // randomly spawn
+    public Transform[] spawnPoints;
 
     // set up new list for enemies
     //public List<Enemies> enemies = new List<Enemies>();
