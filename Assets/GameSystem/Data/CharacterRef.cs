@@ -12,5 +12,8 @@ public class CharacterRef //stores feilds that match the the excel/json file
     public int characterHealth;
     public int characterAtk;
     public int characterSpeed;
-
+}
+public class CharcterDataList
+{
+    public List<CharacterRef> characterRef;
 }

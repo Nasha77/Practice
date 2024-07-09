@@ -32,10 +32,10 @@ public class Game
         characterList = aList;
     }
 
-    /*public static Character GetCharacterByRefId(string id) //getting one single avatar using its ref id
+    public static Character GetCharacterByRefId(string id) //getting one single avatar using its ref id
     {
-        return characterList.Find(x => x.refId == id);
-    }*/
+        return characterList.Find(x => x.characterId == id);
+    }
 
     public static List<Weapon> GetWeaponList() //get and set list for weapon
     {
@@ -47,10 +47,10 @@ public class Game
         weaponList = aList; 
     }
 
-   /*public static Weapon GeWeaponByRefId(string id) //getting one single WEAPON using its ref id
+   public static Weapon GeWeaponByRefId(string id) //getting one single WEAPON using its ref id
     {
-        return weaponList.Find(x => x.refId == id);
-    }*/
+        return weaponList.Find(x => x.weaponID == id);
+    }
 
 
     void Start()

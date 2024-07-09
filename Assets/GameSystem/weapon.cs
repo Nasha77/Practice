@@ -2,35 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon
 {
-    // weapon's atk
-    public float damage = 3;
+    public string weaponID { get; }
+    public string characterId { get; }
+    public string weaponName { get; }
+    public int weaponATK { get; }
+    public string description { get; }
 
-    public Collider2D weaponCollider;
-
-    // Start is called before the first frame update
-    void Start()
+    public Weapon(string weaponID, string characterId, string weaponName, int weaponATK, string description)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.tag == "Enemy")
-        {
-            //deal dmg to enemy
-            Enemy enemy = other.GetComponent<Enemy>();
-
-            if(enemy != null ) {
-                enemy.Health -= damage;
-            }
-        }
+        this.weaponID = weaponID;
+        this.characterId = characterId;
+        this.weaponName = weaponName;
+        this.weaponATK = weaponATK;
+        this.description = description;
     }
 }
