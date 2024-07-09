@@ -8750,9 +8750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486d3b040cf64ac46872ff9f98c19d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: []
-  currentWave: 0
-  waveValue: 0
+  waves:
+  - waveName: Wave 1
+  - waveName: Wave 2
+  - waveName: Wave 3
 --- !u!1 &1942292354
 GameObject:
   m_ObjectHideFlags: 0
