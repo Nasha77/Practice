@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour
 {
     public DataManager dataManager; //call the data
     // Start is called before the first frame update
+
+    public string initCharacter; //set in inspector
+    public string initWeapon;
     void Start()
     {
         dataManager = GetComponent<DataManager>();
@@ -15,7 +18,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Weapon" + Game.GetWeaponList().Count); //debugger
 
         //set player
-        
+        Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
 
 
     }

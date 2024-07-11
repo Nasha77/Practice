@@ -5,16 +5,15 @@ using UnityEngine;
 public class Player
 {
     private string id;
-    private string currentCharacter; //current charcter states based on character has selected 
-    private string currentCharacterWeapon;   // might be WRONG just in case for future refs
+    private string currentCharacter; // current character states based on character selected 
+    private string currentCharacterWeapon; // might be WRONG just in case for future refs
 
-    //charcter stats based on current character and weapon updates when needed 
+    // character stats based on current character and weapon updates when needed 
     private int playerHealth;
     private float playerAtk;
     private float playerSpd;
 
-    private bool statDirty; //when the vaules in id and current character chnage then the playermaxhp, player atk and player spd chnages
-
+    private bool statDirty; // when the values in id and current character change then the playermaxhp, player atk and player spd changes
 
     public Player(string id, string currentCharacter, string currentCharacterWeapon)
     {
@@ -22,7 +21,7 @@ public class Player
         this.currentCharacter = currentCharacter;
         this.currentCharacterWeapon = currentCharacterWeapon;
 
-        statDirty = true; //if these is true then recalculate 
+        statDirty = true; // if this is true then recalculate
     }
 
     public string GetId()
@@ -30,35 +29,31 @@ public class Player
         return id;
     }
 
-    public string GetCurrentCharacter() //get funtion
+    public string GetCurrentCharacter() // get function
     {
-        return currentCharacter;    
-
+        return currentCharacter;
     }
 
-    public void SetCurrentCharacter(string charcater) //set funtion
+    public void SetCurrentCharacter(string character) // set function
     {
-        currentCharacter = charcater;
-
-        statDirty = true; //everytime payer have  new character recalculates
+        currentCharacter = character;
+        statDirty = true; // every time player has a new character recalculate
     }
 
-    public string GetCurrentCharacterWeapon() //get funtion
+    public string GetCurrentCharacterWeapon() // get function
     {
         return currentCharacterWeapon;
-
     }
 
-    public void SetCurrentCharacterWeapon(string weapon) //set funtion
+    public void SetCurrentCharacterWeapon(string weapon) // set function
     {
         currentCharacterWeapon = weapon;
-
-        statDirty = true; //everytime payer have  new weapon recalculates
+        statDirty = true; // every time player has a new weapon recalculate
     }
 
-   /* public bool UpdateStats()  TO BE CONTINUEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+    public bool UpdateStats() // updating data from excel
     {
-        if (!statDirty) return false; //if have not been chnaged then dont update stats
+        if (!statDirty) return false; // if it has not been changed then don't update stats
 
         Debug.Log("CALCULATE STATS");
 
@@ -68,26 +63,43 @@ public class Player
         playerAtk = playerCharacter.characterAtk;
         playerSpd = playerCharacter.characterSpeed;
 
-        statDirty = false; //calculated no need to calculate again
+        statDirty = false; // calculated, no need to calculate again
 
+        return true; // return true when stats are updated
     }
 
-    public float GetcharacterHealth() //check if the health updates if it has not been chnaged no need to calculate if it have then calculate
+    // New Health property
+    public int Health
+    {
+        get { return playerHealth; }
+        set
+        {
+            playerHealth = value;
+            if (playerHealth <= 0)
+            {
+                // Handle player defeat, e.g., respawn, game over, etc.
+                Debug.Log("Player defeated!");
+            }
+        }
+    }
+
+    public float GetCharacterHealth() // check if the health updates if it has not been changed no need to calculate if it has then calculate
     {
         UpdateStats();
         return playerHealth;
     }
 
-    public float GetcharacterAtk()
+    public float GetCharacterAtk()
     {
         UpdateStats();
         return playerAtk;
     }
 
-    public float GetcharacterSpeed()
+    public float GetCharacterSpeed()
     {
         UpdateStats();
         return playerSpd;
     }
-   */
 }
+
+

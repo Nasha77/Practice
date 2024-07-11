@@ -17,7 +17,7 @@ public class Game
         return mainPlayer;
     }
 
-    public static void SetCharacter(Player player) //get and set player
+    public static void SetPlayer(Player player) //get and set player
     {
         mainPlayer = player;
     }
