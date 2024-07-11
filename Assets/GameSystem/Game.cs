@@ -11,7 +11,9 @@ public class Game
 
     private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
+    private static List<Enemy> enemyList;
 
+    //GETSETPLAYER
     public static Player GetPlayer() //get and set player
     {
         return mainPlayer;
@@ -22,6 +24,7 @@ public class Game
         mainPlayer = player;
     }
 
+    //GETSETCHARCATER
     public static List<Character> GetCharacterList() //get and set charcter list jush and cara
     {
     return characterList; 
@@ -37,6 +40,7 @@ public class Game
         return characterList.Find(x => x.characterId == id);
     }
 
+    //GETSETPWEAPON
     public static List<Weapon> GetWeaponList() //get and set list for weapon
     {
         return weaponList;
@@ -52,7 +56,22 @@ public class Game
         return weaponList.Find(x => x.weaponID == id);
     }
 
+    //GETSETPENEMY
 
+    public static List<Enemy> GetEnemyList() //get and set list for weapon
+    {
+        return enemyList;
+    }
+
+    public static void SetEnemyList(List<Enemy> aList) //get and set list for weapon
+    {
+        enemyList = aList;
+    }
+
+    public static Enemy GetEnemyByRefId(string id) //getting one single WEAPON using its ref id
+    {
+        return enemyList.Find(x => x.enemyId == id);
+    }
     void Start()
     {
         

@@ -66,6 +66,31 @@ public class DataManager : MonoBehaviour
 
         Game.SetWeaponList(weaponList);
 
+        string filePathEnemy = Path.Combine(Application.dataPath, "GameSystem/Data/enemyRef.json");
+        string dataStringEnemy = File.ReadAllText(filePathEnemy);
+
+        // Parse JSON data into EnemyDataList
+        EnemyRef.EnemyDataList enemyData = JsonUtility.FromJson<EnemyRef.EnemyDataList>(dataStringEnemy);
+
+        // Process reference data: convert data read into enemy objects
+        List<Enemy> enemyList = new List<Enemy>();
+        foreach (EnemyRef enemyRef in enemyData.enemyRef)
+        {
+            Enemy enemy = new Enemy(
+                enemyRef.enemyId,
+                enemyRef.enemyName,
+                enemyRef.enemyHealth,
+                enemyRef.enemyAtk,
+                enemyRef.enemySpeed,
+                enemyRef.enemyEXP
+            );
+            enemyList.Add(enemy);
+            Debug.Log("Added enemy " + enemy.enemyName + " with health " + enemy.enemyHealth); // Example debug log
+        }
+
+        // Assuming there's a method to set the enemy list in your game system
+        Game.SetEnemyList(enemyList);
+
 
     }
 
