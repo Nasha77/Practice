@@ -9,7 +9,7 @@ public class Player
     private string currentCharacterWeapon; // might be WRONG just in case for future refs
 
     // character stats based on current character and weapon updates when needed 
-    private int playerHealth;
+    private float playerHealth;
     private float playerAtk;
     private float playerSpd;
 
@@ -69,7 +69,7 @@ public class Player
     }
 
     // New Health property
-    public int Health
+    public float Health
     {
         get { return playerHealth; }
         set
