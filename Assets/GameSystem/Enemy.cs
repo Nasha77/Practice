@@ -40,10 +40,12 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
         {
             //deal dmg to player
-            Player player = other.GetComponent<Player>();
+            //Player player = other.GetComponent<Player>();
+            Player player = Game.GetPlayer();
 
             if (player != null)
             {
+                Debug.Log("HEALTH" + (player.Health -= damage));
                 player.Health -= damage;
             }
         }

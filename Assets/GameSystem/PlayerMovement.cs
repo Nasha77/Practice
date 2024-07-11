@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float vertical; // new variable for vertical movement
-    private float speed = 5f;
+    private float speed;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical"); // read vertical input
 
+       
+
         Flip();
     }
 
     void FixedUpdate()
     {
+        speed = Game.GetPlayer().GetCharacterSpeed();
+
         rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
     }
 

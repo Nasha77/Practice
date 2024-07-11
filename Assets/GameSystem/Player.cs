@@ -9,9 +9,9 @@ public class Player
     private string currentCharacterWeapon; // might be WRONG just in case for future refs
 
     // character stats based on current character and weapon updates when needed 
-    private float playerHealth;
-    private float playerAtk;
-    private float playerSpd;
+    public float playerHealth;
+    public float playerAtk;
+    public float playerSpd;
 
     private bool statDirty; // when the values in id and current character change then the playermaxhp, player atk and player spd changes
 
@@ -51,22 +51,29 @@ public class Player
         statDirty = true; // every time player has a new weapon recalculate
     }
 
+    // you r trying to call something thats not set so confirm will give u null
+    // its the way this section is written.
     public bool UpdateStats() // updating data from excel
     {
         if (!statDirty) return false; // if it has not been changed then don't update stats
 
-        Debug.Log("CALCULATE STATS");
 
+        Debug.Log("UpdateStats " + currentCharacter);
         Character playerCharacter = Game.GetCharacterByRefId(currentCharacter);
 
         playerHealth = playerCharacter.characterHealth;
         playerAtk = playerCharacter.characterAtk;
         playerSpd = playerCharacter.characterSpeed;
 
+        
+
         statDirty = false; // calculated, no need to calculate again
 
         return true; // return true when stats are updated
     }
+
+   
+
 
     // New Health property
     public float Health

@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
 
+        Debug.Log("NOW" + initCharacter);
+        Debug.Log("NOW" + initWeapon);
+
         Debug.Log("Character" + Game.GetCharacterList().Count); //debugger
         Debug.Log("Weapon" + Game.GetWeaponList().Count); //debugger
 

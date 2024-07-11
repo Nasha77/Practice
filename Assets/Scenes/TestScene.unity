@@ -200,7 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3c18cdee3113943924c54ac675da5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataManager: {fileID: 0}
+  dataManager: {fileID: 144838799}
+  initCharacter: chara1
+  initWeapon: weapon1
 --- !u!4 &144838801
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa98020cb662f4ba3878970a1c2d5f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
 --- !u!1 &459558904
 GameObject:
   m_ObjectHideFlags: 0
