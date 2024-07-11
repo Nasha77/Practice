@@ -25,11 +25,11 @@ public class weaponDamage : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            //deal dmg to enemy
-            Enemy enemy = other.GetComponent<Enemy>();
+            //weapon deal dmg to enemy
+            Enemy enemy = Game.GetEnemyList()[0];
 
             if(enemy != null ) {
-                enemy.Health -= damage;
+                //enemy.enemyHealth -= damage;
             }
         }
     }

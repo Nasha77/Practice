@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDMG : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     // set how powerful enemy is
     public float damage = 1;
