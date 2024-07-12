@@ -58,17 +58,17 @@ public class Game
 
     //GETSETPENEMY
 
-    public static List<Enemy> GetEnemyList() //get and set list for weapon
+    public static List<Enemy> GetEnemyList() //get and set list for enemy
     {
         return enemyList;
     }
 
-    public static void SetEnemyList(List<Enemy> aList) //get and set list for weapon
+    public static void SetEnemyList(List<Enemy> aList) //get and set list for enemy
     {
         enemyList = aList;
     }
 
-    public static Enemy GetEnemyByRefId(string id) //getting one single WEAPON using its ref id
+    public static Enemy GetEnemyByRefId(string id) //getting one single ENEMY using its ref id
     {
         return enemyList.Find(x => x.enemyId == id);
     }

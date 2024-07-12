@@ -25,12 +25,25 @@ public class weaponDamage : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            //weapon deal dmg to enemy
-            Enemy enemy = Game.GetEnemyList()[0];
+            
 
-            if(enemy != null ) {
-                //enemy.enemyHealth -= damage;
+            //weapon deal dmg to enemy
+            Enemy enemy = Game.GetEnemyByRefId("");
+
+            List<Enemy> enemyList = Game.GetEnemyList();
+
+            // reiterate through each enemy in enemy list and check if its the right enemy, then reduce health 
+            foreach (Enemy id in enemyList)
+            {
+                // check if the enemy is an enemy from the id
+                if (enemy != null)
+                {
+                    //decrease health of the enemy
+                   // enemy.enemyHealth -= damage;
+                }
             }
+
+            
         }
     }
 }
