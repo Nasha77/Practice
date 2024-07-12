@@ -20,4 +20,6 @@ public class Character
         this.characterAtk = characterAtk;
         this.characterSpeed = characterSpeed;
     }
+
+
 }
