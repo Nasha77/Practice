@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weaponDamage : MonoBehaviour
 {
-    // weapon's attack
+    // weapon's atk
     public float damage = 3;
 
     public Collider2D weaponCollider;
@@ -12,35 +12,38 @@ public class weaponDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if(other.tag == "Enemy")
         {
-            // get access to enemy health from Game
-            Enemy enemy = Game.GetEnemyByRefId("e101");
 
-            // if the enemy is not null and matches the one we are looking for
-            if (enemy != null)
+
+            //get access to enemy health from Game
+            Enemy enemy = Game.GetEnemyByRefId("");
+
+            List<Enemy> enemyList = Game.GetEnemyList();
+
+            // reiterate through each enemy in enemy list and check if its the right enemy, then reduce health 
+            foreach (Enemy id in enemyList)
             {
-                // decrease health of the enemy
-                enemy.enemyHealth -= (int)damage;
-
-                // optional: check for enemy death
-                if (enemy.enemyHealth <= 0)
+                // check if the enemy is an enemy from the id
+                if (enemy != null)
                 {
-                    // handle enemy death (e.g., destroy enemy, award points, etc.)
+                    //decrease health of the enemy
+                    //enemy.enemyHealth -= damage;
                 }
             }
+
+            
         }
     }
 }
-

@@ -1,8 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class Enemy
 {
     public string enemyId { get; }
     public string enemyName { get; }
-    public int enemyHealth { get; set; }  // Ensure this is settable
+    public int enemyHealth { get; }
     public int enemyAtk { get; }
     public int enemySpeed { get; }
     public int enemyEXP { get; }
@@ -17,5 +21,3 @@ public class Enemy
         this.enemyEXP = enemyEXP;
     }
 }
-
-

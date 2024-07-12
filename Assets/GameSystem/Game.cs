@@ -1,71 +1,85 @@
+using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Game
 {
     private static Player mainPlayer;
 
-    private static List<Character> characterList;
-    private static List<Weapon> weaponList;
+    private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
+    private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
     private static List<Enemy> enemyList;
 
-    // GET/SET Player
-    public static Player GetPlayer()
+    //GETSETPLAYER
+    public static Player GetPlayer() //get and set player
     {
         return mainPlayer;
     }
 
-    public static void SetPlayer(Player player)
+    public static void SetPlayer(Player player) //get and set player
     {
         mainPlayer = player;
     }
 
-    // GET/SET Character List
-    public static List<Character> GetCharacterList()
+    //GETSETCHARCATER
+    public static List<Character> GetCharacterList() //get and set charcter list jush and cara
     {
-        return characterList;
-    }
+    return characterList; 
 
-    public static void SetCharacterList(List<Character> aList)
+    }
+    public static void SetCharacterList(List<Character> aList) //get and set charcter list jush and cara
     {
         characterList = aList;
     }
 
-    public static Character GetCharacterByRefId(string id)
+    public static Character GetCharacterByRefId(string id) //getting one single avatar using its ref id
     {
         return characterList.Find(x => x.characterId == id);
     }
 
-    // GET/SET Weapon List
-    public static List<Weapon> GetWeaponList()
+    //GETSETPWEAPON
+    public static List<Weapon> GetWeaponList() //get and set list for weapon
     {
         return weaponList;
     }
 
-    public static void SetWeaponList(List<Weapon> aList)
+    public static void SetWeaponList(List<Weapon> aList) //get and set list for weapon
     {
-        weaponList = aList;
+        weaponList = aList; 
     }
 
-    public static Weapon GetWeaponByRefId(string id)
+   public static Weapon GeWeaponByRefId(string id) //getting one single WEAPON using its ref id
     {
         return weaponList.Find(x => x.weaponID == id);
     }
 
-    // GET/SET Enemy List
-    public static List<Enemy> GetEnemyList()
+    //GETSETPENEMY
+
+    public static List<Enemy> GetEnemyList() //get and set list for enemy
     {
         return enemyList;
     }
 
-    public static void SetEnemyList(List<Enemy> aList)
+    public static void SetEnemyList(List<Enemy> aList) //get and set list for enemy
     {
         enemyList = aList;
     }
 
-    public static Enemy GetEnemyByRefId(string id)
+    public static Enemy GetEnemyByRefId(string id) //getting one single ENEMY using its ref id
     {
         return enemyList.Find(x => x.enemyId == id);
     }
-}
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
