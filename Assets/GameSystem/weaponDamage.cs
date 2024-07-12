@@ -28,7 +28,7 @@ public class weaponDamage : MonoBehaviour
 
 
             //get access to enemy health from Game
-            //Enemy enemy = Game.Ge
+            Enemy enemy = Game.GetEnemyByRefId("");
 
             List<Enemy> enemyList = Game.GetEnemyList();
 
