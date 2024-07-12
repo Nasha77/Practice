@@ -76,19 +76,19 @@ public class Player
 
 
     // New Health property
-    public float Health
-    {
-        get { return playerHealth; }
-        set
-        {
-            playerHealth = value;
-            if (playerHealth <= 0)
-            {
-                // Handle player defeat, e.g., respawn, game over, etc.
-                Debug.Log("Player defeated!");
-            }
-        }
-    }
+    //public float Health
+    //{
+    //    get { return playerHealth; }
+    //    set
+    //    {
+    //        playerHealth = value;
+    //        if (playerHealth <= 0)
+    //        {
+    //            // Handle player defeat, e.g., respawn, game over, etc.
+    //            Debug.Log("Player defeated!");
+    //        }
+    //    }
+    //}
 
     public float GetCharacterHealth() // check if the health updates if it has not been changed no need to calculate if it has then calculate
     {

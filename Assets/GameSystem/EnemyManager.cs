@@ -45,8 +45,8 @@ public class EnemyManager : MonoBehaviour
 
             if (player != null)
             {
-                Debug.Log("HEALTH" + (player.Health -= damage));
-                player.Health -= damage;
+                Debug.Log("HEALTH" + (player.playerHealth -= damage));
+                player.playerHealth -= damage;
             }
         }
     }

@@ -25,10 +25,10 @@ public class weaponDamage : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
-            
 
-            //weapon deal dmg to enemy
-            Enemy enemy = Game.GetEnemyByRefId("");
+
+            //get access to enemy health from Game
+            //Enemy enemy = Game.Ge
 
             List<Enemy> enemyList = Game.GetEnemyList();
 
@@ -39,7 +39,7 @@ public class weaponDamage : MonoBehaviour
                 if (enemy != null)
                 {
                     //decrease health of the enemy
-                   // enemy.enemyHealth -= damage;
+                    //enemy.enemyHealth -= damage;
                 }
             }
 
