@@ -7,6 +7,7 @@ using UnityEditor.U2D.Animation;
 using UnityEngine.TextCore.Text;
 using static CharacterRef;
 using static WeaponRef;
+using static EnemyRef;
 
 public class DataManager : MonoBehaviour
 {
