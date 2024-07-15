@@ -825,9 +825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d44a9bc4d35a549a8d20bace5abd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sr: {fileID: 0}
-  selection: []
-  player: {fileID: 0}
+  prefab: {fileID: 0}
+  names: Cara
+  image: {fileID: 0}
 --- !u!4 &863059692
 Transform:
   m_ObjectHideFlags: 0

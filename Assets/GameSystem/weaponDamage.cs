@@ -21,8 +21,10 @@ public class weaponDamage : MonoBehaviour
         
     }
 
+    // check if weapon collides with the right enemy and then deduct health correctly.
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // makes sure its not other tags
         if(other.tag == "Enemy")
         {
 
@@ -30,18 +32,16 @@ public class weaponDamage : MonoBehaviour
             //get access to enemy health from Game
             Enemy enemy = Game.GetEnemyByRefId("");
 
-            List<Enemy> enemyList = Game.GetEnemyList();
 
-            // reiterate through each enemy in enemy list and check if its the right enemy, then reduce health 
-            foreach (Enemy id in enemyList)
-            {
+           
+            
                 // check if the enemy is an enemy from the id
                 if (enemy != null)
                 {
                     //decrease health of the enemy
-                    //enemy.enemyHealth -= damage;
+                   // enemy.enemyHealth -= damage;
                 }
-            }
+            
 
             
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -9,8 +10,37 @@ public class GameController : MonoBehaviour
 
     public string initCharacter; //set in inspector
     public string initWeapon;
+
+    // selection SCENE
+    //public static GameController instance;
+
+    //public Character[] characters;
+
+    //public Character currentCharacter;
+
+    //private void Awake()
+    //{
+    //    if(instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+
+    //    DontDestroyOnLoad(gameObject);
+    //}
+
     void Start()
     {
+        // selection SCENE
+        //if(characters.Length > 0 && currentCharacter != null)
+        //{
+
+         //   currentCharacter = characters[0];
+       // }
+
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
 
@@ -25,6 +55,13 @@ public class GameController : MonoBehaviour
 
 
     }
+
+    // sELECTION SCENE
+
+    //public void SetCharacter(Character character)
+    //{
+    //    currentCharacter = character;
+    //}
 
     // Update is called once per frame
     void Update()
