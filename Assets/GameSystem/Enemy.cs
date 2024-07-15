@@ -6,7 +6,7 @@ public class Enemy
 {
     public string enemyId { get; }
     public string enemyName { get; }
-    public int enemyHealth { get; private set; } // Change to private setter
+    public int enemyHealth { get; }
     public int enemyAtk { get; }
     public int enemySpeed { get; }
     public int enemyEXP { get; }
@@ -20,23 +20,4 @@ public class Enemy
         this.enemySpeed = enemySpeed;
         this.enemyEXP = enemyEXP;
     }
-
-    // Method to reduce health
-    public void TakeDamage(float damage)
-    {
-        enemyHealth -= (int)damage;
-        Debug.Log($"Enemy {enemyName} took {damage} damage, remaining health: {enemyHealth}");
-        if (enemyHealth <= 0)
-        {
-            Defeated();
-        }
-    }
-
-    // Method to handle enemy defeat
-    private void Defeated()
-    {
-        Debug.Log($"Enemy {enemyName} defeated.");
-        // Add your defeat logic here (e.g., destroy the enemy object)
-    }
 }
-
