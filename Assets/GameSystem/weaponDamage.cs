@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weaponDamage : MonoBehaviour
 {
-    // weapon's atk
+    // weapon's attack
     public float damage = 3;
 
     public Collider2D weaponCollider;
@@ -12,38 +12,36 @@ public class weaponDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-
-
-            //get access to enemy health from Game
-            Enemy enemy = Game.GetEnemyByRefId("");
+            Debug.Log("Weapon collided with enemy.");
+            // Get access to enemy health from Game
+            Enemy enemy = Game.GetEnemyByRefId(""); // Add proper ID if needed
 
             List<Enemy> enemyList = Game.GetEnemyList();
 
-            // reiterate through each enemy in enemy list and check if its the right enemy, then reduce health 
+            // Iterate through each enemy in the enemy list and check if it's the right enemy, then reduce health
             foreach (Enemy id in enemyList)
             {
-                // check if the enemy is an enemy from the id
-                if (enemy != null)
+                // Check if the enemy is an enemy from the ID
+                if (id != null && id == enemy)
                 {
-                    //decrease health of the enemy
-                    //enemy.enemyHealth -= damage;
+                    Debug.Log($"Applying damage to enemy {id.enemyName}.");
+                    // Decrease health of the enemy
+                    id.TakeDamage(damage);
                 }
             }
-
-            
         }
     }
 }
