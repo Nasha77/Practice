@@ -35,8 +35,16 @@ public class EnemyManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+   
+
+
+    // check if weapon collides with the right enemy and then deduct health correctly.
     private void OnTriggerEnter2D(Collider2D other)
     {
+
+
+
+        //PLAYER
         if (other.tag == "Player")
         {
             //deal dmg to player
@@ -49,8 +57,41 @@ public class EnemyManager : MonoBehaviour
                 player.playerHealth -= damage;
             }
         }
-    }
 
+
+
+
+        // makes sure its not other tags
+        if (other.tag == "Enemy")
+        {
+            EnemyManager enem = other.GetComponent<EnemyManager>();
+
+            Debug.Log("TOUCHYTOUCHY");
+            // check if the enemy is an enemy from the id
+           // CurrentEnemy enemy = 
+
+
+
+
+            //if(enemy1 != null)
+            //{
+            //    Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
+            //    //decrease health of the enemy
+            //    enemy2.enemyHealth -= damage;
+
+            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
+            //    {
+            //        Defeated();
+            //    }
+
+
+            //}
+
+
+
+
+        }
+    }
 
 
 

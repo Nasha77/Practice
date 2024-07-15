@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     {
         
     }
-
+    
     public void SetupEnemy(GameObject player)
     {
         this.player = player;
