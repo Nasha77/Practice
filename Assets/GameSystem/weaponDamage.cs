@@ -21,25 +21,41 @@ public class weaponDamage : MonoBehaviour
         
     }
 
+    // once health is less than or equal 0, destroy enemy gameobj
+    public void Defeated()
+    {
+        Destroy(gameObject);
+    }
+
+
     // check if weapon collides with the right enemy and then deduct health correctly.
     private void OnTriggerEnter2D(Collider2D other)
     {
         // makes sure its not other tags
         if(other.tag == "Enemy")
         {
+            //Enemy enem = other.GetComponent<Enemy>();
+
+            Debug.Log("TOUCHYTOUCHY");
+            // check if the enemy is an enemy from the id
+            Enemy enemy1 = Game.GetEnemyByRefId("e101");
+            Enemy enemy2 = Game.GetEnemyByRefId("e201");
 
 
-            //get access to enemy health from Game
-            Enemy enemy = Game.GetEnemyByRefId("");
 
-
-           
             
-                // check if the enemy is an enemy from the id
-                if (enemy != null)
+            // check if there is an enemy
+            if (enemy1 != null || enemy2 != null)
                 {
-                    //decrease health of the enemy
-                   // enemy.enemyHealth -= damage;
+
+                Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
+                //decrease health of the enemy
+                enemy2.enemyHealth -= damage;
+
+                if(enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
+                {
+                    Defeated();
+                }
                 }
             
 

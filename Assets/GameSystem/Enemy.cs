@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Enemy
 {
-    public string enemyId { get; }
-    public string enemyName { get; }
-    public int enemyHealth { get; }
-    public int enemyAtk { get; }
-    public int enemySpeed { get; }
-    public int enemyEXP { get; }
+   
+    public string enemyId { get; set; }
+    public string enemyName { get; set; }
+    public float enemyHealth { get; set; }
+    public int enemyAtk { get; set; }
+    public int enemySpeed { get; set; }
+    public int enemyEXP { get; set; }
 
-    public Enemy(string enemyId, string enemyName, int enemyHealth, int enemyAtk, int enemySpeed, int enemyEXP)
+   
+
+
+    public Enemy(string enemyId, string enemyName, float enemyHealth, int enemyAtk, int enemySpeed, int enemyEXP)
     {
         this.enemyId = enemyId;
         this.enemyName = enemyName;
@@ -19,5 +23,10 @@ public class Enemy
         this.enemyAtk = enemyAtk;
         this.enemySpeed = enemySpeed;
         this.enemyEXP = enemyEXP;
+
+      
     }
+
+
+   
 }
