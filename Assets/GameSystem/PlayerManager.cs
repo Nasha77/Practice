@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     Camera mainCamera;
-    
+
     private Transform bat;
 
     //Player Health
@@ -72,11 +72,10 @@ public class PlayerManager : MonoBehaviour
             // Calculate the angle to face the mouse position
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-            // Rotate the sword to face the mouse position
-            // Adjust by 0 degrees if the sword's tip points to the right in the default sprite orientation
-            bat.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            // Adjust the angle by 90 degrees if the weapon's default orientation is upright
+            float angleOffset = 90.0f;
+            bat.rotation = Quaternion.Euler(new Vector3(0, 0, angle - angleOffset));
         }
     }
-
- 
 }
+
