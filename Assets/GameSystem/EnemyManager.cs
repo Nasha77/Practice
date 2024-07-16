@@ -7,25 +7,43 @@ public class EnemyManager : MonoBehaviour
     // set how powerful enemy is
     public float damage = 1;
 
+    
+    // HOW DO YOU STORE HEALTH FROM EXCEL INTO HERE??
 
-    public float Health
-    {
-        set
-        {
-            health = value;
-            if (health <= 0)
-            {
-                // enemy dies
-                Defeated();
-            }
-        }
+    //public float Health
+    //{
+    //    //set
+    //    //{
+    //    //    health = value;
+    //    //    if (health <= 0)
+    //    //    {
+    //    //        // enemy dies
+    //    //        Defeated();
+    //    //    }
+    //    //}
 
-        get
-        {
-            return health;
-        }
-    }
-    public float health = 1;
+    //    //get
+    //    //{
+    //    //    return health;
+    //    //}
+
+    //    get { return enemyHealth; }
+    //    set
+    //    {
+    //        enemyHealth = value;
+    //        if (enemyHealth <= 0)
+    //        {
+    //            // Handle player defeat, e.g., respawn, game over, etc.
+    //            Defeated();
+
+    //        }
+    //    }
+
+    //}
+   
+
+   
+
 
 
 

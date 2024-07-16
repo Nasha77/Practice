@@ -6,31 +6,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour //start funtion and calls data manager
 {
     public DataManager dataManager; //call the data
+
+    public SelectionManager selectionManager; // ref to selectionmanager script
+
     // Start is called before the first frame update
 
     public string initCharacter; //set in inspector
     public string initWeapon;
+    
 
-    // selection SCENE
-    //public static GameController instance;
-
-    //public Character[] characters;
-
-    //public Character currentCharacter;
-
-    //private void Awake()
-    //{
-    //    if(instance == null)
-    //    {
-    //        instance = this;
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-
-    //    DontDestroyOnLoad(gameObject);
-    //}
 
     void Start()
     {
@@ -43,6 +27,13 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
+
+        //character selection
+     
+        selectionManager.InitializeMenu(Game.GetCharacterList());
+        
+
+
 
         Debug.Log("NOW" + initCharacter);
         Debug.Log("NOW" + initWeapon);
