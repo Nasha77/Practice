@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CurrentEnemy
 {
-    private string id;
+    public string id;
     private string curEnemy; // current character states based on character selected 
    
 

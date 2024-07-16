@@ -7,44 +7,33 @@ public class EnemyManager : MonoBehaviour
     // set how powerful enemy is
     public float damage = 1;
 
-    
-    // HOW DO YOU STORE HEALTH FROM EXCEL INTO HERE??
+    //enemy current health
+    private float curHp;
 
-    //public float Health
-    //{
-    //    //set
-    //    //{
-    //    //    health = value;
-    //    //    if (health <= 0)
-    //    //    {
-    //    //        // enemy dies
-    //    //        Defeated();
-    //    //    }
-    //    //}
 
-    //    //get
-    //    //{
-    //    //    return health;
-    //    //}
+    // setting current health of enemy using 
 
-    //    get { return enemyHealth; }
-    //    set
-    //    {
-    //        enemyHealth = value;
-    //        if (enemyHealth <= 0)
-    //        {
-    //            // Handle player defeat, e.g., respawn, game over, etc.
-    //            Defeated();
-
-    //        }
-    //    }
-
-    //}
+    public void SetupHealth(Enemy enemyRef)
+    {
+        // get total health of an enemy in ENEMY and pass into curHp
+        curHp = enemyRef.enemyHealth;
+        gameObject.name = "Enemy" + enemyRef.enemyId;
+    }
    
 
-   
+    public void MinusHealth(float dmg)
+    {
+        // curHp - dmg = curHp
+        curHp -= dmg;
 
-
+        // if enemy hp less than or equal 0
+        if(curHp <= 0)
+        {
+            // set health to 0 and destroy gameobj
+            curHp = 0;
+            Defeated();
+        }
+    }
 
 
     // once health is less than or equal 0, destroy enemy gameobj

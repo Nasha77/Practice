@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
         //for WAVE
 
 
-        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/waveRef.json");
+        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/waveSpawnRef.json");
         string dataStringWave = File.ReadAllText(filePathWave);
 
         // Parse JSON data into WaveDataList

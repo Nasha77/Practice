@@ -29,9 +29,13 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
         dataManager.LoadRefData();
 
         //character selection
-     
+        Debug.Log(Game.GetCharacterList());
+
+
+        Game.GetPlayer().GetCurrentCharacter();
+
         selectionManager.InitializeMenu(Game.GetCharacterList());
-        
+        // save data in game?? then put it in p;layer??
 
 
 

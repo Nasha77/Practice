@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -62,6 +63,13 @@ public class SelectionManager : MonoBehaviour
 
     public void PlayOption()
     {
+        
+
+        PlayerPrefs.SetInt("charaSkin", characterIndex);
+
+        //characterText[characterIndex].characterId
+        Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
+
         SceneManager.LoadScene("GameScene");
     }
 }
