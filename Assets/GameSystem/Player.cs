@@ -19,6 +19,7 @@ public class Player
     {
         this.id = id;
         this.currentCharacter = currentCharacter;
+        
         this.currentCharacterWeapon = currentCharacterWeapon;
 
         statDirty = true; // if this is true then recalculate

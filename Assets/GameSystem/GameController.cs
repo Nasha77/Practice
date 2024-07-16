@@ -13,17 +13,22 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
     public string initCharacter; //set in inspector
     public string initWeapon;
-    
 
+    public static GameController instanceRef;
 
     void Start()
     {
-        // selection SCENE
-        //if(characters.Length > 0 && currentCharacter != null)
-        //{
+        if(instanceRef == null)
+        {
+            instanceRef = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if(instanceRef != this)
+        {
+            Destroy(gameObject);
+        }
 
-         //   currentCharacter = characters[0];
-       // }
+
 
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
@@ -31,11 +36,15 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
         //character selection
         Debug.Log(Game.GetCharacterList());
 
+        // shd be the default selection
+        //set player
+        Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
 
         Game.GetPlayer().GetCurrentCharacter();
 
         selectionManager.InitializeMenu(Game.GetCharacterList());
         // save data in game?? then put it in p;layer??
+        // store in game mainplayer, then in player currentplayer
 
 
 
@@ -45,8 +54,6 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
         Debug.Log("Character" + Game.GetCharacterList().Count); //debugger
         Debug.Log("Weapon" + Game.GetWeaponList().Count); //debugger
 
-        //set player
-        Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
 
 
     }

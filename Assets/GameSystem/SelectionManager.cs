@@ -18,8 +18,24 @@ public class SelectionManager : MonoBehaviour
     private int characterIndex = 0;
     public TextMeshProUGUI characterName;
 
+    public static SelectionManager instanceRef;
 
-    public void InitializeMenu( List<Character> characterText)
+
+    void Start()
+    {
+        if (instanceRef == null)
+        {
+            instanceRef = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instanceRef != this)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+        public void InitializeMenu( List<Character> characterText)
     { 
         this.characterText = characterText;
 
@@ -65,7 +81,7 @@ public class SelectionManager : MonoBehaviour
     {
         
 
-        PlayerPrefs.SetInt("charaSkin", characterIndex);
+        //PlayerPrefs.SetInt("charaSkin", characterIndex);
 
         //characterText[characterIndex].characterId
         Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
