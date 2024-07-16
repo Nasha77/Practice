@@ -12,6 +12,7 @@ public class Game
     private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
     private static List<Enemy> enemyList;
+    private static List<WaveSpawnerRef> waveList;
 
     //GETSETPLAYER
     public static Player GetPlayer() //get and set player
@@ -72,6 +73,23 @@ public class Game
     {
         return enemyList.Find(x => x.enemyId == id);
     }
+
+    //GETSETWAVE
+
+  public static List<WaveSpawnerRef> GetWaveList() // Get and set list for waves
+  {
+    return waveList;
+  }
+
+  public static void SetWaveList(List<WaveSpawnerRef> aList) // Get and set list for waves
+  {
+    waveList = aList;
+  }
+
+  public static WaveSpawnerRef GetWaveByRefId(string id) // Getting one single wave using its ref id
+  {
+    return waveList.Find(x => x.waveId == id);
+  }
     void Start()
     {
         

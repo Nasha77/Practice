@@ -1,0 +1,158 @@
+{
+  "waveSpawner": [
+    {
+      "waveId": "101enemy101",
+      "waveName": "FirstWave",
+      "enemyId": "e101",
+      "enemyCount": 8,
+      "totalHP": 120
+    },
+    {
+      "waveId": "201enemy201",
+      "waveName": "SecondWave",
+      "enemyId": "e201",
+      "enemyCount": 10,
+      "totalHP": 200
+    },
+    {
+      "waveId": "301enemy101",
+      "waveName": "ThirdWave",
+      "enemyId": "e101",
+      "enemyCount": 20,
+      "totalHP": 300
+    },
+    {
+      "waveId": "401enemy101",
+      "waveName": "FourWave",
+      "enemyId": "e101",
+      "enemyCount": 20,
+      "totalHP": 300
+    },
+    {
+      "waveId": "401enemy201",
+      "waveName": "FourWave",
+      "enemyId": "e201",
+      "enemyCount": 5,
+      "totalHP": 100
+    },
+    {
+      "waveId": "501enemy101",
+      "waveName": "FifithWave",
+      "enemyId": "e101",
+      "enemyCount": 25,
+      "totalHP": 375
+    },
+    {
+      "waveId": "501enemy201",
+      "waveName": "FifithWave",
+      "enemyId": "e201",
+      "enemyCount": 10,
+      "totalHP": 200
+    },
+    {
+      "waveId": "601enemy101",
+      "waveName": "SixthWave",
+      "enemyId": "e101",
+      "enemyCount": 25,
+      "totalHP": 375
+    },
+    {
+      "waveId": "601enemy201",
+      "waveName": "SixthWave",
+      "enemyId": "e201",
+      "enemyCount": 15,
+      "totalHP": 300
+    },
+    {
+      "waveId": "601enemy301",
+      "waveName": "SixthWave",
+      "enemyId": "e301",
+      "enemyCount": 1,
+      "totalHP": 100
+    },
+    {
+      "waveId": "701enemy101",
+      "waveName": "SeventhWave",
+      "enemyId": "e101",
+      "enemyCount": 30,
+      "totalHP": 450
+    },
+    {
+      "waveId": "701enemy201",
+      "waveName": "SeventhWave",
+      "enemyId": "e201",
+      "enemyCount": 20,
+      "totalHP": 400
+    },
+    {
+      "waveId": "701enemy301",
+      "waveName": "SeventhWave",
+      "enemyId": "e301",
+      "enemyCount": 1,
+      "totalHP": 100
+    },
+    {
+      "waveId": "801enemy101",
+      "waveName": "EightWave",
+      "enemyId": "e101",
+      "enemyCount": 35,
+      "totalHP": 525
+    },
+    {
+      "waveId": "801enemy201",
+      "waveName": "EightWave",
+      "enemyId": "e201",
+      "enemyCount": 25,
+      "totalHP": 500
+    },
+    {
+      "waveId": "801enemy301",
+      "waveName": "EightWave",
+      "enemyId": "e301",
+      "enemyCount": 1,
+      "totalHP": 100
+    },
+    {
+      "waveId": "901enemy101",
+      "waveName": "NineWave",
+      "enemyId": "e101",
+      "enemyCount": 35,
+      "totalHP": 525
+    },
+    {
+      "waveId": "901enemy201",
+      "waveName": "NineWave",
+      "enemyId": "e201",
+      "enemyCount": 30,
+      "totalHP": 600
+    },
+    {
+      "waveId": "901enemy301",
+      "waveName": "NineWave",
+      "enemyId": "e301",
+      "enemyCount": 2,
+      "totalHP": 200
+    },
+    {
+      "waveId": "1001enemy101",
+      "waveName": "TenthWave",
+      "enemyId": "e101",
+      "enemyCount": 35,
+      "totalHP": 525
+    },
+    {
+      "waveId": "1001enemy201",
+      "waveName": "TenthWave",
+      "enemyId": "e201",
+      "enemyCount": 35,
+      "totalHP": 700
+    },
+    {
+      "waveId": "1001enemy301",
+      "waveName": "TenthWave",
+      "enemyId": "e301",
+      "enemyCount": 3,
+      "totalHP": 300
+    }
+  ]
+}

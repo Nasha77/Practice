@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour //start funtion and calls data manager
 {
     public DataManager dataManager; //call the data
     // Start is called before the first frame update
