@@ -158,6 +158,11 @@ Transform:
   - {fileID: 1996494413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &122441150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 428724867564655853, guid: ca1564172bfc4524b89c7776db0a3d0b, type: 3}
+  m_PrefabInstance: {fileID: 346440266425857506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &144838798
 GameObject:
   m_ObjectHideFlags: 0
@@ -8915,21 +8920,19 @@ MonoBehaviour:
   - waveName: Wave 1
     enemyNumber: 3
     enemyType:
-    - {fileID: 7880661179319901172, guid: 64b21a7527e1f594c8acf242b2681b9a, type: 3}
-    - {fileID: 428724867564655853, guid: ca1564172bfc4524b89c7776db0a3d0b, type: 3}
+    - {fileID: 209606148}
+    - {fileID: 122441150}
     spawnInterval: 2
   - waveName: Wave 2
     enemyNumber: 10
     enemyType:
-    - {fileID: 7880661179319901172, guid: 64b21a7527e1f594c8acf242b2681b9a, type: 3}
+    - {fileID: 209606148}
     spawnInterval: 1
   - waveName: Wave 3
     enemyNumber: 3
     enemyType: []
     spawnInterval: 0
-  spawnPoints:
-  - {fileID: 1181915173}
-  - {fileID: 459558905}
+  spawnPoints: []
   currentWave:
     waveName: 
     enemyNumber: 0

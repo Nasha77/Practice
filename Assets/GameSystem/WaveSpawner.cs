@@ -34,13 +34,13 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         currentWave = waves[currentWaveNumber];
         SpawnWave();
     }
@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
     //spawn specific enemy at random point
     void SpawnWave()
     {
-        if(canSpawn)
+        if (canSpawn)
         {
             // specify the 1st enemy to spawn
             GameObject spawnFirst = currentWave.enemyType[0];
@@ -72,18 +72,17 @@ public class WaveSpawner : MonoBehaviour
 
             // everyloop will decrease by 1, when it reaches 0, bool will be set to false to stop spawning.
             currentWave.enemyNumber--;
-            if(currentWave.enemyNumber == 0)
+            if (currentWave.enemyNumber == 0)
             {
                 canSpawn = false;
             }
 
         }
-       
+
 
     }
 
-    
+
 
 }
-
 
