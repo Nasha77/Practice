@@ -14,6 +14,7 @@ public class Game
     private static List<Enemy> enemyList;
     private static List<WaveSpawnerRef> waveList;
     private static List<Sprite> sprite;
+    private static List<DialogueRef> dialogueList;
 
     //GETSETPLAYER
     public static Player GetPlayer() //get and set player
@@ -92,6 +93,8 @@ public class Game
     return waveList.Find(x => x.waveId == id);
   }
 
+    //GETSETSPRITE
+
     public static List<Sprite> GetSpriteList() // Get and set list for sprite
     {
         return sprite;
@@ -101,6 +104,28 @@ public class Game
     {
         sprite = aList;
     }
+
+    //GETSETDIALOUGE
+    public static List<DialogueRef> GetDialogueList() // Get and set list for dialogues
+    {
+        return dialogueList;
+    }
+
+    public static void SetDialogueList(List<DialogueRef> aList) // Get and set list for dialogues
+    {
+        dialogueList = aList;
+    }
+
+    public static DialogueRef GetDialogueByRefId(int id) // Getting one single dialogue using its cutsceneRefId
+    {
+        return dialogueList.Find(x => x.cutsceneRefId == id);
+    }
+
+    public static DialogueRef GetDialogueByNextRefId(int id) // Getting one single dialogue using its nextcutsceneRefId
+    {
+        return dialogueList.Find(x => x.nextcutsceneRefId == id);
+    }
+
 
     void Start()
     {

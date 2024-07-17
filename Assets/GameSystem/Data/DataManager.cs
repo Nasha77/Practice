@@ -9,6 +9,7 @@ using static CharacterRef;
 using static WeaponRef;
 using static EnemyRef;
 using static WaveSpawnerRef;
+using static DialogueRef;
 
 public class DataManager : MonoBehaviour
 {
@@ -122,6 +123,28 @@ public class DataManager : MonoBehaviour
 
         }
         Game.SetWaveList(waveList);
+
+        //for DIALOGUE
+        
+        string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/dialogueRef.json");
+        string dataStringDialogue = File.ReadAllText(filePathDialogue);
+        DialogueDataList dialogueData = JsonUtility.FromJson<DialogueDataList>(dataStringDialogue);
+        List<DialogueRef> dialogueList = new List<DialogueRef>();
+        foreach (DialogueRef dialogueRef in dialogueData.dialogues)
+        {
+            DialogueRef dialogue = new DialogueRef
+            {
+                cutsceneRefId = dialogueRef.cutsceneRefId,
+                nextcutsceneRefId = dialogueRef.nextcutsceneRefId,
+                currentSpeaker = dialogueRef.currentSpeaker,
+                leftSpeaker = dialogueRef.leftSpeaker,
+                rightSpeaker = dialogueRef.rightSpeaker,
+                dialogue = dialogueRef.dialogue,
+                choices = dialogueRef.choices
+            };
+            dialogueList.Add(dialogue);
+        }
+        Game.SetDialogueList(dialogueList); // Set dialogue list 
 
     }
 }
