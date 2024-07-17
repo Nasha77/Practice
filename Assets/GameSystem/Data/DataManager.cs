@@ -121,7 +121,7 @@ public class DataManager : MonoBehaviour
 
 
         }
-        Game.SetWeaponList(weaponList);
+        Game.SetWaveList(waveList);
 
     }
 }
