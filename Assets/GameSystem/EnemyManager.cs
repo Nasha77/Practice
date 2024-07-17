@@ -10,6 +10,30 @@ public class EnemyManager : MonoBehaviour
     //enemy current health
     private float curHp;
 
+    //set timer to spawn enemies
+    public float spawnTimer;
+    public float spawnInterval = 5;
+
+    private void Update()
+    {
+
+        if(spawnTimer < 0)
+        {
+            List<Enemy> enemies = Game.GetEnemyList();
+            
+            //random position
+            Enemy randomEnemy = enemies[Random.Range(0,enemies.Count)];
+            Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
+
+            GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
+            enemyObj.GetComponent<EnemyManager>().SetupHealth(randomEnemy);
+
+            spawnTimer += spawnInterval;
+                
+        }
+
+        spawnTimer -= Time.deltaTime;
+    }
 
     // setting current health of enemy using 
 
@@ -68,36 +92,14 @@ public class EnemyManager : MonoBehaviour
 
 
 
-        // makes sure its not other tags
-        if (other.tag == "Enemy")
-        {
-            EnemyManager enem = other.GetComponent<EnemyManager>();
-
-            Debug.Log("TOUCHYTOUCHY");
-            // check if the enemy is an enemy from the id
-           // CurrentEnemy enemy = 
 
 
 
 
-            //if(enemy1 != null)
-            //{
-            //    Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
-            //    //decrease health of the enemy
-            //    enemy2.enemyHealth -= damage;
-
-            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-            //    {
-            //        Defeated();
-            //    }
-
-
-            //}
 
 
 
-
-        }
+        
     }
 
 
