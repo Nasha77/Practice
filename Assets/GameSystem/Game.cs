@@ -8,12 +8,13 @@ using UnityEngine.TextCore.Text;
 public class Game
 {
     private static Player mainPlayer;
+    private static Weapon weapon;
 
     private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
     private static List<Enemy> enemyList;
     private static List<WaveSpawnerRef> waveList;
-    private static List<Sprite> sprite;
+    private static List<Sprite> spriteList;
     private static List<DialogueRef> dialogueList;
 
     //GETSETPLAYER
@@ -44,6 +45,11 @@ public class Game
     }
 
     //GETSETPWEAPON
+    public static Weapon GetWeapon() //get and set player
+    {
+        return weapon;
+    }
+
     public static List<Weapon> GetWeaponList() //get and set list for weapon
     {
         return weaponList;
@@ -97,12 +103,12 @@ public class Game
 
     public static List<Sprite> GetSpriteList() // Get and set list for sprite
     {
-        return sprite;
+        return spriteList;
     }
 
     public static void SetSpriteList(List<Sprite> aList) // Get and set list for sprite
     {
-        sprite = aList;
+        spriteList = aList;
     }
 
     //GETSETDIALOUGE

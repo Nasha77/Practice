@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
     public string initCharacter; //set in inspector
     public string initWeapon;
+   
 
     public static GameController instanceRef;
 
@@ -58,16 +59,5 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
     }
 
-    // sELECTION SCENE
-
-    //public void SetCharacter(Character character)
-    //{
-    //    currentCharacter = character;
-    //}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

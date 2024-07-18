@@ -7,7 +7,7 @@
          "characterHealth":75,
          "characterAtk":10,
          "characterSpeed":5,
-         "characterSprite": "Knight1"
+         "characterSprite": "cara"
       },
       {
          "characterId":"chara2",
@@ -16,7 +16,7 @@
          "characterHealth":70,
          "characterAtk":18,
          "characterSpeed":2,
-         "characterSprite": "Knight2"
+         "characterSprite": "jush"
       }
    ]
 }

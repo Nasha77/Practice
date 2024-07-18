@@ -12,6 +12,8 @@ public class Player
     public float playerHealth;
     public float playerAtk;
     public float playerSpd;
+    public string characterSprite;
+    public string weaponSprite;
 
     private bool statDirty; // when the values in id and current character change then the playermaxhp, player atk and player spd changes
 
@@ -21,6 +23,8 @@ public class Player
         this.currentCharacter = currentCharacter;
         
         this.currentCharacterWeapon = currentCharacterWeapon;
+
+        //this.characterSprite = characterSprite;
 
         statDirty = true; // if this is true then recalculate
     }
@@ -50,6 +54,7 @@ public class Player
     {
         currentCharacterWeapon = weapon;
         statDirty = true; // every time player has a new weapon recalculate
+        Debug.Log("Weapon : " + currentCharacterWeapon);
     }
 
     // you r trying to call something thats not set so confirm will give u null
@@ -59,12 +64,17 @@ public class Player
         if (!statDirty) return false; // if it has not been changed then don't update stats
 
 
-        Debug.Log("UpdateStats " + currentCharacter);
+        //Debug.Log("UpdateStats " + currentCharacter);
         Character playerCharacter = Game.GetCharacterByRefId(currentCharacter);
+        //Weapon playerWeapon = Game.GetWeaponByRefId(Game.GetCharacterByRefId(currentCharacterWeapon));
 
         playerHealth = playerCharacter.characterHealth;
         playerAtk = playerCharacter.characterAtk;
         playerSpd = playerCharacter.characterSpeed;
+        characterSprite = playerCharacter.characterSprite;
+        //weaponSprite =
+
+
 
         
        

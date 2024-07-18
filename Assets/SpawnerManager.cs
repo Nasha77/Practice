@@ -20,8 +20,11 @@ public class SpawnerManager : MonoBehaviour
 
             //random position
             // replace line 22 with getting enemy from wave list so like Game.getwavelist
+            WaveSpawnerRef waves = waveList[(enemies.Count)];
             Enemy randomEnemy = enemies[Random.Range(0, enemies.Count)]; // u dont want random, change to make it specific
+
             // how to spawn wave. can do by interval, like after 30 sec spawn another wave
+
             Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
 
             // resource.load, theres a demo for this. use addressables
@@ -39,7 +42,7 @@ public class SpawnerManager : MonoBehaviour
 
         }
         // check wave list
-        //  Debug.Log(Game.GetWaveList().Count);
+          Debug.Log(Game.GetWaveList().Count);
 
         spawnTimer -= Time.deltaTime;
     }

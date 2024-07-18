@@ -12,13 +12,16 @@ public class SelectionManager : MonoBehaviour
 
     public Image image;
     private List<Character> characterText;
+    private List<Weapon> weapon;
    
     public GameObject charaSkin;
     public List<Sprite> sprite;
-    private int characterIndex = 0;
+    public int characterIndex = 0;
     public TextMeshProUGUI characterName;
 
     public static SelectionManager instanceRef;
+
+    public SpriteRenderer playerSprite;
 
 
     void Start()
@@ -51,7 +54,7 @@ public class SelectionManager : MonoBehaviour
         
         
 
-        image.sprite = sprite[characterIndex];
+        playerSprite.sprite = sprite[characterIndex];
 
     }
 
@@ -64,17 +67,20 @@ public class SelectionManager : MonoBehaviour
         }
         UpdateMenuText();
 
-        
+       // playerSprite.sprite = SetSprite();
+
     }
 
     public void BackOption()
     {
         characterIndex--;
-        if(characterIndex < characterText.Count)
+        if(characterIndex < 0)
         {
             characterIndex = characterText.Count - 1;
         }
         UpdateMenuText();
+
+        //playerManager.UpdatePlayerStats();
     }
 
     public void PlayOption()
@@ -87,5 +93,19 @@ public class SelectionManager : MonoBehaviour
         Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
 
         SceneManager.LoadScene("GameScene");
+
+        //playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+        //playerManager.UpdatePlayerStats();
+    }
+
+    public void SetSprite(string name)
+    {
+        // load sprite and make sprite appear on scene
+        AssetManager.LoadSprite(name, (Sprite sp) =>
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = sp;
+
+
+        });
     }
 }

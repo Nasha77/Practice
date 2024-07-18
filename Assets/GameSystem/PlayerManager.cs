@@ -13,9 +13,14 @@ public class PlayerManager : MonoBehaviour
     private float speed;
     private bool isFacingRight = true;
 
-    public float playerHealth;
-    public float playerAtk;
-    public float playerSpd;
+    private float playerHealth;
+    private float playerAtk;
+    private float playerSpd;
+
+    public Character character;
+    public Player player;
+
+   // public SelectionManager selectionManager;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -25,6 +30,7 @@ public class PlayerManager : MonoBehaviour
         // 2. display game over scene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! remember to add here :)
         Destroy(gameObject);
     }
+
 
 
     // Start is called before the first frame update
@@ -41,6 +47,9 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.LogError("MainCamera not found!");
         }
+
+        UpdatePlayerStats();
+        //player = new Player("0", selectionManager.characterIndex.ToString(), selectionManager.characterIndex.ToString() );
     }
 
     private void Flip()
@@ -87,21 +96,26 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        speed = Game.GetPlayer().GetCharacterSpeed();
+       
 
         rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
     }
 
+    // when player is selected call this func
     public void UpdatePlayerStats()
     {
-        Player.UpdateStats();
+        Game.GetPlayer().UpdateStats();
 
-        // playerHealth = player.GetCharacterHealth();
-        // playerAtk = player.GetCharacterAtk():
-        // playerSpd = player.GetCharacterSpd();
+        playerHealth = Game.GetPlayer().GetCharacterHealth();
+        playerAtk = Game.GetPlayer().GetCharacterAtk();
+        playerSpd = Game.GetPlayer().GetCharacterSpeed();
 
-        
-        SetSprite(Game.GetCharacterByRefId(Player.GetcurrentCharacter()).image);
+        speed = Game.GetPlayer().GetCharacterSpeed();
+        SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
+
+      //  SetSprite(Game.GeWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).characterSprite);
+
+        Debug.LogWarning(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
 
 
     }
@@ -112,7 +126,7 @@ public class PlayerManager : MonoBehaviour
         // load sprite and make sprite appear on scene
         AssetManager.LoadSprite(name, (Sprite sp) =>
         {
-            this.GetComponent<SpriteRenderer>().sprite = sp;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sp;
 
 
         });

@@ -10,6 +10,8 @@ public class Weapon
     public int weaponATK { get; }
     public string description { get; }
 
+    public string weaponSprite { get; }
+
     public Weapon(string weaponID, string characterId, string weaponName, int weaponATK, string description)
     {
         this.weaponID = weaponID;
@@ -17,5 +19,6 @@ public class Weapon
         this.weaponName = weaponName;
         this.weaponATK = weaponATK;
         this.description = description;
+        this.weaponSprite = weaponSprite;
     }
 }

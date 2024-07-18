@@ -10,6 +10,7 @@ public class WeaponRef //stores feilds that match the the excel/json file
     public string weaponName;
     public int weaponATK;
     public string description;
+    public string weaponSprite;
 
     public class WeaponDataList
     {
