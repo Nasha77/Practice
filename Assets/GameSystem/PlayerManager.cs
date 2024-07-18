@@ -113,7 +113,7 @@ public class PlayerManager : MonoBehaviour
         speed = Game.GetPlayer().GetCharacterSpeed();
         SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
 
-      //  SetSprite(Game.GeWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).characterSprite);
+        SetSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
         Debug.LogWarning(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
 

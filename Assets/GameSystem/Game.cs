@@ -60,7 +60,7 @@ public class Game
         weaponList = aList; 
     }
 
-   public static Weapon GeWeaponByRefId(string id) //getting one single WEAPON using its ref id
+   public static Weapon GetWeaponByRefId(string id) //getting one single WEAPON using its ref id
     {
         return weaponList.Find(x => x.weaponID == id);
     }

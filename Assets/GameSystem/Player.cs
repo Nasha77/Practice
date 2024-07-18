@@ -66,13 +66,13 @@ public class Player
 
         //Debug.Log("UpdateStats " + currentCharacter);
         Character playerCharacter = Game.GetCharacterByRefId(currentCharacter);
-        //Weapon playerWeapon = Game.GetWeaponByRefId(Game.GetCharacterByRefId(currentCharacterWeapon));
+        Weapon playerWeapon = Game.GetWeaponByRefId(currentCharacterWeapon);
 
         playerHealth = playerCharacter.characterHealth;
         playerAtk = playerCharacter.characterAtk;
         playerSpd = playerCharacter.characterSpeed;
         characterSprite = playerCharacter.characterSprite;
-        //weaponSprite =
+        weaponSprite = playerWeapon.weaponSprite;
 
 
 

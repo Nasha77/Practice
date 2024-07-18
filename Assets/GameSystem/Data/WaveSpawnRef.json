@@ -1,155 +1,155 @@
 {
   "waveSpawner": [
     {
-      "waveId": "101enemy101",
-      "waveName": "FirstWave",
+      "waveId": "1",
+      "waveName": "101enemy101",
       "enemyId": "e101",
       "enemyCount": 8,
       "totalHP": 120
     },
     {
-      "waveId": "201enemy201",
-      "waveName": "SecondWave",
+      "waveId": "2",
+      "waveName": "201enemy201",
       "enemyId": "e201",
       "enemyCount": 10,
       "totalHP": 200
     },
     {
-      "waveId": "301enemy101",
-      "waveName": "ThirdWave",
+      "waveId": "3",
+      "waveName": "301enemy101",
       "enemyId": "e101",
       "enemyCount": 20,
       "totalHP": 300
     },
     {
-      "waveId": "401enemy101",
-      "waveName": "FourWave",
+      "waveId": "4",
+      "waveName": "401enemy101",
       "enemyId": "e101",
       "enemyCount": 20,
       "totalHP": 300
     },
     {
-      "waveId": "401enemy201",
-      "waveName": "FourWave",
+      "waveId": "4",
+      "waveName": "401enemy201",
       "enemyId": "e201",
       "enemyCount": 5,
       "totalHP": 100
     },
     {
-      "waveId": "501enemy101",
-      "waveName": "FifithWave",
+      "waveId": "5",
+      "waveName": "501enemy101",
       "enemyId": "e101",
       "enemyCount": 25,
       "totalHP": 375
     },
     {
-      "waveId": "501enemy201",
-      "waveName": "FifithWave",
+      "waveId": "5",
+      "waveName": "501enemy201",
       "enemyId": "e201",
       "enemyCount": 10,
       "totalHP": 200
     },
     {
-      "waveId": "601enemy101",
-      "waveName": "SixthWave",
+      "waveId": "6",
+      "waveName": "601enemy101",
       "enemyId": "e101",
       "enemyCount": 25,
       "totalHP": 375
     },
     {
-      "waveId": "601enemy201",
-      "waveName": "SixthWave",
+      "waveId": "6",
+      "waveName": "601enemy201",
       "enemyId": "e201",
       "enemyCount": 15,
       "totalHP": 300
     },
     {
-      "waveId": "601enemy301",
-      "waveName": "SixthWave",
+      "waveId": "6",
+      "waveName": "601enemy301",
       "enemyId": "e301",
       "enemyCount": 1,
       "totalHP": 100
     },
     {
-      "waveId": "701enemy101",
-      "waveName": "SeventhWave",
+      "waveId": "7",
+      "waveName": "701enemy101",
       "enemyId": "e101",
       "enemyCount": 30,
       "totalHP": 450
     },
     {
-      "waveId": "701enemy201",
-      "waveName": "SeventhWave",
+      "waveId": "7",
+      "waveName": "701enemy201",
       "enemyId": "e201",
       "enemyCount": 20,
       "totalHP": 400
     },
     {
-      "waveId": "701enemy301",
-      "waveName": "SeventhWave",
+      "waveId": "7",
+      "waveName": "701enemy301",
       "enemyId": "e301",
       "enemyCount": 1,
       "totalHP": 100
     },
     {
-      "waveId": "801enemy101",
-      "waveName": "EightWave",
+      "waveId": "8",
+      "waveName": "801enemy101",
       "enemyId": "e101",
       "enemyCount": 35,
       "totalHP": 525
     },
     {
-      "waveId": "801enemy201",
-      "waveName": "EightWave",
+      "waveId": "8",
+      "waveName": "801enemy201",
       "enemyId": "e201",
       "enemyCount": 25,
       "totalHP": 500
     },
     {
-      "waveId": "801enemy301",
-      "waveName": "EightWave",
+      "waveId": "8",
+      "waveName": "801enemy301",
       "enemyId": "e301",
       "enemyCount": 1,
       "totalHP": 100
     },
     {
-      "waveId": "901enemy101",
-      "waveName": "NineWave",
+      "waveId": "9",
+      "waveName": "901enemy101",
       "enemyId": "e101",
       "enemyCount": 35,
       "totalHP": 525
     },
     {
-      "waveId": "901enemy201",
-      "waveName": "NineWave",
+      "waveId": "9",
+      "waveName": "901enemy201",
       "enemyId": "e201",
       "enemyCount": 30,
       "totalHP": 600
     },
     {
-      "waveId": "901enemy301",
-      "waveName": "NineWave",
+      "waveId": "9",
+      "waveName": "901enemy301",
       "enemyId": "e301",
       "enemyCount": 2,
       "totalHP": 200
     },
     {
-      "waveId": "1001enemy101",
-      "waveName": "TenthWave",
+      "waveId": "10",
+      "waveName": "1001enemy101",
       "enemyId": "e101",
       "enemyCount": 35,
       "totalHP": 525
     },
     {
-      "waveId": "1001enemy201",
-      "waveName": "TenthWave",
+      "waveId": "10",
+      "waveName": "1001enemy201",
       "enemyId": "e201",
       "enemyCount": 35,
       "totalHP": 700
     },
     {
-      "waveId": "1001enemy301",
-      "waveName": "TenthWave",
+      "waveId": "10",
+      "waveName": "1001enemy301",
       "enemyId": "e301",
       "enemyCount": 3,
       "totalHP": 300
