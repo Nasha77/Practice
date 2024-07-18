@@ -19,7 +19,7 @@ public class DialogueRef
     public class DialogueDataList
     {
         // A list of DialogueRef objects.
-        public List<DialogueRef> dialogueRef;
+        public List<DialogueRef> dialogueRef; //dialogueRef must be the same name as jsonfile ok?
     }
 }
 
