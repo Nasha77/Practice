@@ -132,6 +132,11 @@ public class Game
         return dialogueList.Find(x => x.nextcutsceneRefId == id);
     }
 
+    public static DialogueRef GetcutSceneSetID(int id) // Getting one single dialogue using its nextcutsceneRefId
+    {
+        return dialogueList.Find(x => x.cutSceneSetID == id);
+    }
+
 
     void Start()
     {

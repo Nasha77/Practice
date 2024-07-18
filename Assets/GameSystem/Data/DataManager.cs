@@ -18,7 +18,7 @@ public class DataManager : MonoBehaviour
     {
         //for CHARCTERS
 
-        string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/characterRef.json"); //where to get files from
+        string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/CharacterRef.json"); //where to get files from
         string dataStringCharacter = File.ReadAllText(filePathCharacter);//read the path and save it in the data string
 
         Debug.Log("filePath" + filePathCharacter + "\n" + dataStringCharacter);
@@ -45,7 +45,7 @@ public class DataManager : MonoBehaviour
 
         //for WEAPON
 
-        string filePathWeapon = Path.Combine(Application.dataPath, "GameSystem/Data/weaponRef.json"); // Where to get files from
+        string filePathWeapon = Path.Combine(Application.dataPath, "GameSystem/Data/WeaponRef.json"); // Where to get files from
         string dataStringWeapon = File.ReadAllText(filePathWeapon); // Read the path and save it in the data string
 
         WeaponDataList weaponData = JsonUtility.FromJson<WeaponDataList>(dataStringWeapon); // Converts data string JSON into WeaponDataList script data
@@ -72,7 +72,7 @@ public class DataManager : MonoBehaviour
 
         //for ENEMY
 
-        string filePathEnemy = Path.Combine(Application.dataPath, "GameSystem/Data/enemyRef.json");
+        string filePathEnemy = Path.Combine(Application.dataPath, "GameSystem/Data/EnemyRef.json");
         string dataStringEnemy = File.ReadAllText(filePathEnemy);
 
         // Parse JSON data into EnemyDataList
@@ -100,7 +100,7 @@ public class DataManager : MonoBehaviour
         //for WAVE
 
 
-        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/waveSpawnRef.json");
+        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/WaveSpawnRef.json");
         string dataStringWave = File.ReadAllText(filePathWave);
 
         // Parse JSON data into WaveDataList
@@ -127,21 +127,22 @@ public class DataManager : MonoBehaviour
 
         //for DIALOGUE
         
-        string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/dialogueRef.json");
+        string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/DialogueRef.json");
         string dataStringDialogue = File.ReadAllText(filePathDialogue);
-        DialogueDataList dialogueData = JsonUtility.FromJson<DialogueDataList>(dataStringDialogue);
+        DialogueRef.DialogueDataList dialogueData = JsonUtility.FromJson<DialogueRef.DialogueDataList>(dataStringDialogue);
         List<DialogueRef> dialogueList = new List<DialogueRef>();
-        foreach (DialogueRef dialogueRef in dialogueData.dialogues)
+        foreach (DialogueRef dialogueRef in dialogueData.dialogueRef)
         {
             DialogueRef dialogue = new DialogueRef
             {
                 cutsceneRefId = dialogueRef.cutsceneRefId,
+                cutSceneSetID = dialogueRef.cutSceneSetID,
                 nextcutsceneRefId = dialogueRef.nextcutsceneRefId,
                 currentSpeaker = dialogueRef.currentSpeaker,
                 leftSpeaker = dialogueRef.leftSpeaker,
                 rightSpeaker = dialogueRef.rightSpeaker,
                 dialogue = dialogueRef.dialogue,
-                choices = dialogueRef.choices
+
             };
             dialogueList.Add(dialogue);
         }

@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
         Game.GetPlayer().GetCurrentCharacter();
 
-        selectionManager.InitializeMenu(Game.GetCharacterList());
+        //selectionManager.InitializeMenu(Game.GetCharacterList()); //PUT IT BACK LATER
         // save data in game?? then put it in p;layer??
         // store in game mainplayer, then in player currentplayer
 

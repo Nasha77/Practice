@@ -1,112 +1,114 @@
 {
   "dialogueRef": [
     {
+      "cutSceneSetID":  101,
       "cutsceneRefId": 10001,
       "nextcutsceneRefId": 10002,
       "currentSpeaker": "Left",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "I feel so refreshed after practising my guitar! What have you done today Jush?",
-      "choices": ""
+      "dialogue": "I feel so refreshed after practising my guitar! What have you done today Jush?"
+
     },
     {
+      "cutSceneSetID": 101,
       "cutsceneRefId": 10002,
       "nextcutsceneRefId": 10003,
       "currentSpeaker": "Right",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "BASEBALL BASEBALL I BATTED 10000000000000 METERS TODAY!",
-      "choices": ""
+      "dialogue": "BASEBALL BASEBALL I BATTED 10000000000000 METERS TODAY!"
+
     },
     {
+      "cutSceneSetID": 101,
       "cutsceneRefId": 10003,
       "nextcutsceneRefId": 10004,
       "currentSpeaker": "Left",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "Oh my dear Jush, that is not a good way to spend your time! Come let me show you!",
-      "choices": ""
+      "dialogue": "Oh my dear Jush, that is not a good way to spend your time! Come let me show you!"
+
     },
     {
+      "cutSceneSetID": 101,
       "cutsceneRefId": 10004,
-      "nextcutsceneRefId": 10005,
+      "nextcutsceneRefId": -1,
       "currentSpeaker": "Right",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "OKAY!",
-      "choices": ""
+      "dialogue": "OKAY!"
+
     },
     {
+      "cutSceneSetID": 102,
       "cutsceneRefId": 10005,
       "nextcutsceneRefId": 10006,
       "currentSpeaker": "Left",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "Wait Jush, do you hear that?",
-      "choices": ""
+      "dialogue": "Wait Jush, do you hear that?"
+
     },
     {
+      "cutSceneSetID": 102,
       "cutsceneRefId": 10006,
       "nextcutsceneRefId": 10007,
       "currentSpeaker": "Right",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "EHHH HEAR? EARS? I HAVE EARS!!",
-      "choices": ""
+      "dialogue": "EHHH HEAR? EARS? I HAVE EARS!!"
+
     },
     {
+      "cutSceneSetID": 102,
       "cutsceneRefId": 10007,
       "nextcutsceneRefId": 10008,
       "currentSpeaker": "Left",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "MY DEAR JUSH! THOSE ARE MY FANS, THEY ARE COMING FOR ME!!",
-      "choices": ""
+      "dialogue": "MY DEAR JUSH! THOSE ARE MY FANS, THEY ARE COMING FOR ME!!"
+
     },
     {
+      "cutSceneSetID": 102,
       "cutsceneRefId": 10008,
-      "nextcutsceneRefId": -2,
-      "currentSpeaker": "Right",
-      "leftSpeaker": "Cara",
-      "rightSpeaker": "Jush",
-      "dialogue": -1,
-      "choices": "10011#10012"
-    },
-    {
-      "cutsceneRefId": 10009,
-      "nextcutsceneRefId": -1,
-      "currentSpeaker": "Left",
-      "leftSpeaker": "Cara",
-      "rightSpeaker": "Jush",
-      "dialogue": "FRET NOT JUSH, I WILL PROTECT US! WITH THIS GUITAR!",
-      "choices": ""
-    },
-    {
-      "cutsceneRefId": 10010,
-      "nextcutsceneRefId": -1,
-      "currentSpeaker": "Left",
-      "leftSpeaker": "Cara",
-      "rightSpeaker": "Jush",
-      "dialogue": "AHHHH JUSSSSSSHHHHHHH, HELP MEEEEEEEE!",
-      "choices": ""
-    },
-    {
-      "cutsceneRefId": 10011,
       "nextcutsceneRefId": 10009,
-      "currentSpeaker": "Right",
+      "currentSpeaker": "Left",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "I HEAR TROUBLE, CARA! I think your fans are angry with you!",
-      "choices": ""
+      "dialogue": "FRET NOT JUSH, I WILL PROTECT US! WITH THIS GUITAR!"
+
     },
     {
-      "cutsceneRefId": 10012,
+      "cutSceneSetID": 102,
+      "cutsceneRefId": 10009,
       "nextcutsceneRefId": 10010,
+      "currentSpeaker": "Left",
+      "leftSpeaker": "Cara",
+      "rightSpeaker": "Jush",
+      "dialogue": "AHHHH JUSSSSSSHHHHHHH, HELP MEEEEEEEE!"
+
+    },
+    {
+      "cutSceneSetID": 102,
+      "cutsceneRefId": 10010,
+      "nextcutsceneRefId": 10011,
       "currentSpeaker": "Right",
       "leftSpeaker": "Cara",
       "rightSpeaker": "Jush",
-      "dialogue": "DON'T WORRY I WILL BEAT THEM UP! HAHAHA!",
-      "choices": ""
+      "dialogue": "I HEAR TROUBLE, CARA! I think your fans are angry with you!"
+
+    },
+    {
+      "cutSceneSetID": 102,
+      "cutsceneRefId": 10011,
+      "nextcutsceneRefId": -1,
+      "currentSpeaker": "Right",
+      "leftSpeaker": "Cara",
+      "rightSpeaker": "Jush",
+      "dialogue": "DON'T WORRY I WILL BEAT THEM UP! HAHAHA!"
+
     }
   ]
 }

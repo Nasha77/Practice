@@ -4,127 +4,119 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Text dialogueText; // UI Text element to display the dialogue text
-    public Text leftSpeakerNameText; // UI Text element to display the left speaker's name
-    public Text rightSpeakerNameText; // UI Text element to display the right speaker's name
-    public GameObject[] choiceButtons; // Array of UI buttons for dialogue choices
+    public Text dialogueText; // Text element to show dialogue
+    public Text leftSpeakerNameText; // Text element to show left speaker's name
+    public Text rightSpeakerNameText; // Text element to show right speaker's name
+    public Button nextButton; // Button to go to next dialogue
 
-    private Queue<DialogueRef> dialogues; // Queue to manage the dialogue sequences
+    private Queue<DialogueRef> dialogues; // Queue to manage dialogues
+    
 
-    // Method called when the script instance is loaded
     void Start()
     {
-        // Initialize the dialogue queue
-        dialogues = new Queue<DialogueRef>();
-        Debug.Log("DialogueManager am i Initializing"); // Log for initialization confirmation
-    }
 
-    // Method to start the dialogue sequence with a list of DialogueRef
-
-    public void StartDialogue(List<DialogueRef> dialogueRefs)
-    {
-        Debug.Log("DialogueManager did i make it out alive?");
-        // Check if the provided dialogueRefs list is null
-        if (dialogueRefs == null)
+        Debug.Log("DialogueManager am i working?");
+        List<DialogueRef> testDialogues = Game.GetDialogueList();// Get all data foor dialogue
         {
-            Debug.LogError("dialogueRefs is null!"); // Log error if null
-            return; // Exit the method
+            // Initialize the dialogue queue
+            dialogues = new Queue<DialogueRef>();
+            Debug.Log("DialogueManager initializing...");
         }
 
-        Debug.Log("DialogueManager am i still alive?");
-
-        Debug.Log("DialogueManager did i die here? i died here huh"); //code died here
-
-        Debug.Log("Starting Dialogue..."); // Log starting dialogue
-        foreach (DialogueRef dialogue in dialogueRefs)
+        if (testDialogues == null || testDialogues.Count == 0)
         {
-            // Check if any dialogue in the list is null
-            if (dialogue == null)
-            {
-                Debug.LogError("One of the dialogueRefs is null!"); // Log error if null
-                continue; // Skip this dialogue and continue with the next
-            }
-            // Add each dialogue to the queue
-            dialogues.Enqueue(dialogue);
+            Debug.LogError("Test dialogues list is null or empty!");
+            return;
         }
 
-        // Log the number of dialogues in the queue
-        Debug.Log("Starting Dialogue with " + dialogues.Count + " entries");
-        // Display the first dialogue in the queue
-        DisplayNextDialogue();
-    }
-
-    // Method to display the next dialogue in the queue
-    public void DisplayNextDialogue()
-    {
-        // Check if there are no more dialogues in the queue
-        if (dialogues.Count == 0)
+        // Add a listener to the next button to call DisplayNextDialogue when clicked
+        if (nextButton != null)
         {
-            // End the dialogue sequence
-            EndDialogue();
-            return; // Exit the method
-        }
-
-        // Get the next dialogue from the queue
-        DialogueRef currentDialogue = dialogues.Dequeue();
-        Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId); // Log the current dialogue ID
-
-        // Check if the UI elements are assigned
-        if (dialogueText == null)
-        {
-            Debug.LogError("dialogueText is not assigned in the Inspector!"); // Log error if not assigned
-            return; // Exit the method
-        }
-        if (leftSpeakerNameText == null)
-        {
-            Debug.LogError("leftSpeakerNameText is not assigned in the Inspector!"); // Log error if not assigned
-            return; // Exit the method
-        }
-        if (rightSpeakerNameText == null)
-        {
-            Debug.LogError("rightSpeakerNameText is not assigned in the Inspector!"); // Log error if not assigned
-            return; // Exit the method
-        }
-
-        // Update the UI text elements with the current dialogue information
-        dialogueText.text = currentDialogue.dialogue; // Update dialogue text
-        leftSpeakerNameText.text = currentDialogue.leftSpeaker; // Update left speaker name
-        rightSpeakerNameText.text = currentDialogue.rightSpeaker; // Update right speaker name
-
-        // If there are choices available in the current dialogue
-        if (!string.IsNullOrEmpty(currentDialogue.choices))
-        {
-            // Split the choices string into an array
-            string[] choices = currentDialogue.choices.Split('#');
-            // Loop through the choice buttons and update their text
-            for (int i = 0; i < choiceButtons.Length; i++)
-            {
-                if (i < choices.Length)
-                {
-                    choiceButtons[i].SetActive(true); // Activate the button
-                    Text choiceText = choiceButtons[i].GetComponentInChildren<Text>(); // Get the Text component
-                    choiceText.text = choices[i]; // Set the choice text
-                }
-                else
-                {
-                    choiceButtons[i].SetActive(false); // Deactivate the button if there are no more choices
-                }
-            }
+            nextButton.onClick.AddListener(DisplayNextDialogue);
         }
         else
         {
-            // Deactivate all choice buttons if there are no choices
-            foreach (GameObject button in choiceButtons)
-            {
-                button.SetActive(false);
-            }
+            Debug.LogError("Next button is not assigned!");
         }
     }
+    
+    public void StartDialogue(List<DialogueRef> dialogueRefs)
+    {
+        Debug.Log("DialogueManager starting dialogue sequence...");
 
-    // Method to handle the end of the dialogue sequence
+        // Initialize the dialogue queue again just in case
+        dialogues = new Queue<DialogueRef>();
+
+        // Check if the dialogue list is null or empty
+        if (dialogueRefs == null || dialogueRefs.Count == 0)
+        {
+            Debug.LogError("dialogueRefs is null or empty!");
+            return;
+        }
+
+        // Add each dialogue to the queue
+        foreach (DialogueRef dialogue in dialogueRefs)
+        {
+            // Skip null dialogues
+            if (dialogue == null)
+            {
+                Debug.LogError("One of the dialogueRefs is null!");
+                continue;
+            }
+            dialogues.Enqueue(dialogue);
+        }
+
+        // Log the number of dialogues
+        Debug.Log("Starting Dialogue with " + dialogues.Count + " entries");
+
+        // Show the first dialogue
+        DisplayNextDialogue();
+    }
+
+    public void DisplayNextDialogue()
+    {
+        Debug.Log("DisplayNextDialogue called.");
+
+        // Check if there are no more dialogues
+        if (dialogues.Count == 0)
+        {
+            EndDialogue(); // End the dialogue sequence
+            return;
+        }
+
+        //dies here
+        // Get the next dialogue from the queue
+        DialogueRef currentDialogue = dialogues.Dequeue();
+        Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
+
+        // Check if UI elements are assigned
+        if (dialogueText == null || leftSpeakerNameText == null || rightSpeakerNameText == null)
+        {
+            Debug.LogError("UI elements are not assigned in the Inspector!");
+            return;
+        }
+
+        // Update UI text elements with current dialogue information
+        dialogueText.text = currentDialogue.dialogue;
+        leftSpeakerNameText.text = currentDialogue.leftSpeaker;
+        rightSpeakerNameText.text = currentDialogue.rightSpeaker;
+
+       
+       
+
+        // Log the remaining number of dialogues in the queue
+        Debug.Log("Remaining dialogues in queue: " + dialogues.Count);
+    }
+
     void EndDialogue()
     {
-        Debug.Log("End of Dialogue"); // Log end of dialogue
-        // Logic to end the dialogue, e.g., close the dialogue UI
+        Debug.Log("End of Dialogue");
+
+        // Clear the dialogue text
+        dialogueText.text = "";
+        leftSpeakerNameText.text = "";
+        rightSpeakerNameText.text = "";
+
     }
 }
+
