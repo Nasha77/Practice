@@ -6,7 +6,8 @@
          "description":"Cara, a famous musician whom everyone loves.",
          "characterHealth":75,
          "characterAtk":10,
-         "characterSpeed":5
+         "characterSpeed":5,
+         "characterSprite": "Knight1"
       },
       {
          "characterId":"chara2",
@@ -14,7 +15,8 @@
          "description":"Jush, a baseball player who carries his bat everywhere.",
          "characterHealth":70,
          "characterAtk":18,
-         "characterSpeed":2
+         "characterSpeed":2,
+         "characterSprite": "Knight2"
       }
    ]
 }

@@ -8,27 +8,17 @@ public class PlayerManager : MonoBehaviour
 
     private Transform bat;
 
-    //Player Health
-    /*public float Health
-    {
-        set
-        {
-            health = value;
-            if (health <= 0)
-            {
-                PlayerDeath();
-            }
-        }
+    private float horizontal;
+    private float vertical; // new variable for vertical movement
+    private float speed;
+    private bool isFacingRight = true;
 
-        get
-        {
-            return health;
-        }
-    }
-    public float health = 1;*/
+    public float playerHealth;
+    public float playerAtk;
+    public float playerSpd;
 
+    [SerializeField] private Rigidbody2D rb;
 
-    // once health is less than or equal 0, player dies and game over
     public void PlayerDeath()
     {
         // 1. destroy player gameobj
@@ -53,9 +43,26 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private void Flip()
+    {
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
     // setting player to face dir of mouse
     void Update()
     {
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical"); // read vertical input
+
+        Flip();
+
         if (bat != null && mainCamera != null)
         {
             // Get the mouse position in world coordinates
@@ -76,6 +83,39 @@ public class PlayerManager : MonoBehaviour
             float angleOffset = 90.0f;
             bat.rotation = Quaternion.Euler(new Vector3(0, 0, angle - angleOffset));
         }
+    }
+
+    void FixedUpdate()
+    {
+        speed = Game.GetPlayer().GetCharacterSpeed();
+
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
+    }
+
+    public void UpdatePlayerStats()
+    {
+        Player.UpdateStats();
+
+        // playerHealth = player.GetCharacterHealth();
+        // playerAtk = player.GetCharacterAtk():
+        // playerSpd = player.GetCharacterSpd();
+
+        
+        SetSprite(Game.GetCharacterByRefId(Player.GetcurrentCharacter()).image);
+
+
+    }
+
+    // get name of sprite and run loadsprite function
+    public void SetSprite(string name)
+    {
+        // load sprite and make sprite appear on scene
+        AssetManager.LoadSprite(name, (Sprite sp) =>
+        {
+            this.GetComponent<SpriteRenderer>().sprite = sp;
+
+
+        });
     }
 }
 

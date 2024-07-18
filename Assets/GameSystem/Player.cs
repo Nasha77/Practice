@@ -67,6 +67,7 @@ public class Player
         playerSpd = playerCharacter.characterSpeed;
 
         
+       
 
         statDirty = false; // calculated, no need to calculate again
 
@@ -74,7 +75,6 @@ public class Player
     }
 
    
-
 
     // New Health property
     //public float Health

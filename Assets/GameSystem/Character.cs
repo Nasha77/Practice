@@ -11,7 +11,9 @@ public class Character
     public int characterAtk { get; }
     public int characterSpeed { get; }
 
-    public Character (string characterId, string characterName, string description, int characterHealth, int characterAtk, int characterSpeed)
+    public string characterSprite { get; }
+
+    public Character (string characterId, string characterName, string description, int characterHealth, int characterAtk, int characterSpeed, string characterSprite)
     {
         this.characterId = characterId;
         this.characterName = characterName;
@@ -19,6 +21,8 @@ public class Character
         this.characterHealth = characterHealth;
         this.characterAtk = characterAtk;
         this.characterSpeed = characterSpeed;
+        this.characterSprite = characterSprite;
+       
     }
 
 

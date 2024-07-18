@@ -38,4 +38,6 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+    
 }

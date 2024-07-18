@@ -26,15 +26,16 @@ public class DataManager : MonoBehaviour
         List<Character> characterList = new List<Character>();
 
         //process ref data convert data read into classes
-        foreach (CharacterRef charcterref in characterData.characterRef)
+        foreach (CharacterRef characterref in characterData.characterRef)
         {
             Character character = new Character(
-                charcterref.characterId,
-                charcterref.characterName,
-                charcterref.description,
-                charcterref.characterHealth,
-                charcterref.characterAtk,
-                charcterref.characterSpeed
+                characterref.characterId,
+                characterref.characterName,
+                characterref.description,
+                characterref.characterHealth,
+                characterref.characterAtk,
+                characterref.characterSpeed,
+                characterref.characterSprite
                 );
             characterList.Add(character);
             Debug.Log("ADD charcter " + character.characterName + " hp " + character.characterHealth); //debugger

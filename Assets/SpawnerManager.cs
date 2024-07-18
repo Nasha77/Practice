@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     public float spawnTimer;
     public float spawnInterval = 5;
 
-    // move this to spawner script
+    
     private void Update()
     {
 
@@ -29,7 +29,7 @@ public class SpawnerManager : MonoBehaviour
 
             // eobj = replace with addressables
             // later try using addressables
-           // GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
+            //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
             //enemyObj.GetComponent<EnemyManager>().SetupHealth(randomEnemy);
 
             spawnTimer += spawnInterval;
