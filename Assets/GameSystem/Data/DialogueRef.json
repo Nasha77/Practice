@@ -1,7 +1,7 @@
 {
   "dialogueRef": [
     {
-      "cutSceneSetID":  101,
+      "cutSceneSetID": 101,
       "cutsceneRefId": 10001,
       "nextcutsceneRefId": 10002,
       "currentSpeaker": "Left",

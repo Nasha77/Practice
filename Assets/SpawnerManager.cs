@@ -31,8 +31,8 @@ public class SpawnerManager : MonoBehaviour
             {
 
                 Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
-                GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
-                enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
+                //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
+                //enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
                 waveIndex++;
             }
 
