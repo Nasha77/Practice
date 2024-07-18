@@ -35,13 +35,12 @@ public class SelectionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        InitializeMenu();
     }
 
-        public void InitializeMenu( List<Character> characterText)
-    { 
-        this.characterText = characterText;
-
+    public void InitializeMenu()
+    {
+        characterText = Game.GetCharacterList();
         UpdateMenuText();
     }
 

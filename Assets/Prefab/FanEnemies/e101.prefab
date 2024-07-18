@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6720659099177986501}
   - component: {fileID: 8709233437127622956}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: e101
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2078584149, guid: bc734cb5f871345459973388cc81a58d, type: 3}
+  m_Sprite: {fileID: 1886399587, guid: bc734cb5f871345459973388cc81a58d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.9375}
     newSize: {x: 1, y: 0.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  health: 1
 --- !u!114 &8709233437127622956
 MonoBehaviour:
   m_ObjectHideFlags: 0

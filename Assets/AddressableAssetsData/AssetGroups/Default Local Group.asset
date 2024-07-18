@@ -27,6 +27,51 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64b21a7527e1f594c8acf242b2681b9a
+    m_Address: Assets/Prefab/FanEnemies/e101.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ca1564172bfc4524b89c7776db0a3d0b
+    m_Address: Assets/Prefab/FanEnemies/e201.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddb3c572d05f06e4ebdf0bec7289c63c
+    m_Address: Assets/Prefab/FanEnemies/e301.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b474472e43405c84aad4e840e841db78
+    m_Address: CharacterSprite/cara.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5184601acb05ad4793063e6e35a087a
+    m_Address: Assets/GameSystem/CharacterSprite/jush.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68d6dbb05e2d67f45b2b3d317db4bf45
+    m_Address: Assets/GameSystem/CharacterSprite/cara 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c41da3a7c6ee89943877d1590dc79b0b
+    m_Address: Assets/GameSystem/CharacterSprite/jush 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d0eafda18990e24192a9be65d95269e
+    m_Address: Assets/GameSystem/CharacterSprite/weapon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81d8f354eccab5d4ba0c54cf2b286663
+    m_Address: Assets/GameSystem/CharacterSprite/weapon2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c9d414e8c87d27142bbf5ca7fa5b4458, type: 2}
   m_SchemaSet:

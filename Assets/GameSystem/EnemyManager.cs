@@ -12,6 +12,8 @@ public class EnemyManager : MonoBehaviour
 
     
 
+    
+
     // setting current health of enemy using 
 
     public void SetupHealth(Enemy enemyRef)
@@ -19,6 +21,8 @@ public class EnemyManager : MonoBehaviour
         // get total health of an enemy in ENEMY and pass into curHp
         curHp = enemyRef.enemyHealth;
         gameObject.name = "Enemy" + enemyRef.enemyId;
+
+        
     }
    
 

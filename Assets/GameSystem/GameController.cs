@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
     public static GameController instanceRef;
 
-    void Start()
+    void Awake()
     {
         if(instanceRef == null)
         {

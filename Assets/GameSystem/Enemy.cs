@@ -12,6 +12,7 @@ public class Enemy
     public int enemySpeed { get; set; }
     public int enemyEXP { get; set; }
 
+    
    
 
 
