@@ -133,7 +133,7 @@ public class DataManager : MonoBehaviour
         List<DialogueRef> dialogueList = new List<DialogueRef>();
         foreach (DialogueRef dialogueRef in dialogueData.dialogueRef)
         {
-            DialogueRef dialogue = new DialogueRef
+            DialogueRef thisLine = new DialogueRef
             {
                 cutsceneRefId = dialogueRef.cutsceneRefId,
                 cutSceneSetID = dialogueRef.cutSceneSetID,
@@ -142,9 +142,9 @@ public class DataManager : MonoBehaviour
                 leftSpeaker = dialogueRef.leftSpeaker,
                 rightSpeaker = dialogueRef.rightSpeaker,
                 dialogue = dialogueRef.dialogue,
-
             };
-            dialogueList.Add(dialogue);
+            Debug.LogWarning(thisLine.dialogue);
+            dialogueList.Add(thisLine);
         }
         Game.SetDialogueList(dialogueList); // Set dialogue list 
 
