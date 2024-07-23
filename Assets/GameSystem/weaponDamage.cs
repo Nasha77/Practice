@@ -9,6 +9,8 @@ public class weaponDamage : MonoBehaviour
 
     public Collider2D weaponCollider;
 
+    public EnemyManager enemyManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +23,7 @@ public class weaponDamage : MonoBehaviour
         
     }
 
-    // once health is less than or equal 0, destroy enemy gameobj
-    public void Defeated()
-    {
-        // assign enemy health to 0
-        
-    }
+   
 
 
     //// check if weapon collides with the right enemy and then deduct health correctly.
@@ -41,12 +38,13 @@ public class weaponDamage : MonoBehaviour
             // check if the enemy is an enemy from the id
             //why is this null??
             Enemy enemy1 = Game.GetEnemyByRefId("e101");
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy1);
             Enemy enemy2 = Game.GetEnemyByRefId("e201");
 
 
             if(enemy1 == null || enemy2 == null)
             {
-                Debug.Log("BRUH MOMENTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+                
             }
 
             // check if there is an enemy
@@ -60,7 +58,7 @@ public class weaponDamage : MonoBehaviour
 
                 if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
                 {
-                    Defeated();
+                    enemyManager.Defeated();
                 }
             }
 
@@ -73,7 +71,7 @@ public class weaponDamage : MonoBehaviour
 
                 if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
                 {
-                    Defeated();
+                    enemyManager.Defeated();
                 }
             }
 

@@ -11,9 +11,9 @@ public class SpawnerManager : MonoBehaviour
     // set the interval for enemies to spawn
     public float spawnInterval = 5;
     // a way to ref which wave its now
-    private int waveIndex = 0;
+    public int waveIndex = 0;
     // current wave
-    private int currentWaveIndex = 0;
+    public int currentWaveIndex = 0;
 
     // by default havent added yet
     bool enemyAddedToList = false;
@@ -177,4 +177,6 @@ public class SpawnerManager : MonoBehaviour
         ePrefabPool[enemyObj.name].Add(enemyObj);
         enemyObj.SetActive(false);
     }
+
+
 }
