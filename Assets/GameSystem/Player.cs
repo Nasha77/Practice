@@ -45,7 +45,7 @@ public class Player
         statDirty = true; // every time player has a new character recalculate
     }
 
-    public float GetCurrentCharacterWeapon() // get function
+    public string GetCurrentCharacterWeapon() // get function
     {
         return currentCharacterWeapon;
     }
