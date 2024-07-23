@@ -25,8 +25,11 @@ public class weaponDamage : MonoBehaviour
 
 
         // Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
-        /////////////////////////PLEASE FIX THIS LATERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR///////////////////////////////
-       // weaponDmg = Game.GetPlayer().SetCurrentCharacterWeapon(weaponList[].weaponATK);
+
+
+        // since character stores weaponID, ask the game to find the weapon by the player's stored weaponID. and then take the weapon's atk value
+        // weaponID ( Player's current weapon ). weapon attack
+        weaponDmg = Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponATK;
 
         // set total dmg at the start
         Debug.Log(damage);
