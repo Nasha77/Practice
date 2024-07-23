@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DialogueManager2 : MonoBehaviour
@@ -173,5 +174,9 @@ public class DialogueManager2 : MonoBehaviour
         {
             Debug.LogError("Next button is not assigned!");
         }
+
+        SceneManager.LoadScene("GameScene");
     }
+
+
 }
