@@ -8,8 +8,11 @@ public class SpawnerManager : MonoBehaviour
 
     //set timer to spawn enemies
     public float spawnTimer = 0;
+    // set the interval for enemies to spawn
     public float spawnInterval = 5;
+    // a way to ref which wave its now
     private int waveIndex = 0;
+    // current wave
     private int currentWaveIndex = 0;
 
     // by default havent added yet
@@ -18,7 +21,7 @@ public class SpawnerManager : MonoBehaviour
     public Transform playerPos;
 
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
-    List<Enemy> enemies = Game.GetEnemyList();
+    //List<Enemy> enemies = Game.GetEnemyList();
 
     // only declaring the "container", not the "content"
     public Dictionary<string, List<GameObject>> ePrefabPool = new Dictionary<string, List<GameObject>>();
@@ -45,7 +48,7 @@ public class SpawnerManager : MonoBehaviour
         //// 
         //ePrefabPool["e101"][0].SetActive(false);
 
-        // 
+        // if you want add enemy, set to true
         enemyAddedToList = true;
     }
 
@@ -66,6 +69,7 @@ public class SpawnerManager : MonoBehaviour
             return;
         }
 
+        // check if its the right time to spawn AND its the same wave. spawn the enemies
         if (spawnTimer < 0 && currentWaveIndex == waveIndex)
         {
             // checking for matching ids
@@ -79,6 +83,7 @@ public class SpawnerManager : MonoBehaviour
 
             ////Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
             ///
+            // I DOnT THINK THIS IS USED SO CAN DELETE LATER
             Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
 
             for (int i = 0; i < waveList[waveIndex].enemyCount; i++)
@@ -90,6 +95,7 @@ public class SpawnerManager : MonoBehaviour
                 waveIndex++;
             }
 
+            // spawn the current wave's enemy at the right interval
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount));
             waveIndex++;
             // how to spawn wave. can do by interval, like after 30 sec spawn another wave
