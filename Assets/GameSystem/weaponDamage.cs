@@ -5,9 +5,13 @@ using UnityEngine;
 public class weaponDamage : MonoBehaviour
 {
     // weapon's atk
-    public float damage = 3;
+    public int weaponDmg = 3;
+
+    public int characterDmg, damage;
 
     public Collider2D weaponCollider;
+
+
 
     public EnemyManager enemyManager;
 
@@ -15,6 +19,10 @@ public class weaponDamage : MonoBehaviour
     void Start()
     {
         
+        // set total dmg at the start
+        damage = weaponDmg + characterDmg;
+        Debug.Log(damage);
+
     }
 
     // Update is called once per frame
@@ -41,39 +49,36 @@ public class weaponDamage : MonoBehaviour
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy1);
             Enemy enemy2 = Game.GetEnemyByRefId("e201");
 
+            other.gameObject.GetComponent<EnemyManager>().MinusHealth(damage);
+          
 
-            if(enemy1 == null || enemy2 == null)
-            {
-                
-            }
+            //// check if there is an enemy
+            //if (enemy1 != null || enemy2 != null)
+            //{
+            //    // check for enemy1
 
-            // check if there is an enemy
-            if (enemy1 != null || enemy2 != null)
-            {
-                // check for enemy1
+            //    Debug.Log("ENEMYDIES" + (enemy1.enemyHealth -= damage));
+            //    //decrease health of the enemy
+            //    enemy1.enemyHealth -= damage;
 
-                Debug.Log("ENEMYDIES" + (enemy1.enemyHealth -= damage));
-                //decrease health of the enemy
-                enemy1.enemyHealth -= damage;
+            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
+            //    {
+            //        spawnerManager.ReturnEnemyPrefab();
+            //    }
+            //}
 
-                if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-                {
-                    enemyManager.Defeated();
-                }
-            }
+            //if (enemy1 != null || enemy2 != null)
+            //{
+            //    //check for enemy2
+            //    Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
+            //    //decrease health of the enemy
+            //    enemy2.enemyHealth -= damage;
 
-            if (enemy1 != null || enemy2 != null)
-            {
-                //check for enemy2
-                Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
-                //decrease health of the enemy
-                enemy2.enemyHealth -= damage;
-
-                if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-                {
-                    enemyManager.Defeated();
-                }
-            }
+            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
+            //    {
+            //        spawnerManager.ReturnEnemyPrefab();
+            //    }
+            //}
 
 
 

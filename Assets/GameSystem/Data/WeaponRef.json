@@ -11,7 +11,7 @@
     "weaponID": "weapon2",
     "characterId": "chara2",
     "weaponName": "Bat Muscle",
-    "weaponATK": 10,
+    "weaponATK": 20,
     "description": "A sturdy bat infused with the power of raw strength."
   }
 ]

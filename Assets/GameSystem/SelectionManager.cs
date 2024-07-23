@@ -91,6 +91,9 @@ public class SelectionManager : MonoBehaviour
         //characterText[characterIndex].characterId
         Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
 
+        //for weapon
+        Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
+
         SceneManager.LoadScene("GameScene");
 
         //playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();

@@ -121,6 +121,8 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+
+
     // get name of sprite and run loadsprite function
     public void SetSprite(string name)
     {

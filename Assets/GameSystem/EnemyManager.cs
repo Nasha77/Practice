@@ -37,17 +37,19 @@ public class EnemyManager : MonoBehaviour
     }
    
 
-    public void MinusHealth(float dmg)
+    public void MinusHealth(int dmg)
     {
         // curHp - dmg = curHp
         curHp -= dmg;
 
+        Debug.Log("Health minussssss");
         // if enemy hp less than or equal 0
         if(curHp <= 0)
         {
             // set health to 0 and destroy gameobj
             curHp = 0;
-            playerManager.PlayerDeath();
+            Debug.Log("BBBBBBBBBBBBBB" );
+            spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
     }
 
@@ -70,27 +72,27 @@ public class EnemyManager : MonoBehaviour
 
 
 
-        //PLAYER
-        if (other.tag == "Player")
-        {
-            //deal dmg to player
-            //Player player = other.GetComponent<Player>();
-            Player player = Game.GetPlayer();
+        ////PLAYER
+        //if (other.tag == "Player")
+        //{
+        //    //deal dmg to player
+        //    //Player player = other.GetComponent<Player>();
+        //    Player player = Game.GetPlayer();
 
-            if (player != null)
-            {
-                //Debug.Log("HEALTH" + (player.playerHealth -= damage));
-                //player.playerHealth -= damage;
+        //    if (player != null)
+        //    {
+        //        //Debug.Log("HEALTH" + (player.playerHealth -= damage));
+        //        //player.playerHealth -= damage;
 
-                MinusHealth(100);
-            }
+        //        MinusHealth(100);
+        //    }
 
-            //if(player.playerHealth < 0)
-            //{
-            //    //KILLS PLAYER
-            //    playerManager.PlayerDeath();
-            //}
-        }
+        //    //if(player.playerHealth < 0)
+        //    //{
+        //    //    //KILLS PLAYER
+        //    //    playerManager.PlayerDeath();
+        //    //}
+        //}
 
 
 
