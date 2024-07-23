@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/CONVO 1.unity
+    guid: 14b841408a144fa49a6c3aa63863e406
+  - enabled: 1
     path: Assets/Scenes/SelectionScene.unity
     guid: 40bbd093665b89c4e81cf39733e3fcb5
+  - enabled: 1
+    path: Assets/Scenes/CONVO 2.unity
+    guid: 5ddef19095073bb4895723148182b6bb
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 1d7b3381d3828be48ac0112dd20c5a79
