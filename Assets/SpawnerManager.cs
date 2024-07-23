@@ -179,18 +179,6 @@ public class SpawnerManager : MonoBehaviour
     }
 
 
-    /*public void MinusHealth(float dmg)
-    {
-        // curHp - dmg = curHp
-        curHp -= dmg;
-
-        // if enemy hp less than or equal 0
-        if (curHp <= 0)
-        {
-            // set health to 0 and destroy gameobj
-            curHp = 0;
-            playerManager.PlayerDeath();
-        }
-    }*/
+  
 
 }
