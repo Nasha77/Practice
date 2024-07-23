@@ -18,13 +18,14 @@ public class DialogueManager : MonoBehaviour
         dialogues = new Queue<DialogueRef>();
         Debug.Log("DialogueManager initializing...");
 
-        // Load dialogues from the Game class
+        // Load dialogues from the Game class and filter by cutSceneSetID 101
         List<DialogueRef> dialogueRefs = Game.GetDialogueList();
+        List<DialogueRef> filteredDialogueRefs = dialogueRefs.FindAll(d => d.cutSceneSetID == 101);
 
-        // Check if the dialogue list is null or empty
-        if (dialogueRefs == null || dialogueRefs.Count == 0)
+        // Check if the filtered dialogue list is null or empty
+        if (filteredDialogueRefs == null || filteredDialogueRefs.Count == 0)
         {
-            Debug.LogError("Dialogue list is null or empty!");
+            Debug.LogError("Filtered dialogue list is null or empty!");
             return;
         }
 
@@ -38,8 +39,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("Next button is not assigned!");
         }
 
-        // Start the dialogue sequence with the loaded dialogues
-        StartDialogue(dialogueRefs);
+        // Start the dialogue sequence with the filtered dialogues
+        StartDialogue(filteredDialogueRefs);
     }
 
     public void StartDialogue(List<DialogueRef> dialogueRefs)
