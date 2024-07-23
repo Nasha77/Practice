@@ -20,7 +20,8 @@ public class PlayerManager : MonoBehaviour
     public Character character;
     public Player player;
 
-   // public SelectionManager selectionManager;
+  
+    // public SelectionManager selectionManager;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -130,6 +131,18 @@ public class PlayerManager : MonoBehaviour
 
 
         });
+    }
+
+
+    // setting current health of player using 
+
+    public void SetupHealth(Player playerHealthRef)
+    {
+        // get total health pass into health
+        playerHealth = playerHealthRef.playerHealth;
+        gameObject.name = "Player" + playerHealthRef.GetId();
+
+
     }
 }
 

@@ -10,17 +10,28 @@ public class EnemyManager : MonoBehaviour
     //enemy current health
     private float curHp;
 
-    
+    public PlayerManager playerManager;
 
-    
+    public SpawnerManager spawnerManager;
+
+    List<WaveSpawnerRef> waveList = Game.GetWaveList();
 
     // setting current health of enemy using 
+
+
+    private void Start()
+    {
+
+        // put enemy atk as dmg
+       // Enemy dmg = Game.GetEnemyByRefId(waveList[spawnerManager.waveIndex].enemyId);
+    }
 
     public void SetupHealth(Enemy enemyRef)
     {
         // get total health of an enemy in ENEMY and pass into curHp
         curHp = enemyRef.enemyHealth;
         gameObject.name = "Enemy" + enemyRef.enemyId;
+        
 
         
     }
@@ -36,7 +47,7 @@ public class EnemyManager : MonoBehaviour
         {
             // set health to 0 and destroy gameobj
             curHp = 0;
-            Defeated();
+            playerManager.PlayerDeath();
         }
     }
 
@@ -44,9 +55,12 @@ public class EnemyManager : MonoBehaviour
     // once health is less than or equal 0, destroy enemy gameobj
     public void Defeated()
     {
-        Destroy(gameObject);
+       
+        //spawnerManager.ReturnEnemyPrefab();
+      
     }
 
+    //set a function to deplete health in enemy and player each, then call it in respective scripts attached to each after checking for tag
    
 
 
@@ -65,14 +79,17 @@ public class EnemyManager : MonoBehaviour
 
             if (player != null)
             {
-                Debug.Log("HEALTH" + (player.playerHealth -= damage));
-                player.playerHealth -= damage;
+                //Debug.Log("HEALTH" + (player.playerHealth -= damage));
+                //player.playerHealth -= damage;
+
+                MinusHealth(100);
             }
 
-            if(player.playerHealth < 0)
-            {
-                Defeated();
-            }
+            //if(player.playerHealth < 0)
+            //{
+            //    //KILLS PLAYER
+            //    playerManager.PlayerDeath();
+            //}
         }
 
 
