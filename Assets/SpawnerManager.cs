@@ -77,7 +77,20 @@ public class SpawnerManager : MonoBehaviour
             //Enemy randomEnemy = enemies[Random.Range(0, enemies.Count)]; // u dont want random, change to make it specific
             //Enemy randomEnemy = enemies[ enemies.Count];
 
+
             ////Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
+
+            Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
+
+            for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
+            {
+
+                Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
+                //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
+                //enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
+                waveIndex++;
+            }
+
 
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount));
             waveIndex++;

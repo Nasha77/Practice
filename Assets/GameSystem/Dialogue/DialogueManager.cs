@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     {
 
         Debug.Log("DialogueManager am i working?");
-        List<DialogueRef> testDialogues = Game.GetDialogueList();// Get all data foor dialogue
+        List<DialogueRef> testDialogues = new List<DialogueRef>( Game.GetDialogueList());// Get all data foor dialogue
         {
             // Initialize the dialogue queue
             dialogues = new Queue<DialogueRef>();
