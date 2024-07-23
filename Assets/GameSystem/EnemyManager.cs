@@ -68,6 +68,11 @@ public class EnemyManager : MonoBehaviour
                 Debug.Log("HEALTH" + (player.playerHealth -= damage));
                 player.playerHealth -= damage;
             }
+
+            if(player.playerHealth < 0)
+            {
+                Defeated();
+            }
         }
 
 
