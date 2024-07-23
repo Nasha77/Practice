@@ -5,22 +5,30 @@ using UnityEngine;
 public class weaponDamage : MonoBehaviour
 {
     // weapon's atk
-    public int weaponDmg = 3;
+    public float weaponDmg;
 
-    public int characterDmg, damage;
+    public float characterDmg, damage;
 
     public Collider2D weaponCollider;
 
-
+   public List<Weapon> weaponList;
 
     public EnemyManager enemyManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // get character atk = dmg
+        characterDmg = Game.GetPlayer().GetCharacterAtk();
+
+        weaponList = Game.GetWeaponList();
+
+
+        // Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
+        /////////////////////////PLEASE FIX THIS LATERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR///////////////////////////////
+       // weaponDmg = Game.GetPlayer().SetCurrentCharacterWeapon(weaponList[].weaponATK);
+
         // set total dmg at the start
-        damage = weaponDmg + characterDmg;
         Debug.Log(damage);
 
     }
@@ -45,10 +53,11 @@ public class weaponDamage : MonoBehaviour
             Debug.Log("TOUCHYTOUCHY");
             // check if the enemy is an enemy from the id
             //why is this null??
-            Enemy enemy1 = Game.GetEnemyByRefId("e101");
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy1);
-            Enemy enemy2 = Game.GetEnemyByRefId("e201");
+            //EnemyManager enemy = GetComponent<EnemyManager>();
+            //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy);
 
+
+            damage = weaponDmg + characterDmg;
             other.gameObject.GetComponent<EnemyManager>().MinusHealth(damage);
           
 

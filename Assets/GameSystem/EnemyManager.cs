@@ -43,12 +43,12 @@ public class EnemyManager : MonoBehaviour
     }
    
 
-    public void MinusHealth(int dmg)
+    public void MinusHealth(float dmg)
     {
         // curHp - dmg = curHp
         curHp -= dmg;
 
-        Debug.Log("Health minussssss");
+        Debug.Log("Health minussssss " + dmg);
         // if enemy hp less than or equal 0
         if(curHp <= 0)
         {
