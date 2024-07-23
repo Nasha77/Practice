@@ -134,12 +134,12 @@ public class SpawnerManager : MonoBehaviour
         Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
 
         GameObject enemyObj = GetEnemyPrefab(enemyToSpawn.enemyId);
-        enemyObj.name = enemyToSpawn.enemyName;
+        enemyObj.name = enemyToSpawn.enemyId;
         enemyObj.transform.position = randomPos;
 
 
         // assign health to enemies that will be spawned
-        enemyObj.GetComponent<EnemyManager>().SetupHealth(enemyToSpawn);
+        enemyObj.GetComponent<EnemyManager>().SetupHealth(enemyToSpawn, this);
         // GetPlayerObj
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
@@ -157,16 +157,30 @@ public class SpawnerManager : MonoBehaviour
     private GameObject GetEnemyPrefab(string enemyId)
     {
         GameObject enemyObj;
+
+        // if obj exists in the pool AND if theres enough obj in the pool to be used
         if (ePrefabPool.ContainsKey(enemyId) && ePrefabPool[enemyId].Count > 0)
         {
+            // set obj as the first one
             enemyObj = ePrefabPool[enemyId][0];
+
+            //remove it to be used
             ePrefabPool[enemyId].Remove(enemyObj);
+
+            // set gameObj to be active 
             enemyObj.SetActive(true);
         }
+
+        // if obj doesnt exist in pool and not enough
         else
         {
+            // create new list
             List<GameObject> enemyObjs = new List<GameObject>();
+
+            //use the new list instead
             ePrefabPool[enemyId] = enemyObjs;
+
+            //
             enemyObj = Instantiate(ePrefab[enemyId]);
         }
         return enemyObj;
@@ -174,6 +188,16 @@ public class SpawnerManager : MonoBehaviour
 
     public void ReturnEnemyPrefab(GameObject enemyObj)
     {
+        // checking if pool exists
+        // check if key doesnt exists, then add pool in
+        if (!ePrefabPool.ContainsKey(enemyObj.name))
+        {
+            // add in the new empty pool
+            ePrefabPool.Add(enemyObj.name, new List<GameObject>());
+        }
+
+        // if key exists,
+        // adding obj to pool
         ePrefabPool[enemyObj.name].Add(enemyObj);
         enemyObj.SetActive(false);
     }
