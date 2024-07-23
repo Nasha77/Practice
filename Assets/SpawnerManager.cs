@@ -123,7 +123,7 @@ public class SpawnerManager : MonoBehaviour
 
         }
         // check wave list
-        Debug.Log(Game.GetWaveList().Count);
+        //Debug.Log(Game.GetWaveList().Count);
 
         spawnTimer -= Time.deltaTime;
     }
@@ -138,7 +138,7 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.transform.position = randomPos;
 
 
-
+        // assign health to enemies that will be spawned
         enemyObj.GetComponent<EnemyManager>().SetupHealth(enemyToSpawn);
         // GetPlayerObj
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
