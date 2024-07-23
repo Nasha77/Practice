@@ -455,9 +455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 407307147}
-  leftSpeakerNameText: {fileID: 0}
-  rightSpeakerNameText: {fileID: 0}
-  nextButton: {fileID: 0}
+  leftSpeakerNameText: {fileID: 1476608440}
+  rightSpeakerNameText: {fileID: 96035551}
+  nextButton: {fileID: 1096706530}
 --- !u!1 &1096706529
 GameObject:
   m_ObjectHideFlags: 0

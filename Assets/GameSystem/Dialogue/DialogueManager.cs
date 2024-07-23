@@ -1,6 +1,7 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+using System.Collections; // Import the System.Collections namespace
+using System.Collections.Generic; // Import the System.Collections.Generic namespace
+using UnityEngine; // Import the UnityEngine namespace
+using UnityEngine.UI; // Import the UnityEngine.UI namespace
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,22 +11,20 @@ public class DialogueManager : MonoBehaviour
     public Button nextButton; // Button to go to next dialogue
 
     private Queue<DialogueRef> dialogues; // Queue to manage dialogues
-    
 
     void Start()
     {
+        // Initialize the dialogue queue
+        dialogues = new Queue<DialogueRef>();
+        Debug.Log("DialogueManager initializing...");
 
-        Debug.Log("DialogueManager am i working?");
-        List<DialogueRef> testDialogues = new List<DialogueRef>( Game.GetDialogueList());// Get all data foor dialogue
-        {
-            // Initialize the dialogue queue
-            dialogues = new Queue<DialogueRef>();
-            Debug.Log("DialogueManager initializing...");
-        }
+        // Load dialogues from the Game class
+        List<DialogueRef> dialogueRefs = Game.GetDialogueList();
 
-        if (testDialogues == null || testDialogues.Count == 0)
+        // Check if the dialogue list is null or empty
+        if (dialogueRefs == null || dialogueRefs.Count == 0)
         {
-            Debug.LogError("Test dialogues list is null or empty!");
+            Debug.LogError("Dialogue list is null or empty!");
             return;
         }
 
@@ -38,8 +37,11 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogError("Next button is not assigned!");
         }
+
+        // Start the dialogue sequence with the loaded dialogues
+        StartDialogue(dialogueRefs);
     }
-    
+
     public void StartDialogue(List<DialogueRef> dialogueRefs)
     {
         Debug.Log("DialogueManager starting dialogue sequence...");
@@ -84,7 +86,6 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        //dies here
         // Get the next dialogue from the queue
         DialogueRef currentDialogue = dialogues.Dequeue();
         Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
@@ -101,9 +102,6 @@ public class DialogueManager : MonoBehaviour
         leftSpeakerNameText.text = currentDialogue.leftSpeaker;
         rightSpeakerNameText.text = currentDialogue.rightSpeaker;
 
-       
-       
-
         // Log the remaining number of dialogues in the queue
         Debug.Log("Remaining dialogues in queue: " + dialogues.Count);
     }
@@ -116,7 +114,5 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         leftSpeakerNameText.text = "";
         rightSpeakerNameText.text = "";
-
     }
 }
-
