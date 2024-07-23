@@ -52,15 +52,7 @@ public class SpawnerManager : MonoBehaviour
         enemyAddedToList = true;
     }
 
-    //private void SpawnEnemy(string enemyId)
-    //{
-    //    if (ePrefabPool.TryGetValue(enemyId, out GameObject prefab))
-    //    {
-    //        //spawn close to player target
-    //        Vector2 spawnOffset = Random.insideUnitCircle * 3f;
-    //        Vector2 spawnPosition = (Vector2)playerPos.position + spawnOffset;
-    //    }
-    //}
+   
 
     private void Update()
     {
@@ -203,6 +195,22 @@ public class SpawnerManager : MonoBehaviour
     }
 
 
-  
+
+
+
+
+
+
+
+
+    //private void SpawnEnemy(string enemyId)
+    //{
+    //    if (ePrefabPool.TryGetValue(enemyId, out GameObject prefab))
+    //    {
+    //        //spawn close to player target
+    //        Vector2 spawnOffset = Random.insideUnitCircle * 3f;
+    //        Vector2 spawnPosition = (Vector2)playerPos.position + spawnOffset;
+    //    }
+    //}
 
 }

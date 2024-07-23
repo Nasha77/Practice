@@ -52,16 +52,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 68d6dbb05e2d67f45b2b3d317db4bf45
-    m_Address: Assets/GameSystem/CharacterSprite/cara 1.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c41da3a7c6ee89943877d1590dc79b0b
-    m_Address: Assets/GameSystem/CharacterSprite/jush 1.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d0eafda18990e24192a9be65d95269e
     m_Address: Assets/GameSystem/CharacterSprite/weapon.png
     m_ReadOnly: 0
@@ -69,6 +59,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81d8f354eccab5d4ba0c54cf2b286663
     m_Address: Assets/GameSystem/CharacterSprite/weapon2.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68d6dbb05e2d67f45b2b3d317db4bf45
+    m_Address: CharacterSprite/cara 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c41da3a7c6ee89943877d1590dc79b0b
+    m_Address: Assets/GameSystem/CharacterSprite/jush 1.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
