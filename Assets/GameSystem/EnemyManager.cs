@@ -10,7 +10,10 @@ public class EnemyManager : MonoBehaviour
     //enemy current health
     private float curHp;
 
-    public PlayerManager playerManager;
+    public string enemyId;
+
+    // if u need can use findobjbytype
+    //public PlayerManager playerManager;
 
     public SpawnerManager spawnerManager;
 
@@ -26,11 +29,14 @@ public class EnemyManager : MonoBehaviour
        // Enemy dmg = Game.GetEnemyByRefId(waveList[spawnerManager.waveIndex].enemyId);
     }
 
-    public void SetupHealth(Enemy enemyRef)
+    // getting input from the func
+    public void SetupHealth(Enemy enemyRef, SpawnerManager spManager)
     {
         // get total health of an enemy in ENEMY and pass into curHp
         curHp = enemyRef.enemyHealth;
+        enemyId = enemyRef.enemyId;
         gameObject.name = "Enemy" + enemyRef.enemyId;
+        this.spawnerManager = spManager;
         
 
         
