@@ -179,7 +179,7 @@ public class SpawnerManager : MonoBehaviour
     }
 
 
-    public void MinusHealth(float dmg)
+    /*public void MinusHealth(float dmg)
     {
         // curHp - dmg = curHp
         curHp -= dmg;
@@ -191,6 +191,6 @@ public class SpawnerManager : MonoBehaviour
             curHp = 0;
             playerManager.PlayerDeath();
         }
-    }
+    }*/
 
 }

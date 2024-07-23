@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText; // Text element to show dialogue
     public Text leftSpeakerNameText; // Text element to show left speaker's name
     public Text rightSpeakerNameText; // Text element to show right speaker's name
+    public Text currentSpeakerText; // Text element to show who is speaking
     public Button nextButton; // Button to go to next dialogue
 
     private Queue<DialogueRef> dialogues; // Queue to manage dialogues
@@ -92,7 +93,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
 
         // Check if UI elements are assigned
-        if (dialogueText == null || leftSpeakerNameText == null || rightSpeakerNameText == null)
+        if (dialogueText == null || leftSpeakerNameText == null || rightSpeakerNameText == null || currentSpeakerText == null)
         {
             Debug.LogError("UI elements are not assigned in the Inspector!");
             return;
@@ -102,6 +103,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = currentDialogue.dialogue;
         leftSpeakerNameText.text = currentDialogue.leftSpeaker;
         rightSpeakerNameText.text = currentDialogue.rightSpeaker;
+        currentSpeakerText.text = currentDialogue.currentSpeaker == "Left" ? currentDialogue.leftSpeaker : currentDialogue.rightSpeaker;
 
         // Log the remaining number of dialogues in the queue
         Debug.Log("Remaining dialogues in queue: " + dialogues.Count);
@@ -115,5 +117,6 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         leftSpeakerNameText.text = "";
         rightSpeakerNameText.text = "";
+        currentSpeakerText.text = "";
     }
 }
