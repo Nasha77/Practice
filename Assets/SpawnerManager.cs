@@ -110,6 +110,7 @@ public class SpawnerManager : MonoBehaviour
 
 
             // spawn the current wave's enemy and its amount one by one at the right interval
+            // -1 the count cuz at the start it alr spawn one time. so if u -1, it will spawn the right amount
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount-1));
             waveIndex++;
 
