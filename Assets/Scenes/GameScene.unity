@@ -244,6 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa98020cb662f4ba3878970a1c2d5f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerManager: {fileID: 0}
+  enemyDmg: 0
+  enemyId: 
   rb: {fileID: 4128983160311133533}
 --- !u!1 &459558904
 GameObject:
@@ -8900,6 +8903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTimer: 0
   spawnInterval: 5
+  waveIndex: 0
+  currentWaveIndex: 0
   playerPos: {fileID: 0}
 --- !u!1 &1942292354
 GameObject:
@@ -9601,8 +9606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a200e7577807cf64585d3c861f050dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponDmg: 0
+  characterDmg: 0
   damage: 3
   weaponCollider: {fileID: 7094471625500611792}
+  enemyManager: {fileID: 0}
 --- !u!4 &1861903068965699613
 Transform:
   m_ObjectHideFlags: 0
@@ -9615,8 +9623,7 @@ Transform:
   m_LocalPosition: {x: -0.25, y: 0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8614785764241750743}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2448914358224042629
@@ -9902,17 +9909,18 @@ Transform:
   m_GameObject: {fileID: 2827009527133860759}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.40216836, w: 0.9155657}
-  m_LocalPosition: {x: 0.42875, y: -0.30582, z: 0}
+  m_LocalPosition: {x: 0.17875001, y: 0.46418, z: 0}
   m_LocalScale: {x: 0.69405615, y: 0.69405615, z: 0.69405603}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1861903068965699613}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -47.428}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1957636450}
+  - {fileID: 8614785764241750743}
   - {fileID: 1861903068965699613}
   - {fileID: 1848475846}
   - {fileID: 1929809435}
