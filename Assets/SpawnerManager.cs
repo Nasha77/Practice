@@ -29,6 +29,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void Start()
     {
+        // this is causing the extra enemy to be spawned, cuz everytime u start the game, spawning will be true and one will spawn
        EnemySetUp();
     }
 
@@ -61,11 +62,16 @@ public class SpawnerManager : MonoBehaviour
             return;
         }
 
+        // will run code below if enemyaddedtolist is true
+        // code below only runs when its the next wave
         // check if its the right time to spawn AND its the same wave. spawn the enemies
         if (spawnTimer < 0 && currentWaveIndex == waveIndex)
         {
+            
             // checking for matching ids
             Enemy enemyToSpawn = Game.GetEnemyByRefId(waveList[currentWaveIndex].enemyId);
+
+            Debug.Log("NEXT WAVE------------------");
 
             //random position
             // replace line 22 with getting enemy from wave list so like Game.getwavelist
@@ -123,21 +129,9 @@ public class SpawnerManager : MonoBehaviour
     // this code here might be the problem
     private IEnumerator SpawnEnemyInterval(Enemy enemyToSpawn, int enemiesLeftToSpawn)
     {
-        Debug.Log("SPAWN NOW");
+       
 
-        // if theres enemies left to spawn, continue spawning
-        if (enemiesLeftToSpawn > 0)
-        {
-            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, --enemiesLeftToSpawn));
-        }
-
-        // if no more left to spawn, go next wave
-        else if (enemiesLeftToSpawn == 0)
-        {
-            Debug.Log("increased wave index!!!!!!");
-            currentWaveIndex++;
-
-        }
+       
         Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
 
         // spawn the desired enemy at a position 
@@ -153,7 +147,22 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
 
-       
+
+        // if theres enemies left to spawn, continue spawning
+        if (enemiesLeftToSpawn > 0)
+        {
+            Debug.Log("enemies left" +enemiesLeftToSpawn);
+            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, --enemiesLeftToSpawn));
+        }
+
+        // if no more left to spawn, go next wave
+        else if (enemiesLeftToSpawn == 0)
+        {
+            Debug.Log("increased wave index!!!!!!");
+            currentWaveIndex++;
+
+        }
+
     }
 
     private GameObject GetEnemyPrefab(string enemyId)
