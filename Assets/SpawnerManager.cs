@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     //set timer to spawn enemies
     public float spawnTimer = 0;
     // set the interval for enemies to spawn
-    public float spawnInterval = 5;
+    public float spawnInterval = 2;
     // a way to ref which wave its now
     public int waveIndex = 0;
     // current wave

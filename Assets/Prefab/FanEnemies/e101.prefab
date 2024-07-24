@@ -173,7 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  health: 1
+  enemyId: 
+  spawnerManager: {fileID: 0}
 --- !u!114 &8709233437127622956
 MonoBehaviour:
   m_ObjectHideFlags: 0
