@@ -393,8 +393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataManager: {fileID: 570567593}
   selectionManager: {fileID: 0}
-  initCharacter: 
-  initWeapon: 
+  initCharacter: chara1
+  initWeapon: weapon1
 --- !u!4 &570567595
 Transform:
   m_ObjectHideFlags: 0

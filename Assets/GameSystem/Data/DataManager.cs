@@ -14,15 +14,14 @@ using static DialogueRef;
 public class DataManager : MonoBehaviour
 {
     //load ref data from the file
-    public void LoadRefData()
+    public void LoadRefData() //data needed for the game its self
     {
         //for CHARCTERS
 
         string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/CharacterRef.json"); //where to get files from
-        string dataStringCharacter = File.ReadAllText(filePathCharacter);//read the path and save it in the data string
+        
+        CharcterDataList characterData = ReadData<CharcterDataList>(filePathCharacter);
 
-        Debug.Log("filePath" + filePathCharacter + "\n" + dataStringCharacter);
-        CharcterDataList characterData = JsonUtility.FromJson<CharcterDataList>(dataStringCharacter); //converts datastring json into charcterref script data, the text file is converted into the charcter ref object
         List<Character> characterList = new List<Character>();
 
         //process ref data convert data read into classes
@@ -149,4 +148,75 @@ public class DataManager : MonoBehaviour
         Game.SetDialogueList(dialogueList); // Set dialogue list 
 
     }
+
+    //CHARCTER save and load
+    //now i only sayaing player's current charcter
+
+    //saving
+    public void SavePlayerData()
+    {
+        string filePath = Application.persistentDataPath; //where to save the data persisitant datapath will not work at datapath
+        string fileName = "SaveData.txt"; //create a file 
+
+        DynamicData dynamicData = MakeSaveData(Game.GetPlayer());
+        WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);//write all data into the dynamic data into the file
+    }
+
+    private DynamicData MakeSaveData(Player player) //convert datamanager class to dynamic data
+    {
+        DynamicData dynamicData = new DynamicData();
+        dynamicData.id = player.GetId();
+        dynamicData.currentCharacter = player.GetCurrentCharacter();
+
+        return dynamicData;
+    }
+
+    //loading
+    public bool LoadPlayerData()
+    {
+        //funtion
+        string filePathCharacter = Path.Combine(Application.persistentDataPath, "/SaveData.json"); //where to get files from
+
+        if (File.Exists(filePathCharacter)) //when player enter the game this data file might not exsist so we have to check it
+        {
+            DynamicData dynamicData = ReadData<DynamicData>(filePathCharacter);//get danaymic data from json
+
+            Game.SetPlayer(LoadSaveData(dynamicData)); //set it as the main player if there is a exsistinf file
+
+            return true; //exist
+        }
+
+        return false; //does not exist dyanamicdata
+
+        //List<Character> characterList = new List<Character>();
+
+    }
+
+    private Player LoadSaveData(DynamicData dynamicData)
+    {
+        Player player = new Player(dynamicData.id, dynamicData.currentCharacter, dynamicData.currentCharacterWeapon);
+
+        return player;
+    }
+
+    //CHARCTER read and write
+    public T ReadData<T>(string filePathCharacter) //loading done using readdata
+    {
+        string dataStringCharacter = File.ReadAllText(filePathCharacter);
+        Debug.Log("filePath" + filePathCharacter + "\n" + dataStringCharacter);
+
+        T data = JsonUtility.FromJson<T>(dataStringCharacter);
+
+        return data;
+    }
+    public void WriteData<T>(string filePathCharacter, T data)//saveing done using write(inscae you want to write differnt type of data)
+    {
+        string dataStringCharacter = JsonUtility.ToJson(data);//convert T class data into Json convert to string
+        Debug.Log(dataStringCharacter);
+        //replace all text in the file into this data new text
+        File.WriteAllText(filePathCharacter, dataStringCharacter);
+    }
+
+    
 }
+

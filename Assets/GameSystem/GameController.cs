@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
     public SelectionManager selectionManager; // ref to selectionmanager script
 
     // Start is called before the first frame update
-
+     
     public string initCharacter; //set in inspector
     public string initWeapon;
    
@@ -39,8 +39,11 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
         // shd be the default selection
         //set player
-        Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
-
+        //auto load funtion in if
+        if (!dataManager.LoadPlayerData()) //if its true it will ignore what is in the bracket if fails shows that there is no exsisting data
+        {
+            Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
+        }
         Game.GetPlayer().GetCurrentCharacter();
 
         //selectionManager.InitializeMenu(Game.GetCharacterList()); //PUT IT BACK LATER
@@ -59,5 +62,5 @@ public class GameController : MonoBehaviour //start funtion and calls data manag
 
     }
 
-   
+  
 }
