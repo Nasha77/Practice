@@ -100,7 +100,7 @@ public class SpawnerManager : MonoBehaviour
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount));
             waveIndex++;
 
-            Debug.Log("SAA" + currentWaveIndex);
+            Debug.Log("current wave is at" + currentWaveIndex);
             // how to spawn wave. can do by interval, like after 30 sec spawn another wave
 
 
@@ -120,9 +120,24 @@ public class SpawnerManager : MonoBehaviour
         spawnTimer -= Time.deltaTime;
     }
 
+    // this code here might be the problem
     private IEnumerator SpawnEnemyInterval(Enemy enemyToSpawn, int enemiesLeftToSpawn)
     {
-        Debug.Log("SPAWN OF EVIL");
+        Debug.Log("SPAWN NOW");
+
+        // if theres enemies left to spawn, continue spawning
+        if (enemiesLeftToSpawn > 0)
+        {
+            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, --enemiesLeftToSpawn));
+        }
+
+        // if no more left to spawn, go next wave
+        else if (enemiesLeftToSpawn == 0)
+        {
+            Debug.Log("increased wave index!!!!!!");
+            currentWaveIndex++;
+
+        }
         Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
 
         // spawn the desired enemy at a position 
@@ -138,18 +153,7 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
 
-        // if theres enemies left to spawn, continue spawning
-        if (enemiesLeftToSpawn > 0)
-        {
-            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, --enemiesLeftToSpawn));
-        }
-
-        // if no more left to spawn, go next wave
-        else if (enemiesLeftToSpawn == 0)
-        {
-            Debug.Log("increased wave index!!!!!!");
-            currentWaveIndex++;
-        }
+       
     }
 
     private GameObject GetEnemyPrefab(string enemyId)
