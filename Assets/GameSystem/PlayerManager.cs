@@ -20,7 +20,12 @@ public class PlayerManager : MonoBehaviour
     public Character character;
     public Player player;
 
-  
+    public SpawnerManager spawnerManager;
+
+    // enemy atk
+    public float enemyDmg;
+
+
     // public SelectionManager selectionManager;
 
     [SerializeField] private Rigidbody2D rb;
@@ -97,7 +102,7 @@ public class PlayerManager : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+
 
         rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
     }
@@ -147,7 +152,54 @@ public class PlayerManager : MonoBehaviour
         playerHealth = playerHealthRef.playerHealth;
         gameObject.name = "Player" + playerHealthRef.GetId();
 
-
+        
     }
+
+    public void SetUpEnemyRef(Enemy enemyRef, SpawnerManager spManager)
+    {
+        //ref to enemy atk
+        enemyDmg = enemyRef.enemyAtk;
+    }
+
+
+    public void MinusPlayerHealth(float dmg)
+    {
+
+        // curHp - dmg = curHp
+        playerHealth -= dmg;
+
+        Debug.Log("Health minussssss " + dmg);
+        // if enemy hp less than or equal 0
+        if (playerHealth <= 0)
+        {
+            // set health to 0 and destroy gameobj
+            playerHealth = 0;
+            Debug.Log("destroy enemy");
+            Destroy(this.gameObject);
+        }
+    }
+
+
+        // if enemy collides with player, deduct health
+        private void OnTriggerEnter2D(Collider2D other)
+    {
+        // makes sure its not other tags
+        if (other.tag == "Enemy")
+        {
+            //Enemy enem = other.GetComponent<Enemy>();
+
+            Debug.Log("ENEMY TOUCHED PLAYER RUNNNNNNN");
+
+            
+            MinusPlayerHealth(enemyDmg);
+
+
+
+
+
+
+        }
+    }
+
 }
 
