@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
    "characterRef":[
       {
          "characterId":"chara1",
@@ -20,3 +21,28 @@
       }
    ]
 }
+=======
+  "characterRef": [
+    {
+      "characterId": "id1",
+      "characterName": "Name1",
+      "description": "Description1",
+      "characterHealth": 100,
+      "characterAtk": 10,
+      "characterSpeed": 5,
+      "characterSprite": "sprite1"
+    },
+    {
+      "characterId": "id2",
+      "characterName": "Name2",
+      "description": "Description2",
+      "characterHealth": 120,
+      "characterAtk": 12,
+      "characterSpeed": 6,
+      "characterSprite": "sprite2"
+    }
+  ]
+}
+
+
+>>>>>>> Stashed changes
