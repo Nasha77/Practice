@@ -1,66 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour //start funtion and calls data manager
+public class GameController : MonoBehaviour
 {
-    public DataManager dataManager; //call the data
+    public DataManager dataManager;
+    public SelectionManager selectionManager;
 
-    public SelectionManager selectionManager; // ref to selectionmanager script
-
-    // Start is called before the first frame update
-     
-    public string initCharacter; //set in inspector
+    public string initCharacter; // set in inspector
     public string initWeapon;
-   
 
     public static GameController instanceRef;
 
     void Awake()
     {
-        if(instanceRef == null)
+        if (instanceRef == null)
         {
             instanceRef = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if(instanceRef != this)
+        else if (instanceRef != this)
         {
             Destroy(gameObject);
         }
 
-
-
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
 
-        //character selection
-        Debug.Log(Game.GetCharacterList());
-
-        // shd be the default selection
-        //set player
-        //auto load funtion in if
-        if (!dataManager.LoadPlayerData()) //if its true it will ignore what is in the bracket if fails shows that there is no exsisting data
+        // Check if there is saved data and load it, or set default character and weapon
+        if (!dataManager.LoadPlayerData())
         {
-            Game.SetPlayer(new Player("1", initCharacter, initWeapon)); //will be passed into new player 
+            Game.SetPlayer(new Player("1", initCharacter, initWeapon));
         }
+
+        // Ensure the current character is set
         Game.GetPlayer().GetCurrentCharacter();
 
-        //selectionManager.InitializeMenu(Game.GetCharacterList()); //PUT IT BACK LATER
-        // save data in game?? then put it in p;layer??
-        // store in game mainplayer, then in player currentplayer
+        Debug.Log("NOW " + initCharacter);
+        Debug.Log("NOW " + initWeapon);
 
+        Debug.Log("Character count: " + Game.GetCharacterList().Count);
+        Debug.Log("Weapon count: " + Game.GetWeaponList().Count);
 
-
-        Debug.Log("NOW" + initCharacter);
-        Debug.Log("NOW" + initWeapon);
-
-        Debug.Log("Character" + Game.GetCharacterList().Count); //debugger
-        Debug.Log("Weapon" + Game.GetWeaponList().Count); //debugger
-
-
-
+        // Load the game scene if save data exists
+        LoadInitialScene();
     }
 
-  
+    void LoadInitialScene()
+    {
+        // If the player data was loaded successfully, go to the game scene
+        if (dataManager.LoadPlayerData())
+        {
+            SceneManager.LoadScene("GameScene"); // Replace "GameScene" with the actual name of your game scene
+        }
+        else
+        {
+            // If no saved data, go to character selection
+            SceneManager.LoadScene("CharacterSelectionScene"); // Replace "CharacterSelectionScene" with the actual name of your character selection scene
+        }
+    }
 }

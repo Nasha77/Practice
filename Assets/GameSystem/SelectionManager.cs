@@ -84,21 +84,21 @@ public class SelectionManager : MonoBehaviour
 
     public void PlayOption()
     {
-        
-
-        //PlayerPrefs.SetInt("charaSkin", characterIndex);
-
-        //characterText[characterIndex].characterId
+        // Set the current character ID
         Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
+        Debug.Log("Selected Character ID: " + characterText[characterIndex].characterId);
 
-        //for weapon
+        // Set the current character weapon ID
         Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
+        Debug.Log("Selected Weapon ID: " + Game.GetWeaponList()[characterIndex].weaponID);
+
+        // Save the player data
+        GameController.instanceRef.dataManager.SavePlayerData();
 
         SceneManager.LoadScene("CONVO 2");
-
-        //playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
-        //playerManager.UpdatePlayerStats();
     }
+
+
 
     public void SetSprite(string name)
     {
