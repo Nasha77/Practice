@@ -84,14 +84,14 @@ public class SpawnerManager : MonoBehaviour
             Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
 
             // for each enemy, spawn it at the location 
-            for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
-            {
+            //for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
+            //{
 
-                Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
-                //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
-                //enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
-                waveIndex++;
-            }
+            //    Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
+            //    //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
+            //    //enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
+            //    waveIndex++;
+            //}
 
 
 
@@ -137,10 +137,13 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
 
+        // if theres enemies left to spawn, continue spawning
         if (enemiesLeftToSpawn > 0)
         {
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, --enemiesLeftToSpawn));
         }
+
+        // if no more left to spawn, go next wave
         else if (enemiesLeftToSpawn == 0)
         {
             Debug.Log("increased wave index!!!!!!");

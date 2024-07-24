@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8432847543655656435}
   m_Layer: 0
   m_Name: e201
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,4 +186,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.5
-  health: 2
+  enemyId: 
+  spawnerManager: {fileID: 0}
