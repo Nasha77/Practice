@@ -18,6 +18,8 @@ public class SpawnerManager : MonoBehaviour
     // by default havent added yet
     bool enemyAddedToList = false;
 
+
+
     public Transform playerPos;
 
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
@@ -57,10 +59,14 @@ public class SpawnerManager : MonoBehaviour
 
     private void Update()
     {
-        if(enemyAddedToList == false)
+
+
+        if (enemyAddedToList == false)
         {
             return;
         }
+
+        spawnTimer -= Time.deltaTime;
 
         // will run code below if enemyaddedtolist is true
         // code below only runs when its the next wave
@@ -68,6 +74,7 @@ public class SpawnerManager : MonoBehaviour
         if (spawnTimer < 0 && currentWaveIndex == waveIndex)
         {
             
+
             // checking for matching ids
             Enemy enemyToSpawn = Game.GetEnemyByRefId(waveList[currentWaveIndex].enemyId);
 
@@ -87,7 +94,7 @@ public class SpawnerManager : MonoBehaviour
             ///
             // I DOnT THINK THIS IS USED SO CAN DELETE LATER
 
-            Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
+            //Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
 
             // for each enemy, spawn it at the location 
             //for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
@@ -103,7 +110,7 @@ public class SpawnerManager : MonoBehaviour
 
 
             // spawn the current wave's enemy and its amount one by one at the right interval
-            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount));
+            StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount-1));
             waveIndex++;
 
             Debug.Log("current wave is at" + currentWaveIndex);
@@ -123,7 +130,7 @@ public class SpawnerManager : MonoBehaviour
         // check wave list
         //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" + Game.GetWaveList().Count);
 
-        spawnTimer -= Time.deltaTime;
+       
     }
 
     // this code here might be the problem
