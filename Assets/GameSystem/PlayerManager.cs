@@ -25,6 +25,9 @@ public class PlayerManager : MonoBehaviour
     // enemy atk
     public float enemyDmg;
 
+    public string enemyId;
+
+
 
     // public SelectionManager selectionManager;
 
@@ -151,15 +154,19 @@ public class PlayerManager : MonoBehaviour
         // get total health pass into health
         playerHealth = playerHealthRef.playerHealth;
         gameObject.name = "Player" + playerHealthRef.GetId();
+      //  this.spawnerManager = sManager;
 
-        
     }
 
-    public void SetUpEnemyRef(Enemy enemyRef, SpawnerManager spManager)
-    {
-        //ref to enemy atk
-        enemyDmg = enemyRef.enemyAtk;
-    }
+    //public void SetUpEnemyRef(Enemy enemyRef, SpawnerManager sManager)
+    //{
+    //    // shd do this in enemyanager i think
+    //    //ref to enemy atk
+    //    enemyDmg = enemyRef.enemyAtk;
+    //    enemyId = enemyRef.enemyId;
+    //    gameObject.name = "Enemy" + enemyRef.enemyId;
+    //    this.spawnerManager = sManager;
+    //}
 
 
     public void MinusPlayerHealth(float dmg)
@@ -167,8 +174,11 @@ public class PlayerManager : MonoBehaviour
 
         // curHp - dmg = curHp
         playerHealth -= dmg;
+        Debug.Log("player health"+ (playerHealth -= dmg));
 
+        // dmg = 0 why???
         Debug.Log("Health minussssss " + dmg);
+
         // if enemy hp less than or equal 0
         if (playerHealth <= 0)
         {
@@ -186,16 +196,12 @@ public class PlayerManager : MonoBehaviour
         // makes sure its not other tags
         if (other.tag == "Enemy")
         {
-            //Enemy enem = other.GetComponent<Enemy>();
+            enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
 
-            Debug.Log("ENEMY TOUCHED PLAYER RUNNNNNNN");
+            Debug.Log("delete them health");
 
             
             MinusPlayerHealth(enemyDmg);
-
-
-
-
 
 
         }

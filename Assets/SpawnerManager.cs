@@ -131,8 +131,9 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.transform.position = randomPos;
 
 
-        // assign health to enemies that will be spawned
-        enemyObj.GetComponent<EnemyManager>().SetupHealth(enemyToSpawn, this);
+        // assign health and atk to enemies that will be spawned
+        enemyObj.GetComponent<EnemyManager>().SetupEnemy(enemyToSpawn, this);
+       
         // GetPlayerObj
         enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
