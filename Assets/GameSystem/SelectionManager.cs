@@ -94,7 +94,7 @@ public class SelectionManager : MonoBehaviour
         //for weapon
         Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
 
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("CONVO 2");
 
         //playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
         //playerManager.UpdatePlayerStats();

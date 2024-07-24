@@ -212,7 +212,7 @@ public class DataManager : MonoBehaviour
     public void WriteData<T>(string filePathCharacter, T data)//saveing done using write(inscae you want to write differnt type of data)
     {
         string dataStringCharacter = JsonUtility.ToJson(data);//convert T class data into Json convert to string
-        Debug.Log(dataStringCharacter);
+        Debug.Log(filePathCharacter + "/n" + dataStringCharacter);
         //replace all text in the file into this data new text
         File.WriteAllText(filePathCharacter, dataStringCharacter);
     }
