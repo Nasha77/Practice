@@ -83,6 +83,7 @@ public class SpawnerManager : MonoBehaviour
 
             Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
 
+            // for each enemy, spawn it at the location 
             for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
             {
 
@@ -95,10 +96,11 @@ public class SpawnerManager : MonoBehaviour
 
 
 
-            // spawn the current wave's enemy at the right interval
-
+            // spawn the current wave's enemy and its amount one by one at the right interval
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount));
             waveIndex++;
+
+            Debug.Log("SAA" + currentWaveIndex);
             // how to spawn wave. can do by interval, like after 30 sec spawn another wave
 
 
@@ -110,21 +112,20 @@ public class SpawnerManager : MonoBehaviour
 
             spawnTimer += spawnInterval;
 
-            // which wave it is, which enemy? 
-            // u need get enemy from wave lsit, try to fix line 22 and 30
-
+            
         }
         // check wave list
-        //Debug.Log(Game.GetWaveList().Count);
+        //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" + Game.GetWaveList().Count);
 
         spawnTimer -= Time.deltaTime;
     }
 
     private IEnumerator SpawnEnemyInterval(Enemy enemyToSpawn, int enemiesLeftToSpawn)
     {
-        Debug.Log("SPAWNING");
+        Debug.Log("SPAWN OF EVIL");
         Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
 
+        // spawn the desired enemy at a position 
         GameObject enemyObj = GetEnemyPrefab(enemyToSpawn.enemyId);
         enemyObj.name = enemyToSpawn.enemyId;
         enemyObj.transform.position = randomPos;
@@ -142,6 +143,7 @@ public class SpawnerManager : MonoBehaviour
         }
         else if (enemiesLeftToSpawn == 0)
         {
+            Debug.Log("increased wave index!!!!!!");
             currentWaveIndex++;
         }
     }
@@ -181,7 +183,7 @@ public class SpawnerManager : MonoBehaviour
     public void ReturnEnemyPrefab(GameObject enemyObj)
     {
         // checking if pool exists
-        // check if key doesnt exists, then add pool in
+        // check if key doesnt exist, then add pool in
         if (!ePrefabPool.ContainsKey(enemyObj.name))
         {
             // add in the new empty pool
