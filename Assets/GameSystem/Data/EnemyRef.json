@@ -13,7 +13,7 @@
     "enemyName": "Fan Boys",
     "enemyHealth": 80,
     "enemyAtk": 5,
-    "enemySpeed": 14,
+    "enemySpeed": 50,
     "enemyEXP": 15
   },
   {

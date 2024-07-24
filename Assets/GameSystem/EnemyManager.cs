@@ -54,7 +54,7 @@ public class EnemyManager : MonoBehaviour
         {
             // set health to 0 and destroy gameobj
             curHp = 0;
-            Debug.Log("BBBBBBBBBBBBBB" );
+            Debug.Log("destroy enemy" );
             spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
     }

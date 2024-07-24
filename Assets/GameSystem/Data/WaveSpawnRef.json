@@ -4,14 +4,14 @@
       "waveId": "101enem1y101",
       "waveName": "FirstWave",
       "enemyId": "e101",
-      "enemyCount": 8,
+      "enemyCount": 4,
       "totalHP": 120
     },
     {
       "waveId": "201enemy201",
       "waveName": "SecondWave",
       "enemyId": "e201",
-      "enemyCount": 10,
+      "enemyCount": 5,
       "totalHP": 200
     },
     {
