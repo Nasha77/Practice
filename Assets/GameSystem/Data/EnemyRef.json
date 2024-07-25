@@ -5,7 +5,7 @@
     "enemyName": "Fan Girls",
     "enemyHealth": 45,
     "enemyAtk": 10,
-    "enemySpeed": 10,
+    "enemySpeed": 2,
     "enemyEXP": 8
   },
   {
@@ -13,7 +13,7 @@
     "enemyName": "Fan Boys",
     "enemyHealth": 80,
     "enemyAtk": 5,
-    "enemySpeed": 50,
+    "enemySpeed": 3,
     "enemyEXP": 15
   },
   {
@@ -21,7 +21,7 @@
     "enemyName": "Fanclub President",
     "enemyHealth": 1500,
     "enemyAtk": 30,
-    "enemySpeed": 10,
+    "enemySpeed": 1,
     "enemyEXP": 50
   }
 ]

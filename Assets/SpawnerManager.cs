@@ -18,7 +18,7 @@ public class SpawnerManager : MonoBehaviour
     // by default havent added yet
     bool enemyAddedToList = false;
 
-
+    public PlayerManager playerManager;
 
     public Transform playerPos;
 
@@ -149,10 +149,10 @@ public class SpawnerManager : MonoBehaviour
 
 
         // assign health and atk to enemies that will be spawned
-        enemyObj.GetComponent<EnemyManager>().SetupEnemy(enemyToSpawn, this);
+        enemyObj.GetComponent<EnemyManager>().SetupEnemy(enemyToSpawn, this, FindObjectOfType<PlayerManager>().gameObject);
        
         // GetPlayerObj
-        enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
+        //enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
         yield return new WaitForSeconds(5);
 
 

@@ -193,12 +193,12 @@ public class PlayerManager : MonoBehaviour
         // if enemy collides with player, deduct health
         private void OnTriggerEnter2D(Collider2D other)
     {
-        // makes sure its not other tags
+        // check if its enemy tag
         if (other.tag == "Enemy")
         {
             enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
 
-            Debug.Log("delete them health");
+            Debug.Log("player touched enemy");
 
             
             MinusPlayerHealth(enemyDmg);

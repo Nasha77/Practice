@@ -140,7 +140,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428724867564655853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5bf947629cfb14478adfe01d4e58d61, type: 3}
   m_Name: 
@@ -186,5 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.5
+  enemyDmg: 0
+  enemySpd: 0
   enemyId: 
   spawnerManager: {fileID: 0}

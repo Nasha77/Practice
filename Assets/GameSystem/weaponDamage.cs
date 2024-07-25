@@ -53,7 +53,7 @@ public class weaponDamage : MonoBehaviour
         {
             //Enemy enem = other.GetComponent<Enemy>();
 
-            Debug.Log("TOUCHYTOUCHY");
+            Debug.Log("weapon hit ");
             // check if the enemy is an enemy from the id
             //why is this null??
             //EnemyManager enemy = GetComponent<EnemyManager>();

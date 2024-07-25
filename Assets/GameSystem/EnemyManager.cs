@@ -21,7 +21,14 @@ public class EnemyManager : MonoBehaviour
 
     public SpawnerManager spawnerManager;
 
+   
+
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
+
+    private GameObject player;
+
+    private float dist;
+
 
     // setting current health of enemy using 
 
@@ -30,11 +37,32 @@ public class EnemyManager : MonoBehaviour
     {
 
         // put enemy atk as dmg
-       // Enemy dmg = Game.GetEnemyByRefId(waveList[spawnerManager.waveIndex].enemyId);
+        // Enemy dmg = Game.GetEnemyByRefId(waveList[spawnerManager.waveIndex].enemyId);
+
+       
+       
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (player == null)
+        {
+            return;
+            
+        }
+
+        dist = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 dir = player.transform.position - transform.position;
+
+        // enemy move towards the player
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpd * Time.deltaTime);
+    }
+
+
     // getting input from the func,, set up health and atk
-    public void SetupEnemy(Enemy enemyRef, SpawnerManager spManager)
+    public void SetupEnemy(Enemy enemyRef, SpawnerManager spManager, GameObject player)
     {
         // get total health of an enemy in ENEMY and pass into curHp
         curHp = enemyRef.enemyHealth;
@@ -43,9 +71,10 @@ public class EnemyManager : MonoBehaviour
         enemyId = enemyRef.enemyId;
         gameObject.name = "Enemy" + enemyRef.enemyId;
         this.spawnerManager = spManager;
-        
 
-        
+        this.player = player;
+
+
     }
    
 
@@ -54,7 +83,7 @@ public class EnemyManager : MonoBehaviour
         // curHp - dmg = curHp
         curHp -= dmg;
 
-        Debug.Log("Health minussssss " + dmg);
+        Debug.Log("enemy healh deduct " + dmg);
         // if enemy hp less than or equal 0
         if(curHp <= 0)
         {
