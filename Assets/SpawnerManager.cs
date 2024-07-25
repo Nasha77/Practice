@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     //set timer to spawn enemies
     public float spawnTimer = 0;
     // set the interval for enemies to spawn
-    public float spawnInterval = 2;
+    public float spawnInterval = 1;
     // a way to ref which wave its now
     public int waveIndex = 0;
     // current wave
@@ -140,7 +140,7 @@ public class SpawnerManager : MonoBehaviour
        
 
        
-        Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
+        Vector2 randomPos = new Vector2(Random.Range(-11.50f, 11.50f), Random.Range(-11.70f, 11.18f));
 
         // spawn the desired enemy at a position 
         GameObject enemyObj = GetEnemyPrefab(enemyToSpawn.enemyId);
