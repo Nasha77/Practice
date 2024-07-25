@@ -5,7 +5,7 @@ using UnityEngine;
 public class DynamicData
 {
     //stores 3 variables
-    //these vaules are from player class and will be stored in savePlayerData and writen into json
+    //these vaules are from player class and will be stored in dynamicData and writen into json
     public string id;
     public string currentCharacter;
     public string currentCharacterWeapon;

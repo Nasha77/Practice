@@ -34,6 +34,11 @@ public class Player
         return id;
     }
 
+    public void SetCurrentId(string idstring)
+    {
+        id = idstring;
+        
+    }
     public string GetCurrentCharacter() // get function
     {
         return currentCharacter;
