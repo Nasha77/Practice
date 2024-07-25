@@ -167,6 +167,7 @@ public class DataManager : MonoBehaviour
         DynamicData dynamicData = new DynamicData();
         dynamicData.id = player.GetId();
         dynamicData.currentCharacter = player.GetCurrentCharacter();
+        dynamicData.currentCharacterWeapon = player.GetCurrentCharacterWeapon();
 
         return dynamicData;
     }
@@ -219,6 +220,23 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePathCharacter, dataStringCharacter);
     }
 
+    // Method to delete the save file
+    public void DeleteSaveData()
+    {
+        string filePath = Application.persistentDataPath;
+        string fileName = "SaveData.txt";
+        string fullPath = Path.Combine(filePath, fileName);
+
+        if (File.Exists(fullPath))
+        {
+            File.Delete(fullPath);
+            Debug.Log("Save file deleted successfully.");
+        }
+        else
+        {
+            Debug.LogWarning("Save file does not exist.");
+        }
+    }
 
 }
 
