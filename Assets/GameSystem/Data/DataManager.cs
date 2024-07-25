@@ -19,7 +19,7 @@ public class DataManager : MonoBehaviour
         //for CHARCTERS
 
         string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/CharacterRef.json"); //where to get files from
-        
+
         CharcterDataList characterData = ReadData<CharcterDataList>(filePathCharacter);
 
         List<Character> characterList = new List<Character>();
@@ -125,7 +125,7 @@ public class DataManager : MonoBehaviour
         Game.SetWaveList(waveList);
 
         //for DIALOGUE
-        
+
         string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/DialogueRef.json");
         string dataStringDialogue = File.ReadAllText(filePathDialogue);
         DialogueRef.DialogueDataList dialogueData = JsonUtility.FromJson<DialogueRef.DialogueDataList>(dataStringDialogue);
@@ -175,14 +175,16 @@ public class DataManager : MonoBehaviour
     public bool LoadPlayerData()
     {
         //funtion
-        string filePathCharacter = Path.Combine(Application.persistentDataPath, "/SaveData.json"); //where to get files from
+        string filePathCharacter = Application.persistentDataPath; //where to get files from
+        string fileName = "SaveData.txt";
+        Debug.Log("LOADDATAAAAAAAAAAAA" + Path.Combine(filePathCharacter, fileName));
 
-        if (File.Exists(filePathCharacter)) //when player enter the game this data file might not exsist so we have to check it
+
+        if (File.Exists(Path.Combine(filePathCharacter, fileName))) //when player enter the game this data file might not exsist so we have to check it
         {
-            DynamicData dynamicData = ReadData<DynamicData>(filePathCharacter);//get danaymic data from json
+            DynamicData dynamicData = ReadData<DynamicData>(Path.Combine(filePathCharacter, fileName));//get danaymic data from json
 
             Game.SetPlayer(LoadSaveData(dynamicData)); //set it as the main player if there is a exsistinf file
-
             return true; //exist
         }
 
@@ -217,6 +219,6 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePathCharacter, dataStringCharacter);
     }
 
-    
+
 }
 
