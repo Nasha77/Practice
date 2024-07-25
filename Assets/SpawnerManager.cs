@@ -41,9 +41,16 @@ public class SpawnerManager : MonoBehaviour
         //List<GameObject> enemyObjs = new List<GameObject>();
 
         // adding the prefab into the list you created above
-        ePrefab.Add("e101", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e101.prefab"));
-        ePrefab.Add("e201", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e201.prefab"));
-        ePrefab.Add("e301", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e301.prefab"));
+        //ePrefab.Add("e101", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e101.prefab"));
+        //ePrefab.Add("e201", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e201.prefab"));
+        //ePrefab.Add("e301", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e301.prefab"));
+
+        ePrefab.Add("e101", Resources.Load<GameObject>("Prefab/FanEnemies/e101"));
+        ePrefab.Add("e201", Resources.Load<GameObject>("Prefab/FanEnemies/e201"));
+        ePrefab.Add("e301", Resources.Load<GameObject>("Prefab/FanEnemies/e301"));
+
+
+
 
         //// putting a prefab into the list
         //ePrefabPool["e101"] = enemyObjs;
@@ -77,6 +84,7 @@ public class SpawnerManager : MonoBehaviour
 
             // checking for matching ids
             Enemy enemyToSpawn = Game.GetEnemyByRefId(waveList[currentWaveIndex].enemyId);
+            Debug.Log($"Selected {enemyToSpawn.enemyName}");
 
             Debug.Log("NEXT WAVE------------------");
 
@@ -107,7 +115,7 @@ public class SpawnerManager : MonoBehaviour
             //}
 
 
-
+            Debug.Log(waveList[currentWaveIndex].enemyCount - 1);
 
             // spawn the current wave's enemy and its amount one by one at the right interval
             // -1 the count cuz at the start it alr spawn one time. so if u -1, it will spawn the right amount

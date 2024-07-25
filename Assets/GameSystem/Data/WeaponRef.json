@@ -5,14 +5,16 @@
     "characterId": "chara1",
     "weaponName": "Guitar Love",
     "weaponATK": 10,
-    "description": "Ideal for those who fight with rhythm and flair."
+    "description": "Ideal for those who fight with rhythm and flair.",
+    "weaponSprite": "weapon1"
   },
   {
     "weaponID": "weapon2",
     "characterId": "chara2",
     "weaponName": "Bat Muscle",
     "weaponATK": 20,
-    "description": "A sturdy bat infused with the power of raw strength."
+    "description": "A sturdy bat infused with the power of raw strength.",
+    "weaponSprite": "weapon2"
   }
 ]
 }

@@ -27,21 +27,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 64b21a7527e1f594c8acf242b2681b9a
-    m_Address: Assets/Prefab/FanEnemies/e101.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ca1564172bfc4524b89c7776db0a3d0b
-    m_Address: Assets/Prefab/FanEnemies/e201.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ddb3c572d05f06e4ebdf0bec7289c63c
-    m_Address: Assets/Prefab/FanEnemies/e301.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b474472e43405c84aad4e840e841db78
     m_Address: CharacterSprite/cara.png
     m_ReadOnly: 0

@@ -12,7 +12,7 @@ public class Weapon
 
     public string weaponSprite { get; }
 
-    public Weapon(string weaponID, string characterId, string weaponName, int weaponATK, string description)
+    public Weapon(string weaponID, string characterId, string weaponName, int weaponATK, string description, string weaponSprite)
     {
         this.weaponID = weaponID;
         this.characterId = characterId;

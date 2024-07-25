@@ -908,6 +908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa98020cb662f4ba3878970a1c2d5f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnerManager: {fileID: 0}
+  enemyDmg: 0
+  enemyId: 
   rb: {fileID: 687033558}
 --- !u!50 &687033558
 Rigidbody2D:
@@ -1614,7 +1617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1079562380
 MonoBehaviour:
   m_ObjectHideFlags: 0

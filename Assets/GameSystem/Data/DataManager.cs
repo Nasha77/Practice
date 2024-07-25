@@ -57,8 +57,8 @@ public class DataManager : MonoBehaviour
                 weaponRef.characterId,
                 weaponRef.weaponName,
                 weaponRef.weaponATK,
-                weaponRef.description
-
+                weaponRef.description,
+                weaponRef.weaponSprite
             );
             weaponList.Add(weapon);
             Debug.Log("ADD charcter " + weapon.weaponName + " atk " + weapon.weaponATK); //debugger
