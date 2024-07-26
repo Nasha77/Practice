@@ -126,7 +126,8 @@ public class PlayerManager : MonoBehaviour
         SetSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
-        // bruh this shit is nulllllllll BRURHUHHU
+       
+        // not null anymore, log shows "weapon2" but dk why 
         Debug.LogWarning(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
