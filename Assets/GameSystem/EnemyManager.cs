@@ -21,6 +21,8 @@ public class EnemyManager : MonoBehaviour
 
     public SpawnerManager spawnerManager;
 
+    public QuestManager questManager;
+
    
 
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
@@ -60,6 +62,13 @@ public class EnemyManager : MonoBehaviour
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpd * Time.deltaTime);
     }
 
+    // check if enemy died for the quest
+    public void Died()
+    {
+        // Call the OnEnemyKilled method on the QuestManager script
+        questManager.OnEnemyKilled();
+    }
+
 
     // getting input from the func,, set up health and atk
     public void SetupEnemy(Enemy enemyRef, SpawnerManager spManager, GameObject player)
@@ -90,6 +99,10 @@ public class EnemyManager : MonoBehaviour
             // set health to 0 and destroy gameobj
             curHp = 0;
             Debug.Log("destroy enemy" );
+
+            // once enemy dies, call the func for quest
+            Died();
+
             spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
     }
