@@ -16,6 +16,7 @@ public class Game
     private static List<WaveSpawnerRef> waveList;
     private static List<Sprite> spriteList;
     private static List<DialogueRef> dialogueList;
+    private static List<Quest> questList;
 
     //GETSETPLAYER
     public static Player GetPlayer() //get and set player
@@ -136,6 +137,22 @@ public class Game
     {
         return dialogueList.Find(x => x.cutSceneSetID == id);
     }
+
+    public static List<Quest> GetQuestList() //get and set list for quest
+    {
+        return questList;
+    }
+
+    public static Quest GetQuestRefById(string id)
+    {
+        return questList.Find(x => x.questId == id);
+    }
+
+    public static void SetQuestList(List<Quest> aList) // Get and set list for quest
+    {
+        questList = aList;
+    }
+
 
 
     void Start()
