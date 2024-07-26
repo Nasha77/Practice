@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable] //show in inspector
 
-public class Quest //stores feilds that match the the excel/json file
+public class QuestRef //stores feilds that match the the excel/json file
 {
     public string questId;
     public string questName;
@@ -14,6 +14,6 @@ public class Quest //stores feilds that match the the excel/json file
 
     public class QuestDataList
     {
-        public List<Quest> quest;
+        public List<QuestRef> questRef;
     }
 }
