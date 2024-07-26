@@ -35,6 +35,8 @@ public class QuestManager : MonoBehaviour
         {
             // Reward the player
             Debug.Log("Quest complete! Reward: " + currentQuest.questReward);
+
+            rewardText.enabled = true; // Enable the reward text
             // Display the reward text
             rewardText.text = "Reward: " + currentQuest.questReward;
             // Add the reward to the player's inventory
