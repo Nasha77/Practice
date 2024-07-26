@@ -47,7 +47,7 @@ public class SelectionManager : MonoBehaviour
     private void UpdateMenuText()
     {
 
-        Debug.Log(characterText[characterIndex].characterName);
+        //Debug.Log(characterText[characterIndex].characterName);
         // get data from excel
         characterName.text = characterText[characterIndex].characterName;
         
@@ -93,7 +93,7 @@ public class SelectionManager : MonoBehaviour
         Debug.Log("Selected Weapon ID: " + Game.GetWeaponList()[characterIndex].weaponID);
 
         // Save the player data
-        GameController.instanceRef.dataManager.SavePlayerData();
+        //GameController.instanceRef.dataManager.SavePlayerData();
 
         SceneManager.LoadScene("CONVO 2");
     }

@@ -17,7 +17,7 @@ public class DataManager : MonoBehaviour
     {
         //for CHARCTERS
 
-        string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/CharacterRef.json"); //where to get files from
+        string filePathCharacter = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "GameSystem/Data/CharacterRef.json"); //where to get files from
 
         CharcterDataList characterData = ReadData<CharcterDataList>(filePathCharacter);
 
@@ -43,7 +43,7 @@ public class DataManager : MonoBehaviour
 
         //for WEAPON
 
-        string filePathWeapon = Path.Combine(Application.dataPath, "GameSystem/Data/WeaponRef.json"); // Where to get files from
+        string filePathWeapon = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "GameSystem/Data/WeaponRef.json"); // Where to get files from
         string dataStringWeapon = File.ReadAllText(filePathWeapon); // Read the path and save it in the data string
 
         WeaponDataList weaponData = JsonUtility.FromJson<WeaponDataList>(dataStringWeapon); // Converts data string JSON into WeaponDataList script data
@@ -61,7 +61,7 @@ public class DataManager : MonoBehaviour
                 weaponRef.weaponSprite
             );
             weaponList.Add(weapon);
-            Debug.Log("ADD charcter " + weapon.weaponName + " atk " + weapon.weaponATK); //debugger
+            //Debug.Log("ADD charcter " + weapon.weaponName + " atk " + weapon.weaponATK); //debugger
 
 
         }
@@ -70,7 +70,7 @@ public class DataManager : MonoBehaviour
 
         //for ENEMY
 
-        string filePathEnemy = Path.Combine(Application.dataPath, "GameSystem/Data/EnemyRef.json");
+        string filePathEnemy = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "GameSystem/Data/EnemyRef.json");
         string dataStringEnemy = File.ReadAllText(filePathEnemy);
 
         // Parse JSON data into EnemyDataList
@@ -98,7 +98,7 @@ public class DataManager : MonoBehaviour
         //for WAVE
 
 
-        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/WaveSpawnRef.json");
+        string filePathWave = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "GameSystem/Data/WaveSpawnRef.json");
         string dataStringWave = File.ReadAllText(filePathWave);
 
         // Parse JSON data into WaveDataList
@@ -117,7 +117,7 @@ public class DataManager : MonoBehaviour
                 totalHP = waveRef.totalHP
             };
             waveList.Add(wave);
-            Debug.Log("Added wave " + wave.waveName + " with enemy count " + wave.enemyCount); // Example debug log
+            //Debug.Log("Added wave " + wave.waveName + " with enemy count " + wave.enemyCount); // Example debug log
 
 
         }
@@ -125,7 +125,7 @@ public class DataManager : MonoBehaviour
 
         //for DIALOGUE
 
-        string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/DialogueRef.json");
+        string filePathDialogue = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "GameSystem/Data/DialogueRef.json");
         string dataStringDialogue = File.ReadAllText(filePathDialogue);
         DialogueRef.DialogueDataList dialogueData = JsonUtility.FromJson<DialogueRef.DialogueDataList>(dataStringDialogue);
         List<DialogueRef> dialogueList = new List<DialogueRef>();
@@ -141,7 +141,7 @@ public class DataManager : MonoBehaviour
                 rightSpeaker = dialogueRef.rightSpeaker,
                 dialogue = dialogueRef.dialogue,
             };
-            Debug.LogWarning(thisLine.dialogue);
+            //Debug.Log(thisLine.dialogue);
             dialogueList.Add(thisLine);
         }
         Game.SetDialogueList(dialogueList); // Set dialogue list 
@@ -154,7 +154,7 @@ public class DataManager : MonoBehaviour
     //saving
     public void SavePlayerData()
     {
-        string filePath = Application.persistentDataPath; //where to save the data persisitant datapath will not work at datapath
+        string filePath = System.IO.Directory.GetCurrentDirectory(); //where to save the data persisitant datapath will not work at datapath
         string fileName = "SaveData.txt"; //create a file 
 
         DynamicData dynamicData = MakeSaveData(Game.GetPlayer());
@@ -175,7 +175,7 @@ public class DataManager : MonoBehaviour
     public bool LoadPlayerData()
     {
         //funtion
-        string filePathCharacter = Application.persistentDataPath; //where to get files from
+        string filePathCharacter = System.IO.Directory.GetCurrentDirectory(); //where to get files from
         string fileName = "SaveData.txt";
         Debug.Log("LOADDATAAAAAAAAAAAA" + Path.Combine(filePathCharacter, fileName));
 
@@ -222,7 +222,7 @@ public class DataManager : MonoBehaviour
     // Method to delete the save file
     public void DeleteSaveData()
     {
-        string filePath = Application.persistentDataPath;
+        string filePath = System.IO.Directory.GetCurrentDirectory();
         string fileName = "SaveData.txt";
         string fullPath = Path.Combine(filePath, fileName);
 

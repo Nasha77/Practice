@@ -128,7 +128,7 @@ public class PlayerManager : MonoBehaviour
 
        
         // not null anymore, log shows "weapon2" but dk why 
-        Debug.LogWarning(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
+        Debug.Log(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
     }

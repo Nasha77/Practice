@@ -66,7 +66,7 @@ public class DialogueManager2 : MonoBehaviour
     // Method to start the dialogue sequence
     public void StartDialogue(List<DialogueRef> dialogueRefs)
     {
-        Debug.Log("DialogueManager starting dialogue sequence...");
+        Debug.Log("DialogueManager starting dialogue sequence... count of dialogueRefs: "+dialogueRefs.Count);
 
         // Reinitialize the dialogue queue to ensure it's empty
         dialogues = new Queue<DialogueRef>();
@@ -87,11 +87,14 @@ public class DialogueManager2 : MonoBehaviour
                 Debug.LogError("One of the dialogueRefs is null!");
                 continue;
             }
+
+
+
             dialogues.Enqueue(dialogue);
         }
 
         // Log the number of dialogues that have been enqueued
-        Debug.Log("Starting Dialogue with " + dialogues.Count + " entries");
+        //Debug.Log("Starting Dialogue with " + dialogues.Count + " entries");
 
         // Display the first dialogue in the queue
         DisplayNextDialogue();
@@ -111,12 +114,12 @@ public class DialogueManager2 : MonoBehaviour
 
         // Dequeue the next dialogue from the queue
         DialogueRef currentDialogue = dialogues.Dequeue();
-        Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
+        //Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
 
         // Check if UI elements are assigned and log an error if any are missing
         if (dialogueText == null || leftSpeakerNameText == null || rightSpeakerNameText == null || currentSpeakerText == null)
         {
-            Debug.LogError("UI elements are not assigned in the Inspector!");
+            //Debug.LogError("UI elements are not assigned in the Inspector!");
             return;
         }
 
@@ -157,7 +160,7 @@ public class DialogueManager2 : MonoBehaviour
     // Method to handle the end of the dialogue sequence
     void EndDialogue()
     {
-        Debug.Log("End of Dialogue");
+       // Debug.Log("End of Dialogue");
 
         // Clear the dialogue and speaker name texts in the UI
         dialogueText.text = "";

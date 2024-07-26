@@ -62,12 +62,12 @@ public class EnemyManager : MonoBehaviour
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpd * Time.deltaTime);
     }
 
-    // check if enemy died for the quest
-    public void Died()
-    {
-        // Call the OnEnemyKilled method on the QuestManager script
-        questManager.OnEnemyKilled();
-    }
+    //// check if enemy died for the quest
+    //public void Died()
+    //{
+    //    // Call the OnEnemyKilled method on the QuestManager script
+    //    questManager.OnEnemyKilled();
+    //}
 
 
     // getting input from the func,, set up health and atk
@@ -101,7 +101,7 @@ public class EnemyManager : MonoBehaviour
             Debug.Log("destroy enemy" );
 
             // once enemy dies, call the func for quest
-            Died();
+            //Died();
 
             spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
