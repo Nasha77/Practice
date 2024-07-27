@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
             Game.SetPlayer(new Player("1", initCharacter, initWeapon));
             Game.GetPlayer().GetCurrentCharacter();
 
-            
+
         }
 
         Debug.Log("NOW " + initCharacter);
@@ -52,6 +52,3 @@ public class GameController : MonoBehaviour
         Debug.Log("Weapon " + Game.GetWeaponList().Count);
     }
 }
-
-
-
