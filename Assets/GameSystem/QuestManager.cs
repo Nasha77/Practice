@@ -18,7 +18,7 @@ public class QuestManager : MonoBehaviour
         currentQuest = Game.GetQuestRefById("Q101"); // Get the quest with ID "Q101"
 
         // Display the quest description
-        Debug.Log("Quest: " + currentQuest?.questName);
+        Debug.Log("Reward: " + currentQuest?.questReward);
         Debug.Log("Description: " + currentQuest?.questDescription);
 
         // Set the reward text to display the quest description
