@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; // Add this to handle scene management
 
 public class GameController : MonoBehaviour
 {
-    public DataManager dataManager;
-    public SelectionManager selectionManager;
+    public DataManager dataManager; // Call the data
+    public SelectionManager selectionManager; // Reference to SelectionManager script
 
-    public string initCharacter; // set in inspector
+    public string initCharacter; // Set in inspector
     public string initWeapon;
 
     public static GameController instanceRef;
@@ -28,36 +29,30 @@ public class GameController : MonoBehaviour
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
 
-        // Check if there is saved data and load it, or set default character and weapon
-        if (!dataManager.LoadPlayerData())
-        {
-            Game.SetPlayer(new Player("1", initCharacter, initWeapon));
-        }
+        Debug.Log(Game.GetCharacterList());
 
-        // Ensure the current character is set
-        Game.GetPlayer().GetCurrentCharacter();
-
-        Debug.Log("NOW " + initCharacter);
-        Debug.Log("NOW " + initWeapon);
-
-        Debug.Log("Character count: " + Game.GetCharacterList().Count);
-        Debug.Log("Weapon count: " + Game.GetWeaponList().Count);
-
-        // Load the game scene if save data exists
-        LoadInitialScene();
-    }
-
-    void LoadInitialScene()
-    {
-        // If the player data was loaded successfully, go to the game scene
+        // Check if save data exists
         if (dataManager.LoadPlayerData())
         {
-            SceneManager.LoadScene("GameScene"); // Replace "GameScene" with the actual name of your game scene
+            // If save data exists, navigate to the appropriate scene
+            Debug.Log("Save data found, loading gamescene scene.");
+            SceneManager.LoadScene("GameScene");
         }
         else
         {
-            // If no saved data, go to character selection
-            SceneManager.LoadScene("CONVO 1"); // Replace "CharacterSelectionScene" with the actual name of your character selection scene
+            // If no save data exists, initialize new player and go to character selection
+            Game.SetPlayer(new Player("1", initCharacter, initWeapon));
+            Game.GetPlayer().GetCurrentCharacter();
+
+            // Initialize the character selection menu if needed
+            selectionManager.InitializeMenu();
+            Debug.Log("No save data found, going to character selection.");
         }
+
+        Debug.Log("NOW " + initCharacter);
+        Debug.Log("NOW " + initWeapon);
+        Debug.Log("Character " + Game.GetCharacterList().Count);
+        Debug.Log("Weapon " + Game.GetWeaponList().Count);
     }
 }
+
