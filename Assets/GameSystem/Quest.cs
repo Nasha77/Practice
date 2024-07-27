@@ -5,10 +5,10 @@ using UnityEngine;
 public class Quest
 {
 
-    public string questId { get; }
-    public string questName { get; }
-    public string questDescription { get; }
-    public string questReward { get; }
+    public string questId { get; set; }
+    public string questName { get; set; }
+    public string questDescription { get; set; }
+    public string questReward { get; set; }
 
 
 

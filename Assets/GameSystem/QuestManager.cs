@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using TMPro;
 
+
 public class QuestManager : MonoBehaviour
 {
     public TextMeshProUGUI rewardText; // Store the reward text component
@@ -15,20 +16,14 @@ public class QuestManager : MonoBehaviour
     void Start()
     {
         // Load the quest data from the Game class
-        currentQuest = Game.GetQuestRefById("Q101"); // Get the quest with ID "Q101"
+        List<Quest> questList = Game.GetQuestList();
+
+        // Create a Quest object from the first QuestRef in the list
+        currentQuest = questList[0];
 
         // Display the quest description
-        Debug.Log("Quest: " + currentQuest?.questName);
-        Debug.Log("Description: " + currentQuest?.questDescription);
-
-        // Set the reward text to display the quest description
-        rewardText.text = "Quest: " + currentQuest?.questDescription;
-        rewardText.enabled = true; // Enable the reward text
-
-        if (currentQuest == null)
-        {
-            Debug.LogError("Quest with ID 'Q101' not found!");
-        }
+        Debug.Log("Quest: " + currentQuest.questName);
+        Debug.Log("Description: " + currentQuest.questDescription);
     }
 
     public void OnEnemyKilled()
@@ -39,10 +34,17 @@ public class QuestManager : MonoBehaviour
         if (enemyKillCount >= 1)
         {
             // Reward the player
-            Debug.Log("Quest complete! Reward: " + currentQuest?.questReward);
+            Debug.Log("Quest complete! Reward: " + currentQuest.questReward);
 
-            // Set the reward text to display the quest reward
-            rewardText.text = "Reward: " + currentQuest?.questReward;
+            rewardText.enabled = true; // Enable the reward text
+            // Display the reward text
+            rewardText.text = "Reward: " + currentQuest.questReward;
+            // Add the reward to the player's inventory
+            //...
+
+            // Reset the quest
+            currentQuest = null;
+            enemyKillCount = 0;
         }
     }
 }
