@@ -19,10 +19,13 @@ public class DataManager : MonoBehaviour
 
 
 
-        string filePathCharacter = Path.Combine(Application.dataPath, "GameSystem/Data/CharacterRef.json"); //where to get files from
+        string filePathCharacter = Path.Combine(Application.streamingAssetsPath + "/CharacterRef.json"); //where to get files from
+
+
+        Debug.Log(filePathCharacter);
 
         string dataStringCharacter = File.ReadAllText(filePathCharacter); // Read the path and save it in the data string
-
+        Debug.Log(dataStringCharacter);
         CharcterDataList characterData = JsonUtility.FromJson<CharcterDataList>(dataStringCharacter);
 
        
@@ -49,9 +52,9 @@ public class DataManager : MonoBehaviour
 
         //for WEAPON
 
-        string filePathWeapon = Path.Combine(Application.dataPath, "GameSystem/Data/WeaponRef.json"); // Where to get files from
+        string filePathWeapon = Path.Combine(Application.streamingAssetsPath + "/WeaponRef.json"); // Where to get files from
 
-
+        
 
         string dataStringWeapon = File.ReadAllText(filePathWeapon); // Read the path and save it in the data string
 
@@ -81,9 +84,10 @@ public class DataManager : MonoBehaviour
 
         //for ENEMY
 
-        string filePathEnemy = Path.Combine(Application.dataPath, "GameSystem/Data/EnemyRef.json");
+        string filePathEnemy = Path.Combine(Application.streamingAssetsPath + "/EnemyRef.json");
 
        
+
 
         string dataStringEnemy = File.ReadAllText(filePathEnemy);
  
@@ -112,9 +116,9 @@ public class DataManager : MonoBehaviour
         //for WAVE
 
 
-        string filePathWave = Path.Combine(Application.dataPath, "GameSystem/Data/WaveSpawnRef.json");
+        string filePathWave = Path.Combine(Application.streamingAssetsPath + "/WaveSpawnRef.json");
 
-      
+
 
         string dataStringWave = File.ReadAllText(filePathWave);
 
@@ -145,7 +149,9 @@ public class DataManager : MonoBehaviour
 
         //for DIALOGUE
 
-        string filePathDialogue = Path.Combine(Application.dataPath, "GameSystem/Data/DialogueRef.json");
+        string filePathDialogue = Path.Combine(Application.streamingAssetsPath + "/DialogueRef.json");
+
+
         string dataStringDialogue = File.ReadAllText(filePathDialogue);
         DialogueRef.DialogueDataList dialogueData = JsonUtility.FromJson<DialogueRef.DialogueDataList>(dataStringDialogue);
         List<DialogueRef> dialogueList = new List<DialogueRef>();
