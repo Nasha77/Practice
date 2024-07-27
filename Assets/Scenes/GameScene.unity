@@ -9612,7 +9612,8 @@ MonoBehaviour:
   spawnInterval: 5
   waveIndex: 0
   currentWaveIndex: 0
-  playerManager: {fileID: 0}
+  playerManager: {fileID: 380368650}
+  questManager: {fileID: 628529808}
   playerPos: {fileID: 0}
 --- !u!1 &1942292354
 GameObject:

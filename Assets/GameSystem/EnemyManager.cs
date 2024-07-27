@@ -101,20 +101,14 @@ public class EnemyManager : MonoBehaviour
             Debug.Log("destroy enemy" );
 
             // once enemy dies, call the func for quest
-            //Died();
+            // calls func in quest to increase enemy kill count
 
+            spawnerManager.questManager.OnEnemyKilled();
             spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
     }
 
 
-    // once health is less than or equal 0, destroy enemy gameobj
-    public void Defeated()
-    {
-       
-        //spawnerManager.ReturnEnemyPrefab();
-      
-    }
 
     //set a function to deplete health in enemy and player each, then call it in respective scripts attached to each after checking for tag
    

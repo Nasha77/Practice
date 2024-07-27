@@ -20,6 +20,10 @@ public class SpawnerManager : MonoBehaviour
 
     public PlayerManager playerManager;
 
+    public QuestManager questManager;
+
+    public static QuestManager instance;
+
     public Transform playerPos;
 
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
@@ -120,6 +124,9 @@ public class SpawnerManager : MonoBehaviour
             // spawn the current wave's enemy and its amount one by one at the right interval
             // -1 the count cuz at the start it alr spawn one time. so if u -1, it will spawn the right amount
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount-1));
+
+            
+
             waveIndex++;
 
             Debug.Log("current wave is at" + currentWaveIndex);
@@ -195,6 +202,7 @@ public class SpawnerManager : MonoBehaviour
             ePrefabPool[enemyId].Remove(enemyObj);
 
             // set gameObj to be active 
+            questManager.OnEnemyKilled();
             enemyObj.SetActive(true);
         }
 
@@ -228,6 +236,8 @@ public class SpawnerManager : MonoBehaviour
         ePrefabPool[enemyObj.name].Add(enemyObj);
         enemyObj.SetActive(false);
     }
+
+
 
 
 
