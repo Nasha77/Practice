@@ -84,6 +84,7 @@ public class SelectionManager : MonoBehaviour
 
     public void PlayOption()
     {
+        
         // Set the current character ID
         Game.GetPlayer().SetCurrentCharacter(characterText[characterIndex].characterId);
         Debug.Log("Selected Character ID: " + characterText[characterIndex].characterId);
@@ -91,6 +92,10 @@ public class SelectionManager : MonoBehaviour
         // Set the current character weapon ID
         Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
         Debug.Log("Selected Weapon ID: " + Game.GetWeaponList()[characterIndex].weaponID);
+
+        int selectedCharacterId = characterIndex + 1;
+        // Set the id to the selected character index + 1
+        Game.GetPlayer().SetCurrentId(selectedCharacterId.ToString());
 
         // Save the player data
         //GameController.instanceRef.dataManager.SavePlayerData();

@@ -233,7 +233,7 @@ public class DataManager : MonoBehaviour
         WriteAnalyticsData<DynamicData>(Path.Combine(Application.persistentDataPath, "analytics.txt"), dynamicData, saveNumber);
     }
 
-    private DynamicData MakeSaveData(Player player) //convert datamanager class to dynamic data
+    private DynamicData MakeSaveData(Player player)
     {
         DynamicData dynamicData = new DynamicData();
         dynamicData.id = player.GetId();
@@ -242,6 +242,7 @@ public class DataManager : MonoBehaviour
 
         return dynamicData;
     }
+
 
     //loading
     public bool LoadPlayerData()
@@ -272,7 +273,7 @@ public class DataManager : MonoBehaviour
     public void WriteAnalyticsData<T>(string filePathAnalytics, T data, int saveNumber)
     {
         string dataStringAnalytics = JsonUtility.ToJson(data);
-        string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // get current date and time
+        string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         string labeledData = $"Save {saveNumber} - {currentTime}: {dataStringAnalytics}";
 
         if (File.Exists(filePathAnalytics))
@@ -283,6 +284,7 @@ public class DataManager : MonoBehaviour
 
         File.AppendAllText(filePathAnalytics, labeledData + Environment.NewLine);
     }
+
 
     //CHARCTER read and write
     public T ReadData<T>(string filePathCharacter)
