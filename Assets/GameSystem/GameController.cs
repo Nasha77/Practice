@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         else
         {
             // If no saved data, go to character selection
-            SceneManager.LoadScene("SelectionScene"); // Replace "CharacterSelectionScene" with the actual name of your character selection scene
+            SceneManager.LoadScene("CONVO 1"); // Replace "CharacterSelectionScene" with the actual name of your character selection scene
         }
     }
 }

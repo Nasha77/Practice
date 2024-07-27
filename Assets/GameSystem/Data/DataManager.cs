@@ -25,10 +25,6 @@ public class DataManager : MonoBehaviour
 
         CharcterDataList characterData = JsonUtility.FromJson<CharcterDataList>(dataStringCharacter);
 
- System.IO.FileInfo file = new System.IO.FileInfo(filePathCharacter);
-        file.Directory.Create(); // If the directory already exists, this method does nothing.
-        System.IO.File.WriteAllText(file.FullName, dataStringCharacter);
-
        
 
         List<Character> characterList = new List<Character>();
@@ -59,9 +55,7 @@ public class DataManager : MonoBehaviour
 
         string dataStringWeapon = File.ReadAllText(filePathWeapon); // Read the path and save it in the data string
 
-        System.IO.FileInfo fileW = new System.IO.FileInfo(filePathWeapon);
-        file.Directory.Create(); // If the directory already exists, this method does nothing.
-        System.IO.File.WriteAllText(fileW.FullName, dataStringWeapon);
+       
         WeaponDataList weaponData = JsonUtility.FromJson<WeaponDataList>(dataStringWeapon); // Converts data string JSON into WeaponDataList script data
 
         List<Weapon> weaponList = new List<Weapon>();
@@ -92,9 +86,7 @@ public class DataManager : MonoBehaviour
        
 
         string dataStringEnemy = File.ReadAllText(filePathEnemy);
- System.IO.FileInfo fileE = new System.IO.FileInfo(filePathEnemy);
-        file.Directory.Create(); // If the directory already exists, this method does nothing.
-        System.IO.File.WriteAllText(fileE.FullName, dataStringEnemy);
+ 
         // Parse JSON data into EnemyDataList
         EnemyRef.EnemyDataList enemyData = JsonUtility.FromJson<EnemyRef.EnemyDataList>(dataStringEnemy);
 
@@ -126,9 +118,7 @@ public class DataManager : MonoBehaviour
 
         string dataStringWave = File.ReadAllText(filePathWave);
 
-        System.IO.FileInfo fileWa = new System.IO.FileInfo(filePathWave);
-        file.Directory.Create(); // If the directory already exists, this method does nothing.
-        System.IO.File.WriteAllText(fileWa.FullName, dataStringWave);
+        
 
 
         // Parse JSON data into WaveDataList
