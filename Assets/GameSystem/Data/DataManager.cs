@@ -9,6 +9,7 @@ using static WeaponRef;
 using static EnemyRef;
 using static WaveSpawnerRef;
 using static DialogueRef;
+using System;
 
 public class DataManager : MonoBehaviour
 {
@@ -180,11 +181,25 @@ public class DataManager : MonoBehaviour
     //saving
     public void SavePlayerData()
     {
-        string filePath = Application.persistentDataPath; //where to save the data persisitant datapath will not work at datapath
-        string fileName = "SaveData.txt"; //create a file 
+        string filePath = Application.persistentDataPath;
+        string fileName = "SaveData.txt";
 
         DynamicData dynamicData = MakeSaveData(Game.GetPlayer());
-        WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);//write all data into the dynamic data into the file
+        WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);
+
+        int saveNumber;
+        string filePathAnalytics = Path.Combine(Application.persistentDataPath, "analytics.txt");
+        if (File.Exists(filePathAnalytics))
+        {
+            string[] lines = File.ReadAllLines(filePathAnalytics);
+            saveNumber = lines.Length + 1; // increment the save number based on the number of lines in the analytics file
+        }
+        else
+        {
+            saveNumber = 1; // start with save number 1 if the analytics file doesn't exist
+        }
+
+        WriteAnalyticsData<DynamicData>(Path.Combine(Application.persistentDataPath, "analytics.txt"), dynamicData, saveNumber);
     }
 
     private DynamicData MakeSaveData(Player player) //convert datamanager class to dynamic data
@@ -200,24 +215,19 @@ public class DataManager : MonoBehaviour
     //loading
     public bool LoadPlayerData()
     {
-        //funtion
-        string filePathCharacter = Application.persistentDataPath; //where to get files from
+        string filePathCharacter = Application.persistentDataPath;
         string fileName = "SaveData.txt";
         Debug.Log("LOADDATAAAAAAAAAAAA" + Path.Combine(filePathCharacter, fileName));
 
-
-        if (File.Exists(Path.Combine(filePathCharacter, fileName))) //when player enter the game this data file might not exsist so we have to check it
+        if (File.Exists(Path.Combine(filePathCharacter, fileName)))
         {
-            DynamicData dynamicData = ReadData<DynamicData>(Path.Combine(filePathCharacter, fileName));//get danaymic data from json
+            DynamicData dynamicData = ReadData<DynamicData>(Path.Combine(filePathCharacter, fileName));
 
-            Game.SetPlayer(LoadSaveData(dynamicData)); //set it as the main player if there is a exsistinf file
-            return true; //exist
+            Game.SetPlayer(LoadSaveData(dynamicData));
+            return true;
         }
 
-        return false; //does not exist dyanamicdata
-
-        //List<Character> characterList = new List<Character>();
-
+        return false;
     }
 
     private Player LoadSaveData(DynamicData dynamicData)
@@ -227,9 +237,30 @@ public class DataManager : MonoBehaviour
         return player;
     }
 
-    //CHARCTER read and write
-    public T ReadData<T>(string filePathCharacter) //loading done using readdata
+    //ANALYTICS
+    public void WriteAnalyticsData<T>(string filePathAnalytics, T data, int saveNumber)
     {
+        string dataStringAnalytics = JsonUtility.ToJson(data);
+        string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // get current date and time
+        string labeledData = $"Save {saveNumber} - {currentTime}: {dataStringAnalytics}";
+
+        if (File.Exists(filePathAnalytics))
+        {
+            string existingData = File.ReadAllText(filePathAnalytics);
+            dataStringAnalytics = existingData + Environment.NewLine + labeledData;
+        }
+
+        File.AppendAllText(filePathAnalytics, labeledData + Environment.NewLine);
+    }
+
+    //CHARCTER read and write
+    public T ReadData<T>(string filePathCharacter)
+    {
+        if (Path.GetFileName(filePathCharacter) != "SaveData.txt")
+        {
+            throw new InvalidOperationException("Can only read data from SaveData.txt");
+        }
+
         string dataStringCharacter = File.ReadAllText(filePathCharacter);
         Debug.Log("filePath" + filePathCharacter + "\n" + dataStringCharacter);
 
@@ -247,21 +278,14 @@ public class DataManager : MonoBehaviour
 
     // Method to delete the save file
     public void DeleteSaveData()
-    {
-        string filePath = Application.persistentDataPath;
+    {//method to only delete the "SaveData.txt" file and not touch the "analytics.txt" file.
+        string filePathCharacter = Application.persistentDataPath;
         string fileName = "SaveData.txt";
-        string fullPath = Path.Combine(filePath, fileName);
 
-        if (File.Exists(fullPath))
+        if (File.Exists(Path.Combine(filePathCharacter, fileName)))
         {
-            File.Delete(fullPath);
-            Debug.Log("Save file deleted successfully.");
-        }
-        else
-        {
-            Debug.LogWarning("Save file does not exist.");
+            File.Delete(Path.Combine(filePathCharacter, fileName));
         }
     }
 
 }
-
