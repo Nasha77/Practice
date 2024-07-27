@@ -34,7 +34,7 @@ public class QuestManager : MonoBehaviour
     public void OnEnemyKilled()
     {
         enemyKillCount++;
-
+        Debug.Log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"+enemyKillCount);
         // Check if the quest is complete
         if (enemyKillCount >= 1)
         {
@@ -42,8 +42,15 @@ public class QuestManager : MonoBehaviour
             Debug.Log("Quest complete! Reward: " + currentQuest?.questReward);
 
 
-            // Set the reward text to display the quest reward
-            rewardText.text = "Reward: " + currentQuest?.questReward;
+            // Update the reward text to display the quest reward
+            if (currentQuest != null)
+            {
+                rewardText.text = "Reward: " + currentQuest.questReward;
+            }
+            else
+            {
+                rewardText.text = "Quest not found!";
+            }
         }
     }
 }
