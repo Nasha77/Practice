@@ -9,6 +9,7 @@ using static WeaponRef;
 using static EnemyRef;
 using static WaveSpawnerRef;
 using static DialogueRef;
+using static QuestRef;
 using System;
 
 public class DataManager : MonoBehaviour
@@ -173,7 +174,37 @@ public class DataManager : MonoBehaviour
         }
         Game.SetDialogueList(dialogueList); // Set dialogue list 
 
+
+        // FOR QUEST
+
+        string filePathQuest = Path.Combine(Application.streamingAssetsPath + "/QuestRef.json"); //where to get files from
+
+
+        Debug.Log(filePathQuest);
+
+        string dataStringQuest = File.ReadAllText(filePathQuest); // Read the path and save it in the data string
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + dataStringQuest);
+        QuestDataList questData = JsonUtility.FromJson<QuestDataList>(dataStringQuest);
+
+        List<Quest> questList = new List<Quest>();
+
+        //process ref data convert data read into classes
+        foreach (QuestRef questref in questData.questRef)
+        {
+            Quest quest = new Quest(
+                questref.questId,
+                questref.questName,
+                questref.questDescription,
+                questref.questReward
+                );
+            questList.Add(quest);
+            Debug.Log("ADD quest " + quest.questName + quest.questReward); //debugger
+
+        }
+        Game.SetQuestList(questList);
     }
+
+
 
     //CHARCTER save and load
     //now i only sayaing player's current charcter

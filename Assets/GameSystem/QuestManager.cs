@@ -15,15 +15,20 @@ public class QuestManager : MonoBehaviour
 
     void Start()
     {
-        // Load the quest data from the Game class
-        List<Quest> questList = Game.GetQuestList();
-
-        // Create a Quest object from the first QuestRef in the list
-        currentQuest = questList[0];
+        currentQuest = Game.GetQuestRefById("Q101"); // Get the quest with ID "Q101"
 
         // Display the quest description
-        Debug.Log("Quest: " + currentQuest.questName);
-        Debug.Log("Description: " + currentQuest.questDescription);
+        Debug.Log("Quest: " + currentQuest?.questName);
+        Debug.Log("Description: " + currentQuest?.questDescription);
+
+        // Set the reward text to display the quest description
+        rewardText.text = "Quest: " + currentQuest?.questDescription;
+        rewardText.enabled = true; // Enable the reward text
+
+        if (currentQuest == null)
+        {
+            Debug.LogError("Quest with ID 'Q101' not found!");
+        }
     }
 
     public void OnEnemyKilled()
@@ -34,17 +39,11 @@ public class QuestManager : MonoBehaviour
         if (enemyKillCount >= 1)
         {
             // Reward the player
-            Debug.Log("Quest complete! Reward: " + currentQuest.questReward);
+            Debug.Log("Quest complete! Reward: " + currentQuest?.questReward);
 
-            rewardText.enabled = true; // Enable the reward text
-            // Display the reward text
-            rewardText.text = "Reward: " + currentQuest.questReward;
-            // Add the reward to the player's inventory
-            //...
 
-            // Reset the quest
-            currentQuest = null;
-            enemyKillCount = 0;
+            // Set the reward text to display the quest reward
+            rewardText.text = "Reward: " + currentQuest?.questReward;
         }
     }
 }
