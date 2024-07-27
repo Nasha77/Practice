@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Add this to handle scene management
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -44,9 +43,7 @@ public class GameController : MonoBehaviour
             Game.SetPlayer(new Player("1", initCharacter, initWeapon));
             Game.GetPlayer().GetCurrentCharacter();
 
-            // Initialize the character selection menu if needed
-            selectionManager.InitializeMenu();
-            Debug.Log("No save data found, going to character selection.");
+            
         }
 
         Debug.Log("NOW " + initCharacter);
@@ -55,4 +52,6 @@ public class GameController : MonoBehaviour
         Debug.Log("Weapon " + Game.GetWeaponList().Count);
     }
 }
+
+
 
