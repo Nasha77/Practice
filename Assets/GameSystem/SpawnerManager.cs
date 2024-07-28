@@ -1,3 +1,5 @@
+// KEE POH KUN
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -27,7 +29,7 @@ public class SpawnerManager : MonoBehaviour
     public Transform playerPos;
 
     List<WaveSpawnerRef> waveList = Game.GetWaveList();
-    //List<Enemy> enemies = Game.GetEnemyList();
+  
 
     // only declaring the "container", not the "content"
     public Dictionary<string, List<GameObject>> ePrefabPool = new Dictionary<string, List<GameObject>>();
@@ -42,27 +44,15 @@ public class SpawnerManager : MonoBehaviour
     private void EnemySetUp()
     {
         //// declaring content for the container
-        //List<GameObject> enemyObjs = new List<GameObject>();
+      
 
         // adding the prefab into the list you created above
-        //ePrefab.Add("e101", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e101.prefab"));
-        //ePrefab.Add("e201", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e201.prefab"));
-        //ePrefab.Add("e301", AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/FanEnemies/e301.prefab"));
-
         ePrefab.Add("e101", Resources.Load<GameObject>("Prefab/FanEnemies/e101"));
         ePrefab.Add("e201", Resources.Load<GameObject>("Prefab/FanEnemies/e201"));
         ePrefab.Add("e301", Resources.Load<GameObject>("Prefab/FanEnemies/e301"));
 
 
-
-
-        //// putting a prefab into the list
-        //ePrefabPool["e101"] = enemyObjs;
-
-        //// 
-        //ePrefabPool["e101"][0].SetActive(false);
-
-        // if you want add enemy, set to true
+        // I want add enemy, so this will be set to true
         enemyAddedToList = true;
     }
 
@@ -88,73 +78,36 @@ public class SpawnerManager : MonoBehaviour
 
             // checking for matching ids
             Enemy enemyToSpawn = Game.GetEnemyByRefId(waveList[currentWaveIndex].enemyId);
+           
+            
             Debug.Log($"Selected {enemyToSpawn.enemyName}");
-
             Debug.Log("NEXT WAVE------------------");
-
-            //random position
-            // replace line 22 with getting enemy from wave list so like Game.getwavelist
-            //WaveSpawnerRef waves = waveList.
-            //Enemy randomEnemy = enemies[Random.Range(0, enemies.Count)]; // u dont want random, change to make it specific
-            //Enemy randomEnemy = enemies[ enemies.Count];
-
-
-            ////Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
-
-
-
-            ///
-            // I DOnT THINK THIS IS USED SO CAN DELETE LATER
-
-            //Enemy setEnemy = Game.GetEnemyByRefId(waveList[waveIndex].enemyId);
-
-            // for each enemy, spawn it at the location 
-            //for(int i = 0; i < waveList[waveIndex].enemyCount; i++)
-            //{
-
-            //    Vector2 randomPos = new Vector2(Random.Range(-11.50f, -7.45f), Random.Range(6.70f, 5.18f));
-            //    //GameObject enemyObj = Instantiate(eObj, randomPos, Quaternion.identity) as GameObject;
-            //    //enemyObj.GetComponent<EnemyManager>().SetupHealth(setEnemy);
-            //    waveIndex++;
-            //}
-
-
             Debug.Log(waveList[currentWaveIndex].enemyCount - 1);
 
             // spawn the current wave's enemy and its amount one by one at the right interval
-            // -1 the count cuz at the start it alr spawn one time. so if u -1, it will spawn the right amount
+            // -1 the count cuz at the start it alr spawn one time. so if -1 here, it will spawn the right amount
             StartCoroutine(SpawnEnemyInterval(enemyToSpawn, waveList[currentWaveIndex].enemyCount-1));
 
             
-
+            // increase wave idex
             waveIndex++;
 
             Debug.Log("current wave is at" + currentWaveIndex);
-            // how to spawn wave. can do by interval, like after 30 sec spawn another wave
-
-
-            // resource.load, theres a demo for this. use addressables
-            // enemy class, put a var for each enemy - name of the prefab
-
-            // eobj = replace with addressables
-            // later try using addressables
-
+         
             spawnTimer += spawnInterval;
 
             
         }
-        // check wave list
-        //Debug.Log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" + Game.GetWaveList().Count);
 
        
     }
 
-    // this code here might be the problem
+    // spawn enemies at a specified interval
     private IEnumerator SpawnEnemyInterval(Enemy enemyToSpawn, int enemiesLeftToSpawn)
     {
        
 
-       
+       // set up the position to be used to spawn enemy
         Vector2 randomPos = new Vector2(Random.Range(-11.50f, 11.50f), Random.Range(-11.70f, 11.18f));
 
         // spawn the desired enemy at a position 
@@ -163,11 +116,10 @@ public class SpawnerManager : MonoBehaviour
         enemyObj.transform.position = randomPos;
 
 
-        // assign health and atk to enemies that will be spawned
+        // assign health and atk attributes to enemies that will be spawned
         enemyObj.GetComponent<EnemyManager>().SetupEnemy(enemyToSpawn, this, FindObjectOfType<PlayerManager>().gameObject);
        
-        // GetPlayerObj
-        //enemyObj.GetComponent<EnemyAI>().SetupEnemy(FindObjectOfType<PlayerManager>().gameObject);
+        // wait for awhile before spawning again
         yield return new WaitForSeconds(5);
 
 
@@ -201,12 +153,14 @@ public class SpawnerManager : MonoBehaviour
             //remove it to be used
             ePrefabPool[enemyId].Remove(enemyObj);
 
-            // set gameObj to be active 
+            //  notify questManager that an enemy has been killed
             questManager.OnEnemyKilled();
+
+            // set gameObj to be active 
             enemyObj.SetActive(true);
         }
 
-        // if obj doesnt exist in pool and not enough
+        // if obj doesnt exist in pool and not enough obj
         else
         {
             // create new list
@@ -215,9 +169,11 @@ public class SpawnerManager : MonoBehaviour
             //use the new list instead
             ePrefabPool[enemyId] = enemyObjs;
 
-            //
+            //  instantiate a new enemy object from the prefab
             enemyObj = Instantiate(ePrefab[enemyId]);
         }
+
+        //return enemy obj
         return enemyObj;
     }
 
@@ -236,26 +192,5 @@ public class SpawnerManager : MonoBehaviour
         ePrefabPool[enemyObj.name].Add(enemyObj);
         enemyObj.SetActive(false);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    //private void SpawnEnemy(string enemyId)
-    //{
-    //    if (ePrefabPool.TryGetValue(enemyId, out GameObject prefab))
-    //    {
-    //        //spawn close to player target
-    //        Vector2 spawnOffset = Random.insideUnitCircle * 3f;
-    //        Vector2 spawnPosition = (Vector2)playerPos.position + spawnOffset;
-    //    }
-    //}
 
 }
