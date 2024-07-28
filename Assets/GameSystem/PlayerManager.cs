@@ -211,7 +211,7 @@ public class PlayerManager : MonoBehaviour
 
         // curHp - dmg = curHp
         playerHealth -= dmg;
-        Debug.Log("player health"+ (playerHealth -= dmg));
+        Debug.Log("player health"+ playerHealth);
 
         Debug.Log("Health minussssss " + dmg);
 
