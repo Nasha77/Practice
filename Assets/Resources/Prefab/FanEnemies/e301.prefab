@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7952179053158671010}
   - component: {fileID: 5783602301550939841}
   - component: {fileID: 6720659099177986501}
-  - component: {fileID: 8709233437127622956}
   m_Layer: 0
   m_Name: e301
   m_TagString: Enemy
@@ -177,16 +176,4 @@ MonoBehaviour:
   enemySpd: 0
   enemyId: 
   spawnerManager: {fileID: 0}
---- !u!114 &8709233437127622956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7880661179319901172}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bf947629cfb14478adfe01d4e58d61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
+  questManager: {fileID: 0}

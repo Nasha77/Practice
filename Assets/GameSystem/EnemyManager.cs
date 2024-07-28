@@ -1,3 +1,5 @@
+// KEE POH KUN
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -117,39 +119,6 @@ public class EnemyManager : MonoBehaviour
     // check if weapon collides with the right enemy and then deduct health correctly.
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-
-
-        ////PLAYER
-        //if (other.tag == "Player")
-        //{
-        //    //deal dmg to player
-        //    //Player player = other.GetComponent<Player>();
-        //    Player player = Game.GetPlayer();
-
-        //    if (player != null)
-        //    {
-        //        //Debug.Log("HEALTH" + (player.playerHealth -= damage));
-        //        //player.playerHealth -= damage;
-
-        //        MinusHealth(100);
-        //    }
-
-        //    //if(player.playerHealth < 0)
-        //    //{
-        //    //    //KILLS PLAYER
-        //    //    playerManager.PlayerDeath();
-        //    //}
-        //}
-
-
-
-
-
-
-
-        // change sprite in gameobj
-        // or change prefab, use prefab for different characters
 
 
 
