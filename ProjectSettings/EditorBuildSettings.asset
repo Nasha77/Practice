@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 1d7b3381d3828be48ac0112dd20c5a79
+  - enabled: 1
+    path: Assets/Scenes/DEATH.unity
+    guid: fef1ebeda9eee4139a1f03cd54caef75
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5426f5c915827a44ea509342eca88f6e, type: 2}
