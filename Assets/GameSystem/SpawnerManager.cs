@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -136,6 +137,15 @@ public class SpawnerManager : MonoBehaviour
             Debug.Log("increased wave index!!!!!!");
             currentWaveIndex++;
 
+            // Check if all waves are completed
+            if (currentWaveIndex >= waveList.Count)
+            {
+                Debug.Log("All waves completed. Checking if all enemies are defeated...");
+
+                // Check if all enemies are defeated
+                StartCoroutine(CheckForWinCondition());
+            }
+
         }
 
     }
@@ -191,6 +201,22 @@ public class SpawnerManager : MonoBehaviour
         // adding obj to pool
         ePrefabPool[enemyObj.name].Add(enemyObj);
         enemyObj.SetActive(false);
+    }
+
+
+    private IEnumerator CheckForWinCondition()
+    {
+        // Wait for a short duration to ensure all enemy deaths are processed
+        yield return new WaitForSeconds(2);
+
+        // Check if there are no active enemies left in the scene
+        if (FindObjectsOfType<EnemyManager>().Length == 0)
+        {
+            Debug.Log("All enemies defeated. You win!");
+
+            // Load the WIN scene
+            SceneManager.LoadScene("WIN");
+        }
     }
 
 }
