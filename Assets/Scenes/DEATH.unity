@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 857566571}
   - component: {fileID: 857566570}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: GameControllOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078916306
 RectTransform:
   m_ObjectHideFlags: 0

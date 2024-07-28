@@ -123,8 +123,8 @@ public class PlayerManager : MonoBehaviour
         speed = Game.GetPlayer().GetCharacterSpeed();
         SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
 
-        // basically null help
-        SetSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
+        
+        //SetSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
        
@@ -147,6 +147,9 @@ public class PlayerManager : MonoBehaviour
 
         });
     }
+
+
+
 
 
     // setting current health of player using 

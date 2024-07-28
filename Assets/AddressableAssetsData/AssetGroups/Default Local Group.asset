@@ -33,17 +33,17 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a5184601acb05ad4793063e6e35a087a
-    m_Address: Assets/GameSystem/CharacterSprite/jush.png
+    m_Address: CharacterSprite/jush.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d0eafda18990e24192a9be65d95269e
-    m_Address: Assets/GameSystem/CharacterSprite/weapon.png
+    m_Address: CharacterSprite/weapon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 81d8f354eccab5d4ba0c54cf2b286663
-    m_Address: Assets/GameSystem/CharacterSprite/weapon2.png
+    m_Address: CharacterSprite/weapon2.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
