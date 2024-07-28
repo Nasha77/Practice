@@ -314,7 +314,6 @@ GameObject:
   - component: {fileID: 986111260}
   - component: {fileID: 986111259}
   - component: {fileID: 986111258}
-  - component: {fileID: 986111257}
   m_Layer: 0
   m_Name: GameControllOld
   m_TagString: Untagged
@@ -322,18 +321,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &986111257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986111256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9aab4fee8939f4e9fe4ca49fc659db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &986111258
 MonoBehaviour:
   m_ObjectHideFlags: 0
