@@ -93,9 +93,7 @@ public class SelectionManager : MonoBehaviour
         Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
         Debug.Log("Selected Weapon ID: " + Game.GetWeaponList()[characterIndex].weaponID);
 
-        int selectedCharacterId = characterIndex + 1;
-        // Set the id to the selected character index + 1
-        Game.GetPlayer().SetCurrentId(selectedCharacterId.ToString());
+       
 
         // Save the player data
         //GameController.instanceRef.dataManager.SavePlayerData();
