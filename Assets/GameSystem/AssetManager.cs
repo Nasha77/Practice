@@ -8,16 +8,18 @@ using System;
 
 public static class AssetManager 
 {
-    //private static string spritePath = "CharacterSprite/{0}";
+    // Loads a sprite from the Addressable Assets system and invokes a callback when the sprite is loaded.
+    // The "name" parameter is the name of the sprite to load.
+    // The "onLoaded" parameter is a callback function that takes a Sprite as a parameter.
     public static void LoadSprite(string name, Action<Sprite> onLoaded)
     {
-        Debug.Log($"Sprite requested is {name}");
-        // loadedSprite obj contains a sprite. call on loaded to pass loadedsprite as an input parameter
-        // Addressables.LoadAssetAsync<Sprite>(string.Format($"CharacterSprite/{name}.png", name)).Completed += (loadedSprite) =>
-        // directly puts the name inside 
+
+        // Load the sprite from the Addressable Assets system using the specified path format
+        // The path is "CharacterSprite/{name}.png", where {name} is the name of the sprite
         Addressables.LoadAssetAsync<Sprite>($"CharacterSprite/{name}.png").Completed += (loadedSprite) =>
         {
-            // check if it exists
+            // check if it exists,
+            // Check if the onLoaded callback is not null and invoke it with the loaded sprite
             onLoaded?.Invoke(loadedSprite.Result);
         };
     }
