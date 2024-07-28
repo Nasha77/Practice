@@ -12,7 +12,7 @@ public class WaveSpawnerRef //stores feilds that match the the excel/json file
     public int enemyCount;
     public int totalHP;
 
-    [System.Serializable]
+    [System.Serializable] // Nested class to store a list of WaveSpawnerRef objects.
     public class WaveDataList
     {
         public List<WaveSpawnerRef> waveSpawner;

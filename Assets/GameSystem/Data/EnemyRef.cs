@@ -12,9 +12,8 @@ public class EnemyRef //stores feilds that match the the excel/json file
     public int enemyHealth;
     public int enemyAtk;
     public int enemySpeed;
-   
-   
 
+    // Nested class to store a list of EnemyRef objects.
     public class EnemyDataList
     {
         public List<EnemyRef> enemyRef;
