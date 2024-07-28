@@ -8969,7 +8969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 942176483}
-  charaSkin: {fileID: 942176481}
   sprite:
   - {fileID: -1315700144, guid: bc734cb5f871345459973388cc81a58d, type: 3}
   - {fileID: 1406701200, guid: bc734cb5f871345459973388cc81a58d, type: 3}
