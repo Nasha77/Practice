@@ -10,21 +10,19 @@ public class Enemy
     public float enemyHealth { get; set; }
     public int enemyAtk { get; set; }
     public int enemySpeed { get; set; }
-    public int enemyEXP { get; set; }
 
     
    
 
 
-    public Enemy(string enemyId, string enemyName, float enemyHealth, int enemyAtk, int enemySpeed, int enemyEXP)
+    public Enemy(string enemyId, string enemyName, float enemyHealth, int enemyAtk, int enemySpeed)
     {
         this.enemyId = enemyId;
         this.enemyName = enemyName;
         this.enemyHealth = enemyHealth;
         this.enemyAtk = enemyAtk;
         this.enemySpeed = enemySpeed;
-        this.enemyEXP = enemyEXP;
-
+        
       
     }
 

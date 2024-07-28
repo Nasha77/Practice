@@ -99,8 +99,8 @@ public class DataManager : MonoBehaviour
                 enemyRef.enemyName,
                 enemyRef.enemyHealth,
                 enemyRef.enemyAtk,
-                enemyRef.enemySpeed,
-                enemyRef.enemyEXP
+                enemyRef.enemySpeed
+               
             );
             enemyList.Add(enemy);
            

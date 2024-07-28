@@ -12,7 +12,7 @@ public class EnemyRef //stores feilds that match the the excel/json file
     public int enemyHealth;
     public int enemyAtk;
     public int enemySpeed;
-    public int enemyEXP; //how many exp it will drop
+   
    
 
     public class EnemyDataList

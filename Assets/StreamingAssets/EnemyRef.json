@@ -5,24 +5,21 @@
     "enemyName": "Fan Girls",
     "enemyHealth": 45,
     "enemyAtk": 10,
-    "enemySpeed": 2,
-    "enemyEXP": 8
+    "enemySpeed": 2
   },
   {
     "enemyId": "e201",
     "enemyName": "Fan Boys",
     "enemyHealth": 50,
     "enemyAtk": 5,
-    "enemySpeed": 3,
-    "enemyEXP": 15
+    "enemySpeed": 3
   },
   {
     "enemyId": "e301",
     "enemyName": "Fanclub President",
     "enemyHealth": 1500,
     "enemyAtk": 20,
-    "enemySpeed": 1,
-    "enemyEXP": 50
+    "enemySpeed": 1
   }
 ]
 }
