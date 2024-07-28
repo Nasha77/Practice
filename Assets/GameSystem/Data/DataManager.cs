@@ -286,7 +286,7 @@ public class DataManager : MonoBehaviour
     {
         string filePathAnalytics = Path.Combine(Application.persistentDataPath, "analytics.txt");
         string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        string deleteLog = $"Delete action {deleteCount} - {currentTime}";
+        string deleteLog = $"RestartAction {deleteCount} - {currentTime}";
 
         File.AppendAllText(filePathAnalytics, deleteLog + Environment.NewLine);
         
@@ -297,4 +297,6 @@ public class DataManager : MonoBehaviour
         SpawnerManager spawnerManager = GameObject.FindObjectOfType<SpawnerManager>();
         return spawnerManager.currentWaveIndex;
     }
+
+
 }
