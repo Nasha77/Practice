@@ -1,5 +1,11 @@
 // NASHA, KEE POH KUN
 
+// This script, DataManager, handles the loading and saving of game data in Unity. It interacts with various other scripts
+// that define characters, weapons, enemies, waves, dialogues, and quests to initialize game data from JSON files, 
+// save player progress, and load player progress. It ensures that all game data is correctly processed, stored, and 
+// retrieved, allowing for persistent game. The script also handles analytics data related to 
+// saves and deletions for tracking player progress and behavior.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,26 +22,28 @@ using System;
 
 public class DataManager : MonoBehaviour
 {
-    private int saveCount = 0; // to track the number of saves
-    private int deleteCount = 0;
-    private int currentWaveId;
+    private int saveCount = 0; // Track the number of times the game has been saved which saves a save.txt
+    private int deleteCount = 0; // Track the number of times the game has been restarted which deletes a save.txt
+    private int currentWaveId; // Stores the wave ID that player dies on referencing to wavemanager method
 
 
-    // Load ref data from the file
+    // Load reference data from JSON files
+    // This method is used to load all the necessary data for the game, such as characters, weapons, enemies, waves, dialogues, and quests
     public void LoadRefData() // Data needed for the game itself
     {
         // For CHARACTERS
+        // Load character data from CharacterRef.json
         string filePathCharacter = Path.Combine(Application.streamingAssetsPath + "/CharacterRef.json"); // Where to get files from
-        Debug.Log(filePathCharacter);
         string dataStringCharacter = File.ReadAllText(filePathCharacter); // Read the path and save it in the data string
-        Debug.Log(dataStringCharacter);
         CharcterDataList characterData = JsonUtility.FromJson<CharcterDataList>(dataStringCharacter);
 
+        // Create a list to store character objects
         List<Character> characterList = new List<Character>();
 
-        // Process ref data: convert data read into classes
+        // // Process character data and create character objects
         foreach (CharacterRef characterref in characterData.characterRef)
         {
+            // Create a new character object
             Character character = new Character(
                 characterref.characterId,
                 characterref.characterName,
@@ -45,12 +53,16 @@ public class DataManager : MonoBehaviour
                 characterref.characterSpeed,
                 characterref.characterSprite
             );
+
+            // Add the character object to the list
             characterList.Add(character);
-            Debug.Log("Added character " + character.characterName + " hp " + character.characterHealth); // Debugger
         }
+
+        // Set the character list in the Game script
         Game.SetCharacterList(characterList);
 
         // For WEAPON
+        // Load weapon data from WeaponRef.json
         string filePathWeapon = Path.Combine(Application.streamingAssetsPath + "/WeaponRef.json"); // Where to get files from
         string dataStringWeapon = File.ReadAllText(filePathWeapon); // Read the path and save it in the data string
         WeaponDataList weaponData = JsonUtility.FromJson<WeaponDataList>(dataStringWeapon); // Converts data string JSON into WeaponDataList script data
@@ -69,7 +81,7 @@ public class DataManager : MonoBehaviour
                 weaponRef.weaponSprite
             );
             weaponList.Add(weapon);
-            // Debug.Log("Added weapon " + weapon.weaponName + " atk " + weapon.weaponATK); // Debugger
+            
         }
         Game.SetWeaponList(weaponList);
 
@@ -91,7 +103,7 @@ public class DataManager : MonoBehaviour
                 enemyRef.enemyEXP
             );
             enemyList.Add(enemy);
-            Debug.Log("Added enemy " + enemy.enemyName + " with health " + enemy.enemyHealth); // Example debug log
+           
         }
         Game.SetEnemyList(enemyList);
 
@@ -144,7 +156,6 @@ public class DataManager : MonoBehaviour
         string filePathQuest = Path.Combine(Application.streamingAssetsPath + "/QuestRef.json"); // Where to get files from
         Debug.Log(filePathQuest);
         string dataStringQuest = File.ReadAllText(filePathQuest); // Read the path and save it in the data string
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + dataStringQuest);
         QuestDataList questData = JsonUtility.FromJson<QuestDataList>(dataStringQuest);
 
         List<Quest> questList = new List<Quest>();
@@ -159,109 +170,152 @@ public class DataManager : MonoBehaviour
                 questref.questReward
             );
             questList.Add(quest);
-            Debug.Log("Added quest " + quest.questName + quest.questReward); // Debugger
+            
         }
         Game.SetQuestList(questList);
     }
 
     //saving
+    // This method saves the player's data to file
     public void SavePlayerData()
     {
+        // Get the file path and name for the save data
         string filePath = Application.persistentDataPath;
         string fileName = "SaveData.txt";
 
+        // Create a DynamicData object to hold the player's data
         DynamicData dynamicData = MakeSaveData(Game.GetPlayer());
+
+        // Write the DynamicData object to the save file
         WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);
 
         // Increment the save count
         saveCount++;
 
-        // Write analytics data
+        // Write analytics data to track the save action which is a button player presses
         WriteAnalyticsData<DynamicData>(Path.Combine(Application.persistentDataPath, "analytics.txt"), dynamicData, saveCount, deleteCount);
     }
 
+
+    // This method creates a DynamicData object to hold the player's data saved and used in save.txt
     private DynamicData MakeSaveData(Player player)
     {
+        // Create a new DynamicData object
         DynamicData dynamicData = new DynamicData();
+
+        // Set the player's ID, current character, and current character weapon in the DynamicData object
         dynamicData.id = player.GetId();
         dynamicData.currentCharacter = player.GetCurrentCharacter();
         dynamicData.currentCharacterWeapon = player.GetCurrentCharacterWeapon();
-        
-        
 
+
+        // Return the DynamicData object
         return dynamicData;
     }
 
+
     //loading
+    // This method loads the player's data from a file
     public bool LoadPlayerData()
     {
+        // Get the file path and name for the save data
         string filePathCharacter = Application.persistentDataPath;
         string fileName = "SaveData.txt";
-        Debug.Log("LOADDATAAAAAAAAAAAA" + Path.Combine(filePathCharacter, fileName));
 
+        // Check if the save file exists
         if (File.Exists(Path.Combine(filePathCharacter, fileName)))
         {
+            // Read the DynamicData object from the save file
             DynamicData dynamicData = ReadData<DynamicData>(Path.Combine(filePathCharacter, fileName));
 
+            // Set the player's data in the Game script
             Game.SetPlayer(LoadSaveData(dynamicData));
+
+            // Return true to show that the data was loaded successfully SUCCESSFUL
             return true;
         }
 
+        // Return false to show that the data was not loaded successfully UNSUCCESSFUL
         return false;
     }
 
+
+    // This method creates a Player object from a DynamicData object
     private Player LoadSaveData(DynamicData dynamicData)
     {
+        // Create a new Player object
         Player player = new Player(dynamicData.id, dynamicData.currentCharacter, dynamicData.currentCharacterWeapon);
 
+        // Return the Player object
         return player;
     }
 
     //ANALYTICS
+    // This method writes analytics data to track the player's actions
     public void WriteAnalyticsData<T>(string filePathAnalytics, T data, int saveNumber, int deleteNumber)
     {
+        // Convert the data to a JSON string
         string dataStringAnalytics = JsonUtility.ToJson(data);
+
+        // Get the current time
         string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+        // Create a string to hold the analytics data
         string labeledData = $"Save {saveNumber} - {currentTime}: {dataStringAnalytics}";
+
         // Get the current wave ID
         int currentWaveId = GetCurrentWaveIndex();
 
 
+        // Check if the analytics file exists
         if (File.Exists(filePathAnalytics))
         {
+            // Read the existing analytics data
             string existingData = File.ReadAllText(filePathAnalytics);
+
+            // Append the new analytics data to the existing data
             dataStringAnalytics = existingData + Environment.NewLine + labeledData;
         }
 
+        // Write the analytics data to the file ANALYTICS.TXT
         File.AppendAllText(filePathAnalytics, labeledData + Environment.NewLine);
         File.AppendAllText(filePathAnalytics, "Number of saves: " + saveCount + Environment.NewLine);
         File.AppendAllText(filePathAnalytics, "Wave ID: " + currentWaveId + Environment.NewLine);
 
-
-
     }
 
     //CHARCTER read and write
+    // This method reads data from a file
     public T ReadData<T>(string filePathCharacter)
     {
+        // Check if the file is the save data file
         if (Path.GetFileName(filePathCharacter) != "SaveData.txt")
         {
+            // Throw an exception if the file is not the save data file
             throw new InvalidOperationException("Can only read data from SaveData.txt");
         }
 
+        // Read the data from the file
         string dataStringCharacter = File.ReadAllText(filePathCharacter);
-        Debug.Log("filePath" + filePathCharacter + "\n" + dataStringCharacter);
 
+        // Convert the data to a JSON object
         T data = JsonUtility.FromJson<T>(dataStringCharacter);
 
+        // Return the data
         return data;
     }
 
+    // This method writes data to a file
+    // It is a generic method that can write any type of data to a file, cuz want to write different types of data to a file
     public void WriteData<T>(string filePathCharacter, T data)//saving done using write(in case you want to write different type of data)
     {
-        string dataStringCharacter = JsonUtility.ToJson(data);//convert T class data into Json convert to string
-        Debug.Log(filePathCharacter + "/n" + dataStringCharacter);
+
+        // Convert the data to a JSON string
+        // This is done using the JsonUtility.ToJson method, which converts the data into a JSON string
+        string dataStringCharacter = JsonUtility.ToJson(data);
+
         //replace all text in the file into this data new text
+        // This is done using the File.WriteAllText method, which overwrites the entire file with the new data
         File.WriteAllText(filePathCharacter, dataStringCharacter);
     }
 
@@ -269,34 +323,53 @@ public class DataManager : MonoBehaviour
     public void DeleteSaveData()
     {
         //method to only delete the "SaveData.txt" file and not touch the "analytics.txt" file.
+        // This method deletes the "SaveData.txt" file, but leaves the "analytics.txt" file intact do not delete analytics
+
+        // Get the file path and name for the save data
         string filePathCharacter = Application.persistentDataPath;
         string fileName = "SaveData.txt";
 
+
+        // Check if the save file exists
         if (File.Exists(Path.Combine(filePathCharacter, fileName)))
         {
+            // Delete the save file
             File.Delete(Path.Combine(filePathCharacter, fileName));
 
             // Increment the delete count
+            // This is used to keep track of how many times the save file has been deleted
             deleteCount++;
 
             // Log delete action in analytics
+            // This is done by calling the LogDeleteAction method
             LogDeleteAction();
         }
     }
 
+
+    // Method to log the delete action in analytics
     private void LogDeleteAction()
     {
+        // Get the file path for the analytics data
         string filePathAnalytics = Path.Combine(Application.persistentDataPath, "analytics.txt");
         string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+        // Create a string to log the delete action
         string deleteLog = $"RestartAction {deleteCount} - {currentTime}";
 
+        // Append the delete log to the analytics file
         File.AppendAllText(filePathAnalytics, deleteLog + Environment.NewLine);
         
     }
 
+    // Method to get the current wave index
+    // This method returns the current wave index from the SpawnerManager script
     private int GetCurrentWaveIndex()
     {
+        // Get the SpawnerManager script to get the index of wave
         SpawnerManager spawnerManager = GameObject.FindObjectOfType<SpawnerManager>();
+
+        // Return the current wave index
         return spawnerManager.currentWaveIndex;
     }
 
