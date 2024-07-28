@@ -1,9 +1,11 @@
+//Nasha
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// DialogueManager class responsible for handling dialogue sequences in the game.
 public class DialogueManager : MonoBehaviour
 {
     // Reference to the UI Text element where the dialogue will be displayed
@@ -30,11 +32,11 @@ public class DialogueManager : MonoBehaviour
     // Reference to the current typewriter coroutine, allowing it to be stopped if needed
     private Coroutine typewriterCoroutine;
 
+    // Start method called when the DialogueManager is initialized.
     void Start()
     {
         // Initialize the dialogue queue
         dialogues = new Queue<DialogueRef>();
-        Debug.Log("DialogueManager initializing...");
 
         // Retrieve all dialogues from the Game class
         List<DialogueRef> dialogueRefs = Game.GetDialogueList();
@@ -42,21 +44,10 @@ public class DialogueManager : MonoBehaviour
         // Filter the dialogues to include only those with cutSceneSetID 101
         List<DialogueRef> filteredDialogueRefs = dialogueRefs.FindAll(d => d.cutSceneSetID == 101);
 
-        // Check if the filtered dialogue list is null or empty and log an error if it is
-        if (filteredDialogueRefs == null || filteredDialogueRefs.Count == 0)
-        {
-            Debug.LogError("Filtered dialogue list is null or empty!");
-            return;
-        }
-
         // Add a listener to the next button to call DisplayNextDialogue when clicked
         if (nextButton != null)
         {
             nextButton.onClick.AddListener(DisplayNextDialogue);
-        }
-        else
-        {
-            Debug.LogError("Next button is not assigned!");
         }
 
         // Start displaying the dialogues using the filtered list
@@ -66,32 +57,20 @@ public class DialogueManager : MonoBehaviour
     // Method to start the dialogue sequence
     public void StartDialogue(List<DialogueRef> dialogueRefs)
     {
-        Debug.Log("DialogueManager starting dialogue sequence...");
 
         // Reinitialize the dialogue queue to ensure it's empty
         dialogues = new Queue<DialogueRef>();
 
-        // Check if the provided dialogue list is null or empty and log an error if it is
-        if (dialogueRefs == null || dialogueRefs.Count == 0)
-        {
-            Debug.LogError("dialogueRefs is null or empty!");
-            return;
-        }
-
         // Enqueue each dialogue from the filtered list into the dialogue queue
         foreach (DialogueRef dialogue in dialogueRefs)
         {
-            // Skip null dialogues and log an error
+            // Skip null dialogues
             if (dialogue == null)
             {
-                Debug.LogError("One of the dialogueRefs is null!");
                 continue;
             }
             dialogues.Enqueue(dialogue);
         }
-
-        // Log the number of dialogues that have been enqueued
-        Debug.Log("Starting Dialogue with " + dialogues.Count + " entries");
 
         // Display the first dialogue in the queue
         DisplayNextDialogue();
@@ -100,7 +79,6 @@ public class DialogueManager : MonoBehaviour
     // Method to display the next dialogue in the queue
     public void DisplayNextDialogue()
     {
-        Debug.Log("DisplayNextDialogue called.");
 
         // Check if there are no more dialogues in the queue
         if (dialogues.Count == 0)
@@ -111,14 +89,6 @@ public class DialogueManager : MonoBehaviour
 
         // Dequeue the next dialogue from the queue
         DialogueRef currentDialogue = dialogues.Dequeue();
-        Debug.Log("Displaying Dialogue ID: " + currentDialogue.cutsceneRefId);
-
-        // Check if UI elements are assigned and log an error if any are missing
-        if (dialogueText == null || leftSpeakerNameText == null || rightSpeakerNameText == null || currentSpeakerText == null)
-        {
-            Debug.LogError("UI elements are not assigned in the Inspector!");
-            return;
-        }
 
         // Update the UI with the names of the left and right speakers
         leftSpeakerNameText.text = currentDialogue.leftSpeaker;
@@ -127,7 +97,8 @@ public class DialogueManager : MonoBehaviour
         // Update the UI with the name of the current speaker
         currentSpeakerText.text = currentDialogue.currentSpeaker == "Left" ? currentDialogue.leftSpeaker : currentDialogue.rightSpeaker;
 
-        // If a typewriter coroutine is already running, stop it
+
+        // If a typewriter coroutine is already running, stop it to prevent overlap.
         if (typewriterCoroutine != null)
         {
             StopCoroutine(typewriterCoroutine);
@@ -136,6 +107,8 @@ public class DialogueManager : MonoBehaviour
         // Start a new typewriter coroutine to display the dialogue text with the typewriter effect
         typewriterCoroutine = StartCoroutine(TypewriterEffect(currentDialogue.dialogue));
     }
+
+
 
     // Coroutine to implement the typewriter effect for the dialogue text
     private IEnumerator TypewriterEffect(string dialogue)
@@ -168,13 +141,10 @@ public class DialogueManager : MonoBehaviour
         // Hide the next button when the dialogue ends
         if (nextButton != null)
         {
+            // Deactivate the next button's game object to hide it.
             nextButton.gameObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogError("Next button is not assigned!");
-        }
-
+       
         SceneManager.LoadScene("SelectionScene");
     }
 }
