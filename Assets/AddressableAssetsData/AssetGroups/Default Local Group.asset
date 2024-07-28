@@ -47,16 +47,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 68d6dbb05e2d67f45b2b3d317db4bf45
-    m_Address: CharacterSprite/cara 1.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c41da3a7c6ee89943877d1590dc79b0b
-    m_Address: Assets/GameSystem/CharacterSprite/jush 1.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c9d414e8c87d27142bbf5ca7fa5b4458, type: 2}
   m_SchemaSet:
