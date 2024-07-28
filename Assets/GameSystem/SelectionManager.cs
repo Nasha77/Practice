@@ -1,3 +1,5 @@
+// KEE POH KUN
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -103,14 +105,4 @@ public class SelectionManager : MonoBehaviour
 
 
 
-    //public void SetSprite(string name)
-    //{
-    //    // load sprite and make sprite appear on scene
-    //    AssetManager.LoadSprite(name, (Sprite sp) =>
-    //    {
-    //        gameObject.GetComponent<SpriteRenderer>().sprite = sp;
-
-
-    //    });
-    //}
 }
