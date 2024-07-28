@@ -38,12 +38,6 @@ public class weaponDamage : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
    
 
 
@@ -57,42 +51,12 @@ public class weaponDamage : MonoBehaviour
 
             Debug.Log("weapon hit ");
             // check if the enemy is an enemy from the id
-            //why is this null??
-            //EnemyManager enemy = GetComponent<EnemyManager>();
-            //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy);
+           
 
 
             damage = weaponDmg + characterDmg;
             other.gameObject.GetComponent<EnemyManager>().MinusHealth(damage);
-          
-
-            //// check if there is an enemy
-            //if (enemy1 != null || enemy2 != null)
-            //{
-            //    // check for enemy1
-
-            //    Debug.Log("ENEMYDIES" + (enemy1.enemyHealth -= damage));
-            //    //decrease health of the enemy
-            //    enemy1.enemyHealth -= damage;
-
-            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-            //    {
-            //        spawnerManager.ReturnEnemyPrefab();
-            //    }
-            //}
-
-            //if (enemy1 != null || enemy2 != null)
-            //{
-            //    //check for enemy2
-            //    Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
-            //    //decrease health of the enemy
-            //    enemy2.enemyHealth -= damage;
-
-            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-            //    {
-            //        spawnerManager.ReturnEnemyPrefab();
-            //    }
-            //}
+         
 
 
 
