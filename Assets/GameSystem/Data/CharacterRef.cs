@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable] //show in inspector
 
-public class CharacterRef //stores feilds that match the the excel/json file
+public class CharacterRef //// This class represents a reference to a character, stores feilds that match the the excel/json file
 {
     public string characterId;
     public string characterName;
@@ -15,7 +16,11 @@ public class CharacterRef //stores feilds that match the the excel/json file
     public int characterSpeed;
     public string characterSprite;
 }
+
+// This class represents a list of character references
 public class CharcterDataList
 {
+    // List of character references
+    // Use the list to populate
     public List<CharacterRef> characterRef;
 }
