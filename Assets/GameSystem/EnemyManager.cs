@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    // enemy attributes
     //enemy current health
     private float curHp;
     // enemy atk
@@ -15,113 +16,85 @@ public class EnemyManager : MonoBehaviour
 
     public string enemyId;
 
-    // if u need can use findobjbytype
-    //public PlayerManager playerManager;
 
     public SpawnerManager spawnerManager;
 
-    public QuestManager questManager;
+    //public QuestManager questManager;
 
    
 
-    List<WaveSpawnerRef> waveList = Game.GetWaveList();
+    //List<WaveSpawnerRef> waveList = Game.GetWaveList();
 
     private GameObject player;
 
     private float dist;
 
 
-    // setting current health of enemy using 
-
-
-    private void Start()
-    {
-
-        // put enemy atk as dmg
-        // Enemy dmg = Game.GetEnemyByRefId(waveList[spawnerManager.waveIndex].enemyId);
-
-       
-       
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-
+        // If the player object is not assigned, return immediately
         if (player == null)
         {
             return;
             
         }
 
+        // Calculate the distance between the enemy and the player
         dist = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 dir = player.transform.position - transform.position;
 
-        // enemy move towards the player
+
+        //Vector2 dir = player.transform.position - transform.position;
+
+        // move enemy  towards the player
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, enemySpd * Time.deltaTime);
     }
 
-    //// check if enemy died for the quest
-    //public void Died()
-    //{
-    //    // Call the OnEnemyKilled method on the QuestManager script
-    //    questManager.OnEnemyKilled();
-    //}
 
-
-    // getting input from the func,, set up health and atk
+    // method to sets up enemy health and atk
     public void SetupEnemy(Enemy enemyRef, SpawnerManager spManager, GameObject player)
     {
         // get total health of an enemy in ENEMY and pass into curHp
+        // Set the enemy's health, attack, speed, and Id from the provided enemy reference
         curHp = enemyRef.enemyHealth;
         enemyDmg = enemyRef.enemyAtk;
         enemySpd = enemyRef.enemySpeed;
         enemyId = enemyRef.enemyId;
-        gameObject.name = "Enemy" + enemyRef.enemyId;
-        this.spawnerManager = spManager;
 
+        // Name the enemy game object based on its Id data
+        gameObject.name = "Enemy" + enemyRef.enemyId;
+
+        // Assign the spawner manager and player references
+        this.spawnerManager = spManager;
         this.player = player;
 
 
     }
-   
 
+
+    // Method to reduce the enemy's health when damaged
     public void MinusHealth(float dmg)
     {
         // curHp - dmg = curHp
+        // deduct damage from the enemy's current health
         curHp -= dmg;
 
-        Debug.Log("enemy healh deduct " + dmg);
         // if enemy hp less than or equal 0
         if(curHp <= 0)
         {
             // set health to 0 and destroy gameobj
-            curHp = 0;
-            Debug.Log("destroy enemy" );
+            curHp = 0;      
 
-            // once enemy dies, call the func for quest
+            // once enemy dies, call the questmanager that enemy has been killed for quest
             // calls func in quest to increase enemy kill count
-
             spawnerManager.questManager.OnEnemyKilled();
+
+            // Return the enemy prefab to the spawner manager for recycling
             spawnerManager.ReturnEnemyPrefab(this.gameObject);
         }
     }
-
-
-
-    //set a function to deplete health in enemy and player each, then call it in respective scripts attached to each after checking for tag
-   
-
-
-    // check if weapon collides with the right enemy and then deduct health correctly.
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-
-
-        
-    }
-
 
 
 }
