@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
     Camera mainCamera;
 
-    private Transform bat;
+    // the weapon
+    private Transform weapon;
 
     private float horizontal;
     private float vertical; // new variable for vertical movement
@@ -46,10 +47,10 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bat = transform.Find("Bat");
-        if (bat == null)
+        weapon = transform.Find("weapon");
+        if (weapon == null)
         {
-            Debug.LogError("Bat not found!");
+            Debug.LogError("weapon not found!");
         }
 
         mainCamera = Camera.main;
@@ -82,7 +83,7 @@ public class PlayerManager : MonoBehaviour
 
         Flip();
 
-        if (bat != null && mainCamera != null)
+        if (weapon != null && mainCamera != null)
         {
             // Get the mouse position in world coordinates
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -93,14 +94,14 @@ public class PlayerManager : MonoBehaviour
 
             // Set the weapon position relative to the parent, keeping a constant distance
             float distance = 1.0f; // Adjust this value to set the distance from the parent
-            bat.position = transform.position + direction * distance;
+            weapon.position = transform.position + direction * distance;
 
             // Calculate the angle to face the mouse position
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             // Adjust the angle by 90 degrees if the weapon's default orientation is upright
             float angleOffset = 90.0f;
-            bat.rotation = Quaternion.Euler(new Vector3(0, 0, angle - angleOffset));
+            weapon.rotation = Quaternion.Euler(new Vector3(0, 0, angle - angleOffset));
         }
     }
 
@@ -149,6 +150,18 @@ public class PlayerManager : MonoBehaviour
     }
 
 
+    //  load and set weapon sprite
+    public void SetWeaponSprite(string name)
+    {
+        AssetManager.LoadSprite(name, (Sprite sp) =>
+        {
+            if (weapon != null)
+            {
+                weapon.GetComponent<SpriteRenderer>().sprite = sp;
+            }
+        });
+
+    }
 
 
 
@@ -162,6 +175,7 @@ public class PlayerManager : MonoBehaviour
       //  this.spawnerManager = sManager;
 
     }
+
 
     //public void SetUpEnemyRef(Enemy enemyRef, SpawnerManager sManager)
     //{
