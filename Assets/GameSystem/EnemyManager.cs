@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    // set how powerful enemy is
-    public float damage = 1;
-
     //enemy current health
     private float curHp;
     // enemy atk
