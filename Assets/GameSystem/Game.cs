@@ -1,16 +1,23 @@
 // NASHA, KEE POH KUN
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
+// This script is the home for managing game data and objects in game.
+// It provides a way to access and manipulate various game objects and data by doing Game.(followed by what we want)
+// such as players, characters, weapons, enemies, waves, sprites, dialogues, and quests.
+
 public class Game
 {
-    private static Player mainPlayer;
+    // Private static variables that store references to game objects and data.
+    // shared across all game script, for access and manipulate game data from anywhere in the game.
+    private static Player mainPlayer; // Stores a reference to the main player object.
     private static Weapon weapon;
 
+
+    // Lists of game objects and data, used to store and manage collections of data in the game.
     private static List<Character> characterList; //access to charcter class list stored here gamestaticclaass
     private static List<Weapon> weaponList; //access to weapon class list stored here gamestaticclaass
     private static List<Enemy> enemyList;
@@ -20,7 +27,8 @@ public class Game
     private static List<Quest> questList;
 
     //GETSETPLAYER
-    public static Player GetPlayer() //get and set player
+    // These methods allow other scripts to access and update the main player object.
+    public static Player GetPlayer() //Get and set methods for the main player object.
     {
         return mainPlayer;
     }
@@ -86,20 +94,20 @@ public class Game
 
     //GETSETWAVE
 
-  public static List<WaveSpawnerRef> GetWaveList() // Get and set list for waves
-  {
-    return waveList;
-  }
+    public static List<WaveSpawnerRef> GetWaveList() // Get and set list for waves
+    {
+        return waveList;
+    }
 
-  public static void SetWaveList(List<WaveSpawnerRef> aList) // Get and set list for waves
-  {
-    waveList = aList;
-  }
+    public static void SetWaveList(List<WaveSpawnerRef> aList) // Get and set list for waves
+    {
+        waveList = aList;
+    }
 
-  public static WaveSpawnerRef GetWaveByRefId(string id) // Getting one single wave using its ref id
-  {
-    return waveList.Find(x => x.waveId == id);
-  }
+    public static WaveSpawnerRef GetWaveByRefId(string id) // Getting one single wave using its ref id
+    {
+        return waveList.Find(x => x.waveId == id);
+    }
 
     //GETSETSPRITE
 
@@ -154,16 +162,4 @@ public class Game
         questList = aList;
     }
 
-
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
