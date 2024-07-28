@@ -38,7 +38,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d0eafda18990e24192a9be65d95269e
-    m_Address: CharacterSprite/weapon.png
+    m_Address: CharacterSprite/weapon1.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
