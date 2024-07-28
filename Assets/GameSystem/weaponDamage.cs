@@ -9,92 +9,53 @@ public class weaponDamage : MonoBehaviour
     // weapon's atk
     public float weaponDmg;
 
+    // character's atk dmg
     public float characterDmg, damage;
 
     public Collider2D weaponCollider;
 
+    // list to hold all weepons
    public List<Weapon> weaponList;
 
+    //EnemyManager ref
     public EnemyManager enemyManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        // get character atk = dmg
+        // get character atk and assign it to  chaarcterdmg
         characterDmg = Game.GetPlayer().GetCharacterAtk();
 
+        // retreive list of all weapons
         weaponList = Game.GetWeaponList();
 
-
-        // Game.GetPlayer().SetCurrentCharacterWeapon(Game.GetWeaponList()[characterIndex].weaponID);
 
 
         // since character stores weaponID, ask the game to find the weapon by the player's stored weaponID. and then take the weapon's atk value
         // weaponID ( Player's current weapon ). weapon attack
+        // Retrieve the attack value of the player's current weapon and assign it to weaponDmg
         weaponDmg = Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponATK;
 
-        // set total dmg at the start
-        Debug.Log(damage);
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+ 
    
 
 
-    //// check if weapon collides with the right enemy and then deduct health correctly.
+    // check if weapon collides with the right enemy and then deduct health correctly.
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // makes sure its not other tags
+        // Ensure that the collided object has the "Enemy" tag
         if (other.tag == "Enemy")
         {
-            //Enemy enem = other.GetComponent<Enemy>();
-
-            Debug.Log("weapon hit ");
-            // check if the enemy is an enemy from the id
-            //why is this null??
-            //EnemyManager enemy = GetComponent<EnemyManager>();
-            //Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+ enemy);
-
-
+            // Calculate the total damage combining weapon and character attack
             damage = weaponDmg + characterDmg;
+
+            // deduct dmg from damage above from enemy's health
             other.gameObject.GetComponent<EnemyManager>().MinusHealth(damage);
           
 
-            //// check if there is an enemy
-            //if (enemy1 != null || enemy2 != null)
-            //{
-            //    // check for enemy1
-
-            //    Debug.Log("ENEMYDIES" + (enemy1.enemyHealth -= damage));
-            //    //decrease health of the enemy
-            //    enemy1.enemyHealth -= damage;
-
-            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-            //    {
-            //        spawnerManager.ReturnEnemyPrefab();
-            //    }
-            //}
-
-            //if (enemy1 != null || enemy2 != null)
-            //{
-            //    //check for enemy2
-            //    Debug.Log("ENEMYDIES" + (enemy2.enemyHealth -= damage));
-            //    //decrease health of the enemy
-            //    enemy2.enemyHealth -= damage;
-
-            //    if (enemy1.enemyHealth < 0 || enemy2.enemyHealth < 0)
-            //    {
-            //        spawnerManager.ReturnEnemyPrefab();
-            //    }
-            //}
-
-
+          
 
         }
         }
