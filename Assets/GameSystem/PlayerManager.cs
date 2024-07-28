@@ -62,7 +62,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         UpdatePlayerStats();
-        //player = new Player("0", selectionManager.characterIndex.ToString(), selectionManager.characterIndex.ToString() );
+     
     }
 
     private void Flip()
@@ -130,11 +130,6 @@ public class PlayerManager : MonoBehaviour
         SetWeaponSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
-       
-        // not null anymore, log shows "weapon2" but dk why 
-        Debug.Log(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
-
-
     }
 
 
@@ -174,20 +169,10 @@ public class PlayerManager : MonoBehaviour
         // get total health pass into health
         playerHealth = playerHealthRef.playerHealth;
         gameObject.name = "Player" + playerHealthRef.GetId();
-      //  this.spawnerManager = sManager;
+     
 
     }
 
-
-    //public void SetUpEnemyRef(Enemy enemyRef, SpawnerManager sManager)
-    //{
-    //    // shd do this in enemyanager i think
-    //    //ref to enemy atk
-    //    enemyDmg = enemyRef.enemyAtk;
-    //    enemyId = enemyRef.enemyId;
-    //    gameObject.name = "Enemy" + enemyRef.enemyId;
-    //    this.spawnerManager = sManager;
-    //}
 
     // if enemy collides with player, deduct health
     private void OnTriggerEnter2D(Collider2D other)
@@ -197,7 +182,6 @@ public class PlayerManager : MonoBehaviour
         {
             enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
 
-            Debug.Log("player touched enemy");
 
 
             MinusPlayerHealth(enemyDmg);
@@ -211,16 +195,13 @@ public class PlayerManager : MonoBehaviour
 
         // curHp - dmg = curHp
         playerHealth -= dmg;
-        Debug.Log("player health"+ playerHealth);
-
-        Debug.Log("Health minussssss " + dmg);
 
         // if enemy hp less than or equal 0
         if (playerHealth <= 0)
         {
             // set health to 0 and destroy gameobj
             playerHealth = 0;
-            Debug.Log("destroy enemy");
+          
             Destroy(this.gameObject);
 
             // go to game over scene
