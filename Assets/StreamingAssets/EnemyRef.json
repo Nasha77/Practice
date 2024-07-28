@@ -11,7 +11,7 @@
   {
     "enemyId": "e201",
     "enemyName": "Fan Boys",
-    "enemyHealth": 80,
+    "enemyHealth": 50,
     "enemyAtk": 5,
     "enemySpeed": 3,
     "enemyEXP": 15
@@ -20,7 +20,7 @@
     "enemyId": "e301",
     "enemyName": "Fanclub President",
     "enemyHealth": 1500,
-    "enemyAtk": 30,
+    "enemyAtk": 20,
     "enemySpeed": 1,
     "enemyEXP": 50
   }

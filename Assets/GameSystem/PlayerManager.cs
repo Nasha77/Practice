@@ -189,6 +189,22 @@ public class PlayerManager : MonoBehaviour
     //    this.spawnerManager = sManager;
     //}
 
+    // if enemy collides with player, deduct health
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // check if its enemy tag
+        if (other.tag == "Enemy")
+        {
+            enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
+
+            Debug.Log("player touched enemy");
+
+
+            MinusPlayerHealth(enemyDmg);
+
+
+        }
+    }
 
     public void MinusPlayerHealth(float dmg)
     {
@@ -197,7 +213,6 @@ public class PlayerManager : MonoBehaviour
         playerHealth -= dmg;
         Debug.Log("player health"+ (playerHealth -= dmg));
 
-        // dmg = 0 why???
         Debug.Log("Health minussssss " + dmg);
 
         // if enemy hp less than or equal 0
@@ -214,22 +229,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-        // if enemy collides with player, deduct health
-        private void OnTriggerEnter2D(Collider2D other)
-    {
-        // check if its enemy tag
-        if (other.tag == "Enemy")
-        {
-            enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
-
-            Debug.Log("player touched enemy");
-
-            
-            MinusPlayerHealth(enemyDmg);
-
-
-        }
-    }
+     
 
 }
 
