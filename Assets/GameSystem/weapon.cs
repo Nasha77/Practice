@@ -1,7 +1,9 @@
+//Nasha
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Weapon class representing an weapon in the game.
 public class Weapon
 {
     public string weaponID { get; }
@@ -12,6 +14,9 @@ public class Weapon
 
     public string weaponSprite { get; }
 
+    // Constructor to create a new weapon instance.
+    // Called when the game loads weapon data.
+    // Initializes the weapon's properties with the provided values.
     public Weapon(string weaponID, string characterId, string weaponName, int weaponATK, string description, string weaponSprite)
     {
         this.weaponID = weaponID;

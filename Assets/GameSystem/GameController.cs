@@ -74,6 +74,5 @@ public class GameController : MonoBehaviour
     {
         // Delete save data and load the CONVO 1 scene.
         dataManager.DeleteSaveData();
-        SceneManager.LoadScene("CONVO 1");
     }
 }
