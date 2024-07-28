@@ -9,18 +9,14 @@ public class PlayerManager : MonoBehaviour
 {
     Camera mainCamera;
 
-    // the weapon transform
+    // the weapon
     private Transform weapon;
 
-
-    // movement variables
     private float horizontal;
     private float vertical; // new variable for vertical movement
     private float speed;
     private bool isFacingRight = true;
 
-
-    // player stats
     private float playerHealth;
     private float playerAtk;
     private float playerSpd;
@@ -35,23 +31,40 @@ public class PlayerManager : MonoBehaviour
 
     public string enemyId;
 
+
+
+    // public SelectionManager selectionManager;
+
     [SerializeField] private Rigidbody2D rb;
 
- 
+    public void PlayerDeath()
+    {
+        // 1. destroy player gameobj
+        // 2. display game over scene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! remember to add here :)
+        Destroy(gameObject);
+    }
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        // find weapon transform
         weapon = transform.Find("weapon");
+        if (weapon == null)
+        {
+            Debug.LogError("weapon not found!");
+        }
 
-        // initialize player stats
+        mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("MainCamera not found!");
+        }
+
         UpdatePlayerStats();
      
     }
 
-    // Flip the player sprite to face the direction of movement
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -64,14 +77,12 @@ public class PlayerManager : MonoBehaviour
     }
 
     // setting player to face dir of mouse
-    // Handle player movement and weapon direction
     void Update()
     {
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical"); // read vertical input
 
-        // flip sprite based on movement dir
         Flip();
 
         if (weapon != null && mainCamera != null)
@@ -96,15 +107,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // handles player movement
     void FixedUpdate()
     {
-        // apply velocity for horizontal and vertical movement
+
+
         rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
     }
 
-    // when player is selected call this function
-    // update player stats from game data
+    // when player is selected call this func
     public void UpdatePlayerStats()
     {
         Game.GetPlayer().UpdateStats();
@@ -114,10 +124,9 @@ public class PlayerManager : MonoBehaviour
         playerSpd = Game.GetPlayer().GetCharacterSpeed();
 
         speed = Game.GetPlayer().GetCharacterSpeed();
-
-
-        // update sprites
         SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
+
+        
         SetWeaponSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
@@ -126,7 +135,6 @@ public class PlayerManager : MonoBehaviour
 
 
     // get name of sprite and run loadsprite function
-    // load and set player sprite
     public void SetSprite(string name)
     {
         // load sprite and make sprite appear on scene
@@ -154,47 +162,46 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    // setting current health of player using this ->
+    // setting current health of player using 
 
     public void SetupHealth(Player playerHealthRef)
     {
-        // get total health pass into it
+        // get total health pass into health
         playerHealth = playerHealthRef.playerHealth;
         gameObject.name = "Player" + playerHealthRef.GetId();
      
 
     }
 
-    // handles collision with enemies
+
     // if enemy collides with player, deduct health
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the collided object has the "Enemy" tag
+        // check if its enemy tag
         if (other.tag == "Enemy")
         {
-            // get enemy dmg value
             enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
 
 
-            // deduct health from player by calling funv and passing enemyDmg for it to deduct in the func later
+
             MinusPlayerHealth(enemyDmg);
 
 
         }
     }
 
-    // Deduct health from the player
     public void MinusPlayerHealth(float dmg)
     {
 
-        // Deduct damage(dmg) from current health(playerHealth)
+        // curHp - dmg = curHp
         playerHealth -= dmg;
 
         // if enemy hp less than or equal 0
         if (playerHealth <= 0)
         {
-            // set health to 0 and destroy player gameobj
-            playerHealth = 0; 
+            // set health to 0 and destroy gameobj
+            playerHealth = 0;
+          
             Destroy(this.gameObject);
 
             // go to game over scene
