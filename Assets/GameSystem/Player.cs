@@ -4,11 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Player class, representing the player in the game.
 public class Player
 {
+    // Private variables to store the player's ID, current character, and current character weapon.
     private string id;
     private string currentCharacter; // current character states based on character selected 
-    private string currentCharacterWeapon; // might be WRONG just in case for future refs
+    private string currentCharacterWeapon; 
 
     // character stats based on current character and weapon updates when needed 
     public float playerHealth;
@@ -26,7 +28,6 @@ public class Player
         
         this.currentCharacterWeapon = currentCharacterWeapon;
 
-        //this.characterSprite = characterSprite;
 
         statDirty = true; // if this is true then recalculate
     }
@@ -61,7 +62,6 @@ public class Player
     {
         currentCharacterWeapon = weapon;
         statDirty = true; // every time player has a new weapon recalculate
-        Debug.Log("Weapon : " + currentCharacterWeapon);
     }
 
     // you r trying to call something thats not set so confirm will give u null
@@ -70,8 +70,7 @@ public class Player
     {
         if (!statDirty) return false; // if it has not been changed then don't update stats
 
-
-        //Debug.Log("UpdateStats " + currentCharacter);
+        // Get the character and weapon data from the Game class.
         Character playerCharacter = Game.GetCharacterByRefId(currentCharacter);
         Weapon playerWeapon = Game.GetWeaponByRefId(currentCharacterWeapon);
 
@@ -82,18 +81,13 @@ public class Player
         weaponSprite = playerWeapon.weaponSprite;
 
 
-
-        
-       
-
         statDirty = false; // calculated, no need to calculate again
 
         return true; // return true when stats are updated
     }
 
-   
 
- 
+    // Get methods for the player's stats, which call UpdateStats() to ensure the stats are up to date.
 
     public float GetCharacterHealth() // check if the health updates if it has not been changed no need to calculate if it has then calculate
     {

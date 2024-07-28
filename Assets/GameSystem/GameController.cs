@@ -1,38 +1,46 @@
+//Nasha
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// GameController class, responsible for managing the game's state and flow.
 public class GameController : MonoBehaviour
 {
-    public DataManager dataManager; // Call the data
+    public DataManager dataManager; // Reference to the DataManager, which handles data loading and saving.
+
+    // Initial character and weapon to be used when creating a new player.
     public string initCharacter; // Set in inspector
     public string initWeapon;
 
+    // Static reference to the GameController instance, so that only one instance exists.
     public static GameController instanceRef;
 
+
+    // Called when the script is initialized.
     void Awake()
     {
+        // Check if an instance of GameController already exists.
         if (instanceRef == null)
         {
+            // If not, set this script as the instance and prevent it from being destroyed when scenes change.
             instanceRef = this;
             DontDestroyOnLoad(gameObject);
         }
         else if (instanceRef != this)
         {
+            // If an instance already exists, destroy this script to prevent duplicates.
             Destroy(gameObject);
         }
 
+        // Get the DataManager component and load reference data from datamanager script
         dataManager = GetComponent<DataManager>();
         dataManager.LoadRefData();
-
-        Debug.Log(Game.GetCharacterList());
 
         // Check if save data exists
         if (dataManager.LoadPlayerData())
         {
-            // If save data exists, navigate to the appropriate scene
-            Debug.Log("Save data found, loading gamescene scene.");
+            // If save data exists, go to GameScene
             SceneManager.LoadScene("GameScene");
         }
         else
@@ -42,10 +50,6 @@ public class GameController : MonoBehaviour
             Game.GetPlayer().GetCurrentCharacter();
         }
 
-        Debug.Log("NOW " + initCharacter);
-        Debug.Log("NOW " + initWeapon);
-        Debug.Log("Character " + Game.GetCharacterList().Count);
-        Debug.Log("Weapon " + Game.GetWeaponList().Count);
     }
 
     // retry button
@@ -54,13 +58,12 @@ public class GameController : MonoBehaviour
         // Check if save data exists
         if (dataManager.LoadPlayerData())
         {
-            // If save data exists, navigate to the appropriate scene
-            Debug.Log("Save data found, loading gamescene scene.");
+            // If save data exists, navigate to gamescene
             SceneManager.LoadScene("GameScene");
         }
         else
         {
-            // If no save data exists, initialize new player and go to character selection
+            // If no save data exists, initialize new player
             Game.SetPlayer(new Player("1", initCharacter, initWeapon));
             Game.GetPlayer().GetCurrentCharacter();
         }
@@ -69,6 +72,7 @@ public class GameController : MonoBehaviour
     // restart button
     public void RestartButton()
     {
+        // Delete save data and load the CONVO 1 scene.
         dataManager.DeleteSaveData();
         SceneManager.LoadScene("CONVO 1");
     }
