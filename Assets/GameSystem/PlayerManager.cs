@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -187,6 +188,9 @@ public class PlayerManager : MonoBehaviour
             playerHealth = 0;
             Debug.Log("destroy enemy");
             Destroy(this.gameObject);
+
+            // go to game over scene
+            SceneManager.LoadScene("DEATH");
         }
     }
 
