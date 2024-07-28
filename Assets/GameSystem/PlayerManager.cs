@@ -4,14 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 
 public class PlayerManager : MonoBehaviour
 {
     Camera mainCamera;
 
-    // the weapon
+    // the weapon transform
     private Transform weapon;
 
+    // movement variables
     private float horizontal;
     private float vertical; // new variable for vertical movement
     private float speed;
@@ -20,6 +22,7 @@ public class PlayerManager : MonoBehaviour
     private float playerHealth;
     private float playerAtk;
     private float playerSpd;
+
 
     public Character character;
     public Player player;
@@ -32,39 +35,27 @@ public class PlayerManager : MonoBehaviour
     public string enemyId;
 
 
-
-    // public SelectionManager selectionManager;
-
     [SerializeField] private Rigidbody2D rb;
 
-    public void PlayerDeath()
-    {
-        // 1. destroy player gameobj
-        // 2. display game over scene !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! remember to add here :)
-        Destroy(gameObject);
-    }
+  
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        // find weapon transform
         weapon = transform.Find("weapon");
-        if (weapon == null)
-        {
-            Debug.LogError("weapon not found!");
-        }
 
+        //assign the main camera in the scene to the mainCamera variable
         mainCamera = Camera.main;
-        if (mainCamera == null)
-        {
-            Debug.LogError("MainCamera not found!");
-        }
 
+        // Initialize player stats
         UpdatePlayerStats();
      
     }
 
+    // Flip the player sprite to face the direction of movement
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -77,12 +68,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     // setting player to face dir of mouse
+    // Handle player movement and weapon direction
     void Update()
     {
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical"); // read vertical input
 
+        // Flip the player sprite based on movement direction
         Flip();
 
         if (weapon != null && mainCamera != null)
@@ -107,14 +100,14 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    // handle player movement
     void FixedUpdate()
     {
-
-
+        // Apply velocity for horizontal and vertical movement
         rb.velocity = new Vector2(horizontal * speed, vertical * speed); // apply velocity for both horizontal and vertical movement
     }
 
-    // when player is selected call this func
+    // when player is selected call this func and  Update player stats from the game data
     public void UpdatePlayerStats()
     {
         Game.GetPlayer().UpdateStats();
@@ -122,11 +115,10 @@ public class PlayerManager : MonoBehaviour
         playerHealth = Game.GetPlayer().GetCharacterHealth();
         playerAtk = Game.GetPlayer().GetCharacterAtk();
         playerSpd = Game.GetPlayer().GetCharacterSpeed();
-
         speed = Game.GetPlayer().GetCharacterSpeed();
-        SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
 
-        
+        // update sprites according to current character and weapon
+        SetSprite(Game.GetCharacterByRefId(Game.GetPlayer().GetCurrentCharacter()).characterSprite);
         SetWeaponSprite(Game.GetWeaponByRefId(Game.GetPlayer().GetCurrentCharacterWeapon()).weaponSprite);
 
 
@@ -135,6 +127,7 @@ public class PlayerManager : MonoBehaviour
 
 
     // get name of sprite and run loadsprite function
+    // basically load and set player sprite
     public void SetSprite(string name)
     {
         // load sprite and make sprite appear on scene
@@ -162,11 +155,11 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    // setting current health of player using 
+    // setting current health of player using ->
 
     public void SetupHealth(Player playerHealthRef)
     {
-        // get total health pass into health
+        // get total health pass into ->
         playerHealth = playerHealthRef.playerHealth;
         gameObject.name = "Player" + playerHealthRef.GetId();
      
@@ -177,29 +170,31 @@ public class PlayerManager : MonoBehaviour
     // if enemy collides with player, deduct health
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // check if its enemy tag
+        // Check if the collided object has the "Enemy" tag
         if (other.tag == "Enemy")
         {
+            // getting enemy dmg value
             enemyDmg = other.GetComponent<EnemyManager>().enemyDmg;
 
 
-
+            // deduct health from player using the enemy dmg
             MinusPlayerHealth(enemyDmg);
 
 
         }
     }
 
+    // Deduct health from the player
     public void MinusPlayerHealth(float dmg)
     {
 
-        // curHp - dmg = curHp
+        // Deduct damage from current health
         playerHealth -= dmg;
 
         // if enemy hp less than or equal 0
         if (playerHealth <= 0)
         {
-            // set health to 0 and destroy gameobj
+            // set health to 0 and destroy player gameobj
             playerHealth = 0;
           
             Destroy(this.gameObject);
