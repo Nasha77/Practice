@@ -25,7 +25,7 @@ public class DataManager : MonoBehaviour
     private int saveCount = 0; // Track the number of times the game has been saved which saves a save.txt
     private int deleteCount = 0; // Track the number of times the game has been restarted which deletes a save.txt
     private int currentWaveId; // Stores the wave ID that player dies on referencing to wavemanager method
-
+    public event Action OnSaveDataUpdated; //displaysavedata
 
     // Load reference data from JSON files
     // This method is used to load all the necessary data for the game, such as characters, weapons, enemies, waves, dialogues, and quests
@@ -154,7 +154,6 @@ public class DataManager : MonoBehaviour
 
         // For QUEST
         string filePathQuest = Path.Combine(Application.streamingAssetsPath + "/QuestRef.json"); // Where to get files from
-        Debug.Log(filePathQuest);
         string dataStringQuest = File.ReadAllText(filePathQuest); // Read the path and save it in the data string
         QuestDataList questData = JsonUtility.FromJson<QuestDataList>(dataStringQuest);
 
@@ -189,13 +188,16 @@ public class DataManager : MonoBehaviour
         // Write the DynamicData object to the save file
         WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);
 
-        Debug.Log("SaveData.txt file path: " + Path.Combine(filePath, fileName));
         // Increment the save count
         saveCount++;
 
         // Write analytics data to track the save action which is a button player presses
         WriteAnalyticsData<DynamicData>(Path.Combine(Application.persistentDataPath, "analytics.txt"), dynamicData, saveCount, deleteCount);
+
+        // Invoke the OnSaveDataUpdated event to notify listeners
+        OnSaveDataUpdated?.Invoke();
     }
+
 
 
     // This method creates a DynamicData object to hold the player's data saved and used in save.txt
@@ -392,5 +394,7 @@ public class DataManager : MonoBehaviour
             return "No save data found.";
         }
     }
+
+  
 
 }

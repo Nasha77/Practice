@@ -1,4 +1,4 @@
-//NASHA
+//nasha
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +19,13 @@ public class SaveDataDisplay : MonoBehaviour
             return;
         }
 
-        // Display the saved data
+        // Subscribe to the OnSaveDataUpdated event
+        if (dataManager != null)
+        {
+            dataManager.OnSaveDataUpdated += DisplaySavedData;
+        }
+
+        // Display the saved data initially
         DisplaySavedData();
     }
 
@@ -30,5 +36,14 @@ public class SaveDataDisplay : MonoBehaviour
 
         // Set the text component to display the saved data
         saveDataText.text = savedData;
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe from the event to avoid memory leaks
+        if (dataManager != null)
+        {
+            dataManager.OnSaveDataUpdated -= DisplaySavedData;
+        }
     }
 }

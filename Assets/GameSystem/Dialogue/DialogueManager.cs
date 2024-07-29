@@ -130,8 +130,7 @@ public class DialogueManager : MonoBehaviour
     // Method to handle the end of the dialogue sequence
     void EndDialogue()
     {
-        Debug.Log("End of Dialogue");
-
+        
         // Clear the dialogue and speaker name texts in the UI
         dialogueText.text = "";
         leftSpeakerNameText.text = "";
