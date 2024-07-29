@@ -189,6 +189,7 @@ public class DataManager : MonoBehaviour
         // Write the DynamicData object to the save file
         WriteData<DynamicData>(Path.Combine(filePath, fileName), dynamicData);
 
+        Debug.Log("SaveData.txt file path: " + Path.Combine(filePath, fileName));
         // Increment the save count
         saveCount++;
 
@@ -373,5 +374,23 @@ public class DataManager : MonoBehaviour
         return spawnerManager.currentWaveIndex;
     }
 
+    // Method to get the saved data as a formatted string
+    public string GetSavedDataString()
+    {
+        string filePath = Application.persistentDataPath;
+        string fileName = "SaveData.txt";
+
+        if (File.Exists(Path.Combine(filePath, fileName)))
+        {
+            DynamicData dynamicData = ReadData<DynamicData>(Path.Combine(filePath, fileName));
+            return $"ID: {dynamicData.id}\n" +
+                   $"Character: {dynamicData.currentCharacter}\n" +
+                   $"Weapon: {dynamicData.currentCharacterWeapon}";
+        }
+        else
+        {
+            return "No save data found.";
+        }
+    }
 
 }

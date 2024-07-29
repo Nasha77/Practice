@@ -1,13 +1,15 @@
-//Nasha
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Add this namespace
 
 // GameController class, responsible for managing the game's state and flow.
 public class GameController : MonoBehaviour
 {
     public DataManager dataManager; // Reference to the DataManager, which handles data loading and saving.
+
+    public Text saveDataText; // Reference to the Text component for displaying save data
 
     // Initial character and weapon to be used when creating a new player.
     public string initCharacter; // Set in inspector
@@ -15,7 +17,6 @@ public class GameController : MonoBehaviour
 
     // Static reference to the GameController instance, so that only one instance exists.
     public static GameController instanceRef;
-
 
     // Called when the script is initialized.
     void Awake()
@@ -50,9 +51,14 @@ public class GameController : MonoBehaviour
             Game.GetPlayer().GetCurrentCharacter();
         }
 
+        // Display the save data
+        if (saveDataText != null)
+        {
+            saveDataText.text = dataManager.GetSavedDataString();
+        }
     }
 
-    // retry button
+    // Retry button
     public void RetryButton()
     {
         // Check if save data exists
@@ -69,7 +75,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // restart button
+    // Restart button
     public void RestartButton()
     {
         // Delete save data and load the CONVO 1 scene.
